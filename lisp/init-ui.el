@@ -1,5 +1,8 @@
 ;; Initializes the UI of emacs that fit my habits
 
+;; I-beam instead block cursor
+(setq-default cursor-type 'bar)
+
 ;; Clears unsless menu stuffs
 ;; {{
 (global-unset-key (kbd "C-h t"))

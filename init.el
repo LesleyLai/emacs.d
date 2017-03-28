@@ -18,7 +18,8 @@
 ;; Which means on every .el and .elc file loaded during start up, it has to runs those regexps against the filename.
 (let ((file-name-handler-alist nil))
   (require 'init-elpa) ;; Do this before other things
-  
+
+  (require 'init-company)
   (require 'init-css)
   (require 'init-cc-mode)
   (require 'init-c++)

@@ -5,8 +5,11 @@
 
 ;; Packages to install
 (defvar my-packages '(counsel ;; auto completion tool
+                      company ;; auto completion framework
+                      company-c-headers
                       clang-format ;; clang format
                       paredit ;; keeps parentheses under control.
+                      ggtags ;; GNU Global source code tagging system
                       idle-highlight-mode
                       ;;ido-ubiquitous
                       ;;find-file-in-project
