@@ -3,6 +3,7 @@
 .cask
 *~
 /backups/
+*recentf
 
 
 *.~undo-tree

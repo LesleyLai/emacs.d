@@ -19,6 +19,7 @@
                       undo-tree
                       rainbow-delimiters ;;Highlight brackets according to their depth
                       rainbow-mode ;;Colorize color names in buffers
+                      yasnippet
                       ;;scpaste
                       ))
 

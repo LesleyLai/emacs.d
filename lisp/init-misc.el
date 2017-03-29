@@ -13,4 +13,7 @@
 (add-hook 'prog-mode-hook 'generic-programming-mode-hook-setup)
 (add-hook 'css-mode-hook 'generic-programming-mode-hook-setup)
 
+;; Recent files
+(recentf-mode 1)
+
 (provide 'init-misc)

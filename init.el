@@ -17,7 +17,8 @@
 ;; ("\\`/:" . file-name-non-special))
 ;; Which means on every .el and .elc file loaded during start up, it has to runs those regexps against the filename.
 (let ((file-name-handler-alist nil))
-  (require 'init-elpa) ;; Do this before other things
+   ;; Do this before other things
+  (require 'init-elpa)
 
   (require 'init-company)
   (require 'init-css)
@@ -28,5 +29,6 @@
   (require 'init-linum-mode)
   (require 'init-lisp)
   (require 'init-misc)
+  (require 'init-yasnippet)
   )
 
