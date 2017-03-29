@@ -31,5 +31,6 @@
   (require 'init-lisp)
   (require 'init-misc)
   (require 'init-yasnippet)
+  (require 'init-web)
   )
 
