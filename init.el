@@ -24,6 +24,7 @@
   (require 'init-css)
   (require 'init-cc-mode)
   (require 'init-c++)
+  (require 'init-flycheck)
   (require 'init-keybinding)
   (require 'init-ui)
   (require 'init-linum-mode)
