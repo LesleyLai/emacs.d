@@ -52,6 +52,8 @@
       (setq-default save-place t))
   (save-place-mode 1))
 
+;; display “lambda” as “λ”
+(global-prettify-symbols-mode 1)
 
 ;; Show the bookmark page instead of scratch page at start up
 (kill-buffer "*scratch*")
