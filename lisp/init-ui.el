@@ -5,6 +5,16 @@
 
 ;; Clears unsless menu stuffs
 ;; {{
+(define-key menu-bar-edit-menu [search search-forward] nil)
+(define-key menu-bar-edit-menu [search search-backward] nil)
+(define-key menu-bar-edit-menu [search re-search-forward] nil)
+(define-key menu-bar-edit-menu [search re-search-backward] nil)
+(define-key menu-bar-edit-menu [search separator-repeat-search] nil)
+(define-key menu-bar-edit-menu [search repeat-search-fwd] nil)
+(define-key menu-bar-edit-menu [search repeat-search-back] nil)
+(define-key menu-bar-edit-menu [search separator-tag-search] nil)
+
+
 (global-unset-key (kbd "C-h t"))
 (define-key menu-bar-help-menu [emacs-tutorial] nil)
 (define-key menu-bar-help-menu [emacs-tutorial-language-specific] nil)

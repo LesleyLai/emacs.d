@@ -7,6 +7,7 @@
 (defvar my-packages '(counsel ;; auto completion tool
                       company ;; auto completion framework
                       company-c-headers
+                      company-tern
                       clang-format ;; clang format
                       paredit ;; keeps parentheses under control.
                       ggtags ;; GNU Global source code tagging system
