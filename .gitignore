@@ -4,7 +4,9 @@
 *~
 /backups/
 *recentf
-
+bookmarks
+history
+places
 
 *.~undo-tree
 /.emacs.desktop

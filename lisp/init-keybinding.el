@@ -129,6 +129,8 @@
   (define-key dired-mode-map (kbd "C-n") 'new-empty-buffer) ; was dired-next-line
   (define-key dired-mode-map (kbd "M-o") 'forward-word) ; was dired-omit-mode
   (define-key dired-mode-map (kbd "M-s") 'other-window) ; was prefix in emacs 23.
+  (define-key dired-mode-map (kbd "M-i") 'previous-line)
+  (define-key dired-mode-map (kbd "M-l") 'forward-char)
  ))
 
 ;; prevent cua-mode from going into selection mode when commands with Shift key is used.

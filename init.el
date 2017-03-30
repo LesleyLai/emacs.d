@@ -34,7 +34,9 @@
   (require 'init-web)
 
   (require 'init-keybinding)
-
+  ;; Custom Setting
+  (if (file-exists-p "~/.emacs.d/custom/custom.el") (load-file "~/.emacs.d/custom/custom.el"))
   )
+
 
 
