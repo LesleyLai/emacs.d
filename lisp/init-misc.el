@@ -16,4 +16,13 @@
 ;; Recent files
 (recentf-mode 1)
 
+;; Many ibuffer default
+(defalias 'list-buffers 'ibuffer) ; make ibuffer default
+
+;; Show the bookmark page instead of scratch page at start up
+(kill-buffer "*scratch*")
+(require 'bookmark)
+(bookmark-bmenu-list)
+(switch-to-buffer "*Bookmark List*")
+
 (provide 'init-misc)

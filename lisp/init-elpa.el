@@ -9,6 +9,11 @@
                       company-c-headers
                       company-tern
                       clang-format ;; clang format
+
+                      ;; Directory management {{
+                      dired+
+                      ;; }}
+                      
                       paredit ;; keeps parentheses under control.
                       ggtags ;; GNU Global source code tagging system
 

@@ -24,13 +24,17 @@
   (require 'init-css)
   (require 'init-cc-mode)
   (require 'init-c++)
+  (require 'init-dired)
   (require 'init-flycheck)
   (require 'init-ui)
-  (require 'init-keybinding)
   (require 'init-linum-mode)
   (require 'init-lisp)
   (require 'init-misc)
   (require 'init-yasnippet)
   (require 'init-web)
+
+  (require 'init-keybinding)
+
   )
+
 
