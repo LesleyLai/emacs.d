@@ -28,6 +28,7 @@
 
                       ;; web {{
                       web-mode
+                      sml-mode
                       ;; }}
                       ))
 
