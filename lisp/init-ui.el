@@ -63,7 +63,16 @@
       backup-directory-alist `(("." . ,(concat user-emacs-directory
                                                "backups"))))
 
+;; Smart Mode line
+;; {{
+(setq sml/no-confirm-load-theme t)
+(sml/setup)
+
+;; Block minor mode from show on mode line
+;; }}
+
 ;; No startup screen
 (setq inhibit-startup-screen t)
+(setq rm-blacklist (quote (" hl-p" " company" " Undo-Tree" " yas")))
 
 (provide 'init-ui)

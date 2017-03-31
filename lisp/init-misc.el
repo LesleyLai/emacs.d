@@ -8,7 +8,10 @@
 (defun generic-programming-mode-hook-setup ()
   (make-local-variable 'column-number-mode)
   (column-number-mode t)
-  (idle-highlight-mode t))
+  (idle-highlight-mode t)
+  (fci-mode t) ; 80 column
+  )
+
 
 (add-hook 'prog-mode-hook 'generic-programming-mode-hook-setup)
 (add-hook 'css-mode-hook 'generic-programming-mode-hook-setup)
@@ -55,10 +58,14 @@
 ;; display “lambda” as “λ”
 (global-prettify-symbols-mode 1)
 
+;; Sudo edit
+(require 'sudo-edit)
+
 ;; Show the bookmark page instead of scratch page at start up
 (kill-buffer "*scratch*")
 (require 'bookmark)
 (bookmark-bmenu-list)
 (switch-to-buffer "*Bookmark List*")
+
 
 (provide 'init-misc)

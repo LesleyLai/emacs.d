@@ -9,6 +9,7 @@
                       company-c-headers
                       company-tern
                       clang-format ;; clang format
+                      sudo-edit
 
                       ;; Directory management {{
                       dired+
@@ -21,8 +22,15 @@
                       flycheck
                       flycheck-cstyle
                       ;; }}
-                      
+
+                      ;; ui
+                      ;; {{
+                      smart-mode-line
+                      smart-mode-line-powerline-theme
+                      fill-column-indicator ;; 80 line check
                       idle-highlight-mode
+                      ;; }}
+                      
                       ido-ubiquitous ;; Use ido everywhere
                       magit ;; ui for git
                       modern-cpp-font-lock ;; Modern c++ syntax highlighter
