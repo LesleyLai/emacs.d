@@ -68,11 +68,20 @@
 (setq sml/no-confirm-load-theme t)
 (sml/setup)
 
+;; Short cuts
+(add-to-list 'sml/replacer-regexp-list '("^~/dev/" ":DEV:"))
+(add-to-list 'sml/replacer-regexp-list '("^~/dev/web/" ":WEB:"))
+(add-to-list 'sml/replacer-regexp-list '("^~/dev/Graphics/" ":CG:"))
+(add-to-list 'sml/replacer-regexp-list '("^~/Downloads/" ":D/L:"))
+(add-to-list 'sml/replacer-regexp-list '(".+/C\\+\\+/" ":C++:"))
+(add-to-list 'sml/replacer-regexp-list '(".+/blog/" ":BLOG:"))
+(add-to-list 'sml/replacer-regexp-list '(".+/wiki/" ":WIKI:"))
+
 ;; Block minor mode from show on mode line
+(setq rm-blacklist (quote (" hl-p" " company" " Undo-Tree" " yas")))
 ;; }}
 
 ;; No startup screen
 (setq inhibit-startup-screen t)
-(setq rm-blacklist (quote (" hl-p" " company" " Undo-Tree" " yas")))
 
 (provide 'init-ui)
