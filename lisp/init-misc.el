@@ -61,6 +61,19 @@
 ;; Sudo edit
 (require 'sudo-edit)
 
+;; Less prompts
+(defalias 'yes-or-no-p 'y-or-n-p)
+(setq confirm-nonexistent-file-or-buffer nil)
+(setq kill-buffer-query-functions
+  (remq 'process-kill-buffer-query-function
+        kill-buffer-query-functions))
+
+(defalias 'term 'ansi-term)
+
+
+;; File delete to trash can
+(setq delete-by-moving-to-trash t)
+
 ;; Show the bookmark page instead of scratch page at start up
 (kill-buffer "*scratch*")
 (require 'bookmark)
