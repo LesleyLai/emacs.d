@@ -65,6 +65,9 @@
 
 ;; Smart Mode line
 ;; {{
+(require-package 'smart-mode-line)
+(require-package 'smart-mode-line-powerline-theme)
+
 (setq sml/no-confirm-load-theme t)
 (sml/setup)
 

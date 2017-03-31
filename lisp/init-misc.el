@@ -4,7 +4,9 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
-;; Hook for programming
+;; Hook for general programming
+(require-package 'fill-column-indicator)
+(require-package 'idle-highlight-mode)
 (defun generic-programming-mode-hook-setup ()
   (make-local-variable 'column-number-mode)
   (column-number-mode t)
@@ -70,15 +72,17 @@
 
 (defalias 'term 'ansi-term)
 
-
 ;; File delete to trash can
 (setq delete-by-moving-to-trash t)
 
 ;; Show the bookmark page instead of scratch page at start up
-(kill-buffer "*scratch*")
-(require 'bookmark)
-(bookmark-bmenu-list)
-(switch-to-buffer "*Bookmark List*")
-
+(let ((scratch "*scratch*")
+      (bookmark "*Bookmark List*"))
+  (if (buffer-live-p (get-buffer scratch))
+      (progn
+         (kill-buffer scratch)
+         (require 'bookmark)
+         (bookmark-bmenu-list)
+         (switch-to-buffer bookmark))))
 
 (provide 'init-misc)

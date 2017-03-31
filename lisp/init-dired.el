@@ -28,6 +28,7 @@ Version 2016-10-15"
          (lambda (-fpath) (let ((process-connection-type nil))
                             (start-process "" nil "xdg-open" -fpath))) -file-list))))))
 ;; Dired+
+(require-package 'dired+)
 (require 'dired+)
 
 ;; Menubar

@@ -3,17 +3,10 @@
 (add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 
-;; Packages to install
+;; Some small packages to install
 (defvar my-packages '(counsel ;; auto completion tool
-                      company ;; auto completion framework
-                      company-c-headers
-                      company-tern
                       clang-format ;; clang format
                       sudo-edit
-
-                      ;; Directory management {{
-                      dired+
-                      ;; }}
                       
                       paredit ;; keeps parentheses under control.
                       ggtags ;; GNU Global source code tagging system
@@ -22,19 +15,12 @@
                       flycheck
                       flycheck-cstyle
                       ;; }}
-
-                      ;; ui
-                      ;; {{
-                      smart-mode-line
-                      smart-mode-line-powerline-theme
-                      fill-column-indicator ;; 80 line check
-                      idle-highlight-mode
-                      ;; }}
                       
                       ido-ubiquitous ;; Use ido everywhere
                       magit ;; ui for git
                       modern-cpp-font-lock ;; Modern c++ syntax highlighter
                       smex ;; M-x enhancement
+                      sml-mode
                       undo-tree
                       rainbow-delimiters ;;Highlight brackets according to their depth
                       rainbow-mode ;;Colorize color names in buffers
@@ -42,7 +28,6 @@
 
                       ;; web {{
                       web-mode
-                      sml-mode
                       ;; }}
                       ))
 
