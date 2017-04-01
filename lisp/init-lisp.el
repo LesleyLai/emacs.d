@@ -14,11 +14,14 @@
   "Enable features useful in any Lisp mode."
   (enable-paredit-mode)
   (rainbow-delimiters-mode t)
-  (eldoc-mode))
+  (eldoc-mode)
+  (electric-pair-mode))
 
 (let* ((lispy-hooks '(lisp-mode-hook
                       inferior-lisp-mode-hook
-                      lisp-interaction-mode-hook)))
+                      lisp-interaction-mode-hook
+                      emacs-lisp-mode-hook
+                      )))
   (dolist (hook lispy-hooks)
     (add-hook hook 'lisp-modes-setup)))
 

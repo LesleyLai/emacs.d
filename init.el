@@ -28,6 +28,7 @@
   (require 'init-cc-mode)
   (require 'init-c++)
   (require 'init-dired)
+  (require 'init-elisp)
   (require 'init-flycheck)
   (require 'init-ui)
   (require 'init-linum-mode)
