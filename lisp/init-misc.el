@@ -1,12 +1,3 @@
-;; smex for M-x enhancement
-(use-package smex
-             :ensure t
-             :config
-             (smex-initialize)
-             (global-set-key (kbd "M-x") 'smex)
-             (global-set-key (kbd "M-X") 'smex-major-mode-commands))
-
-
 ;; Hook for general programming
 (use-package fill-column-indicator :ensure t)
 (use-package idle-highlight-mode :ensure t)

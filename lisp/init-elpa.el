@@ -21,7 +21,6 @@
 ;; }}
 
 (use-package counsel :ensure t) ;; auto completion tool
-(use-package ido-ubiquitous :ensure t) ;; Use ido everywhere
 (use-package magit :ensure t) ;; ui for git
 (use-package yasnippet :ensure t)
 
