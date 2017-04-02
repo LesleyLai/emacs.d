@@ -90,4 +90,8 @@
 ;; No startup screen
 (setq inhibit-startup-screen t)
 
+;; Window/frame titles
+(setq frame-title-format (list "%b " "%[ - GNU %F " emacs-version)
+      icon-title-format (list "%b " " - GNU %F " emacs-version))
+
 (provide 'init-ui)
