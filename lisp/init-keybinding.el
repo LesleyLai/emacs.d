@@ -41,6 +41,12 @@
 (global-set-key (kbd "M-%") 'query-replace-regexp)
 ;; }}
 
+;; Buffer movement
+;; Use <Shift> + arrowkeys to move between buffers
+;; {{
+(windmove-default-keybindings)
+;; }}
+
 ;; Editing Commands
 ;; {{
 (global-set-key (kbd "M-d") 'delete-backward-char) ;Similar to Backspace
