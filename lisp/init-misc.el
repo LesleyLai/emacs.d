@@ -82,4 +82,7 @@
          (bookmark-bmenu-list)
          (switch-to-buffer bookmark))))
 
+;;  Startup benchmark
+(use-package esup :ensure t)
+
 (provide 'init-misc)
