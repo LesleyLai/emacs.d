@@ -26,10 +26,12 @@ Version 2016-10-15"
        ((string-equal system-type "gnu/linux")
         (mapc
          (lambda (-fpath) (let ((process-connection-type nil))
-                            (start-process "" nil "xdg-open" -fpath))) -file-list))))))
+                       (start-process "" nil "xdg-open" -fpath))) -file-list))))))
+
 ;; Dired+
-(require-package 'dired+)
-(require 'dired+)
+(use-package dired+
+             :ensure t)
+
 
 ;; Menubar
 (define-key-after global-map

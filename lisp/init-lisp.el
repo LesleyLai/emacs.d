@@ -1,11 +1,20 @@
-;; racket
-(add-to-list 'auto-mode-alist '("\\.rkt\\'" . lisp-mode))
+;; keeps parentheses under control.
+(use-package paredit
+             :ensure t
+             :config
+             (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode))
 
-;; paradit and eldoc
-(require 'eldoc)
-(eldoc-add-command
- 'paredit-backward-delete
- 'paredit-close-round)
+;; eldoc
+(use-package eldoc
+             :after paredit
+             :init
+             (eldoc-add-command
+              'paredit-backward-delete
+              'paredit-close-round))
+
+;; Highlight brackets according to their depth
+(use-package rainbow-delimiters
+             :ensure t)
 
 ;; -------------------------------------------
 ;; Enable desired features for all lisp modes

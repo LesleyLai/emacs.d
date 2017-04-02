@@ -1,12 +1,16 @@
-(smex-initialize) ; Can be omitted. This might cause a (minimal) delay
-                  ; when Smex is auto-initialized on its first run.
-                  
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; smex for M-x enhancement
+(use-package smex
+             :ensure t
+             :config
+             (smex-initialize)
+             (global-set-key (kbd "M-x") 'smex)
+             (global-set-key (kbd "M-X") 'smex-major-mode-commands))
+
 
 ;; Hook for general programming
-(require-package 'fill-column-indicator)
-(require-package 'idle-highlight-mode)
+(use-package fill-column-indicator :ensure t)
+(use-package idle-highlight-mode :ensure t)
+
 (defun generic-programming-mode-hook-setup ()
   (make-local-variable 'column-number-mode)
   (column-number-mode t)
@@ -14,9 +18,11 @@
   (fci-mode t) ; 80 column
   )
 
-
 (add-hook 'prog-mode-hook 'generic-programming-mode-hook-setup)
 (add-hook 'css-mode-hook 'generic-programming-mode-hook-setup)
+
+;;  Standard ML mode
+(use-package sml-mode :ensure t)
 
 ;; Recent files
 (recentf-mode 1)
@@ -61,7 +67,7 @@
 (global-prettify-symbols-mode 1)
 
 ;; Sudo edit
-(require 'sudo-edit)
+(use-package sudo-edit :ensure t)
 
 ;; Less prompts
 (defalias 'yes-or-no-p 'y-or-n-p)

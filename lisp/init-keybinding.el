@@ -56,16 +56,16 @@
 (cua-mode)
 
 ;;   Undo/redo
-;;   {{
-(require 'undo-tree)
-(global-undo-tree-mode 1)
+(use-package undo-tree
+             :ensure t
+             :config
+             (global-undo-tree-mode 1)
 
-(defalias 'redo 'undo-tree-redo)
-(global-set-key (kbd "C-z") 'undo) ; 
-(global-set-key (kbd "C-S-z") 'redo) ;Apple style redo
-(global-set-key (kbd "C-y") 'redo) ;MS style redo
-;;   }}
-
+             (defalias 'redo 'undo-tree-redo)
+             (global-set-key (kbd "C-z") 'undo) ; 
+             (global-set-key (kbd "C-S-z") 'redo) ;Apple style redo
+             (global-set-key (kbd "C-y") 'redo) ;MS style redo
+             )
 ;; }}
 
 ;; Standard Shortcuts

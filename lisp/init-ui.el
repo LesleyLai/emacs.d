@@ -63,25 +63,28 @@
       backup-directory-alist `(("." . ,(concat user-emacs-directory
                                                "backups"))))
 
+
 ;; Smart Mode line
 ;; {{
-(require-package 'smart-mode-line)
-(require-package 'smart-mode-line-powerline-theme)
-
-(setq sml/no-confirm-load-theme t)
-(sml/setup)
-
-;; Short cuts
-(add-to-list 'sml/replacer-regexp-list '("^~/dev/" ":DEV:"))
-(add-to-list 'sml/replacer-regexp-list '("^~/dev/web/" ":WEB:"))
-(add-to-list 'sml/replacer-regexp-list '("^~/dev/Graphics/" ":CG:"))
-(add-to-list 'sml/replacer-regexp-list '("^~/Downloads/" ":D/L:"))
-(add-to-list 'sml/replacer-regexp-list '(".+/C\\+\\+/" ":C++:"))
-(add-to-list 'sml/replacer-regexp-list '(".+/blog/" ":BLOG:"))
-(add-to-list 'sml/replacer-regexp-list '(".+/wiki/" ":WIKI:"))
-
-;; Block minor mode from show on mode line
-(setq rm-blacklist (quote (" hl-p" " company" " Undo-Tree" " yas")))
+(use-package smart-mode-line-powerline-theme :ensure t)
+(use-package smart-mode-line
+             :ensure t
+             :config
+             (add-to-list 'sml/replacer-regexp-list '("^~/dev/" ":DEV:"))
+             (add-to-list 'sml/replacer-regexp-list '("^~/dev/web/" ":WEB:"))
+             (add-to-list 'sml/replacer-regexp-list '("^~/dev/Graphics/" ":CG:"))
+             (add-to-list 'sml/replacer-regexp-list '("^~/Downloads/" ":D/L:"))
+             (add-to-list 'sml/replacer-regexp-list '(".+/C\\+\\+/" ":C++:"))
+             (add-to-list 'sml/replacer-regexp-list '(".+/blog/" ":BLOG:"))
+             (add-to-list 'sml/replacer-regexp-list '(".+/wiki/" ":WIKI:"))
+             
+             ;; Block minor mode from show on mode line
+             (setq rm-blacklist (quote (" hl-p" " company"
+                                        " Undo-Tree" " yas")))
+             :init
+             (setq sml/no-confirm-load-theme t)
+             (sml/setup)
+             )
 ;; }}
 
 ;; No startup screen

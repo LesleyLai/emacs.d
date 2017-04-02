@@ -1,7 +1,10 @@
 ;; clang-format
-(require 'clang-format)
+(use-package clang-format
+             :ensure t
+             :config
+             (setq clang-format-style-option "llvm"))
 
-(setq clang-format-style-option "llvm")
+
 
 (defun my-common-cc-mode-setup ()
   "setup shared by all languages (java/groovy/c++ ...)"
@@ -26,18 +29,21 @@
 
 ;; donot use c-mode-common-hook or cc-mode-hook because many major-modes use this hook
 (defun c-mode-common-hook-setup ()
-    (my-common-cc-mode-setup)
-    (unless (or (derived-mode-p 'java-mode) (derived-mode-p 'groovy-mode))
-      (my-c-mode-setup))
+  (my-common-cc-mode-setup)
+  (unless (or (derived-mode-p 'java-mode) (derived-mode-p 'groovy-mode))
+    (my-c-mode-setup))
 
-    ;; gtags (GNU global) stuff
-    (when (and (executable-find "global")
-               ;; `man global' to figure out why
-               (not (string-match-p "GTAGS not found"
-                                    (shell-command-to-string "global -p"))))
-      (setq gtags-suggested-key-mapping t)
-      (ggtags-mode 1)
-      ))
+  ;; GNU Global source code tagging system
+  (use-package ggtags
+               :ensure t
+               :config
+               (when (and (executable-find "global")
+                          ;; `man global' to figure out why
+                          (not (string-match-p "GTAGS not found"
+                                               (shell-command-to-string "global -p"))))
+                 (setq gtags-suggested-key-mapping t)
+                 (ggtags-mode 1)))
+  )
 
  (add-hook 'c-mode-common-hook 'c-mode-common-hook-setup)
 
