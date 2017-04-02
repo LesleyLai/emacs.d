@@ -146,6 +146,15 @@
    )
  )
 
+;; Command history of interpretor
+(eval-after-load 'comint
+  '(progn
+     ;; originally on C-c M-r and C-c M-s
+     (define-key comint-mode-map (kbd "<up>")
+       #'comint-previous-matching-input-from-input)
+     (define-key comint-mode-map (kbd "<down>")
+       #'comint-next-matching-input-from-input)))
+
 ;; Functions
 
 ;;; Buffer related

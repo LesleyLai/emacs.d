@@ -30,6 +30,7 @@
   (require 'init-dired)
   (require 'init-elisp)
   (require 'init-flycheck)
+  (require 'init-python)
   (require 'init-ui)
   (require 'init-linum-mode)
   (require 'init-lisp)

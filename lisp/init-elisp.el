@@ -12,8 +12,7 @@
 
 (defun elisp-mode-hook-setup ()
   "Enable features useful in Emacs Lisp mode."
-  (unless (is-buffer-file-temp)
-    (checkdoc-minor-mode)))
+    (checkdoc-minor-mode))
 
 (add-hook 'emacs-lisp-mode-hook 'elisp-mode-hook-setup)
 
