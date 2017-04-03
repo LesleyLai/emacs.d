@@ -46,6 +46,7 @@
 (require 'init-web)
 (require 'init-ruby)
 (require 'init-glsl-mode)
+(require 'init-yasnippet)
 
 (require 'init-keybinding)
 
@@ -56,7 +57,7 @@
   :ensure t
   :config
   (setq idle-require-idle-delay 2)
-  (setq idle-require-symbols '(init-yasnippet))
+  ;;(setq idle-require-symbols ')
   (idle-require-mode 1) ;; starts loading
   )
 
