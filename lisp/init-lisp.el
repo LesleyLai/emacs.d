@@ -2,7 +2,8 @@
 (use-package paredit
              :ensure t
              :config
-             (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode))
+             (add-hook 'eval-expression-minibuffer-setup-hook
+                       #'enable-paredit-mode))
 
 ;; eldoc
 (use-package eldoc
@@ -30,6 +31,7 @@
                       inferior-lisp-mode-hook
                       lisp-interaction-mode-hook
                       emacs-lisp-mode-hook
+                      racket-mode-hook
                       )))
   (dolist (hook lispy-hooks)
     (add-hook hook 'lisp-modes-setup)))

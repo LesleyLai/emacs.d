@@ -62,8 +62,6 @@
   (remq 'process-kill-buffer-query-function
         kill-buffer-query-functions))
 
-(defalias 'term 'ansi-term)
-
 ;; File delete to trash can
 (setq delete-by-moving-to-trash t)
 
