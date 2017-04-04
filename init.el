@@ -45,6 +45,8 @@
 (require 'init-misc)
 (require 'init-web)
 (require 'init-ruby)
+(require 'init-racket)
+(require 'init-scala)
 (require 'init-glsl-mode)
 (require 'init-yasnippet)
 
