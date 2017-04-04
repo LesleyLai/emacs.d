@@ -59,7 +59,8 @@
   :ensure t
   :config
   (setq idle-require-idle-delay 2)
-  ;;(setq idle-require-symbols ')
+  (setq idle-require-symbols '(init-misc-lazy
+                               init-git))
   (idle-require-mode 1) ;; starts loading
   )
 

@@ -18,7 +18,11 @@
              (if (executable-find "ipython3") (elpy-use-ipython "ipython3"))
              )
     (if (executable-find "ipython") (elpy-use-ipython "ipython"))
-    ))
+    )
+  
+  :bind (:map elpy-mode-map
+              ("f5" . elpy-shell-send-region-or-buffer))
+  )
 
 
 

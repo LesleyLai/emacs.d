@@ -153,13 +153,14 @@
  )
 
 ;; Command history of interpretor
-(eval-after-load 'comint
-  '(progn
-     ;; originally on C-c M-r and C-c M-s
-     (define-key comint-mode-map (kbd "<up>")
-       #'comint-previous-matching-input-from-input)
-     (define-key comint-mode-map (kbd "<down>")
-       #'comint-next-matching-input-from-input)))
+(use-package comint
+  :defer t
+  :config
+  (progn
+    (define-key comint-mode-map (kbd "<down>") #'comint-next-input)
+    (define-key comint-mode-map (kbd "<up>") #'comint-previous-input)
+    (setf comint-prompt-read-only t
+          comint-history-isearch t)))
 
 ;; Functions
 

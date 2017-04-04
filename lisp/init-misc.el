@@ -55,12 +55,6 @@
       (setq-default save-place t))
   (save-place-mode 1))
 
-;; display “lambda” as “λ”
-(global-prettify-symbols-mode 1)
-
-;; Sudo edit
-(use-package sudo-edit :ensure t)
-
 ;; Less prompts
 (defalias 'yes-or-no-p 'y-or-n-p)
 (setq confirm-nonexistent-file-or-buffer nil)
@@ -82,8 +76,5 @@
          (require 'bookmark)
          (bookmark-bmenu-list)
          (switch-to-buffer bookmark))))
-
-;;  Startup benchmark
-(use-package esup :ensure t)
 
 (provide 'init-misc)

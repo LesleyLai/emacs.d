@@ -23,7 +23,5 @@
 ;; }}
 
 (use-package counsel :ensure t) ;; auto completion tool
-(use-package magit :ensure t) ;; ui for git
-
 
 (provide 'init-elpa)
