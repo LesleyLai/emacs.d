@@ -12,4 +12,9 @@
 ;; better terminal
 (defalias 'term 'ansi-term)
 
+(use-package switch-window
+  :config
+  (global-set-key (kbd "C-x o") 'switch-window)
+  )
+
 (provide 'init-misc-lazy)

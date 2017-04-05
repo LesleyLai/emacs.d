@@ -110,9 +110,7 @@
   (global-set-key (kbd "<C-mouse-4>") 'text-scale-increase)
   (global-set-key (kbd "<C-mouse-5>") 'text-scale-decrease)
 
-)
-
-(global-set-key (kbd "C-x o") 'switch-window)
+  )
 
 
 (global-set-key (kbd "<mouse-8>") 'cua-scroll-up)
