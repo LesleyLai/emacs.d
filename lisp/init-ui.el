@@ -1,9 +1,11 @@
 ;; Initializes the UI of emacs that fit my habits
 
-;; I-beam instead block cursor
-(setq-default cursor-type 'bar)
+; GUI and terminal have some different UI setting
+(if (display-graphic-p)
+    (setq-default cursor-type 'bar) ; I-beam instad of block cursor
+   (menu-bar-mode -1))
 
-;; Clears unsless menu stuffs
+;;  menu bar stuffs
 ;; {{
 (define-key menu-bar-edit-menu [search search-forward] nil)
 (define-key menu-bar-edit-menu [search search-backward] nil)
