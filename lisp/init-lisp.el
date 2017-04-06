@@ -8,10 +8,10 @@
 ;; eldoc
 (use-package eldoc
              :after paredit
-             ;; :init
-             ;; (eldoc-add-command
-             ;;  'paredit-backward-delete
-             ;;  'paredit-close-round)
+             :init
+             (eldoc-add-command
+              'paredit-backward-delete
+              'paredit-close-round)
              )
 
 ;; Highlight brackets according to their depth
@@ -31,7 +31,9 @@
 (let* ((lispy-hooks '(lisp-mode-hook
                       inferior-lisp-mode-hook
                       lisp-interaction-mode-hook
+                      ielm-mode-hook
                       emacs-lisp-mode-hook
+                      scheme-mode-hook
                       racket-mode-hook
                       )))
   (dolist (hook lispy-hooks)

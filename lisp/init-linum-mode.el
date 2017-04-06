@@ -44,9 +44,4 @@
              ad-do-it))
 (ad-activate 'linum-on)
 
-;; updated line number every second
-(setq linum-delay t)
-(defadvice linum-schedule (around my-linum-schedule () activate)
-  (run-with-idle-timer 1 nil #'linum-update-current))
-
 (provide 'init-linum-mode)

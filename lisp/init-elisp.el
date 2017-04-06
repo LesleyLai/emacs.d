@@ -18,7 +18,7 @@
 
 (defun elisp-mode-hook-setup ()
   "Enable features only useful in Emacs Lisp mode."
-    (checkdoc-minor-mode))
+  (checkdoc-minor-mode))
 
 (add-hook 'emacs-lisp-mode-hook 'elisp-mode-hook-setup)
 
