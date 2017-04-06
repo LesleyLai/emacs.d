@@ -13,6 +13,7 @@
 (defalias 'term 'ansi-term)
 
 (use-package switch-window
+  :ensure t
   :config
   (global-set-key (kbd "C-x o") 'switch-window)
   )

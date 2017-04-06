@@ -19,9 +19,6 @@
 ;; Recent files
 (recentf-mode 1)
 
-;; Many ibuffer default
-(defalias 'list-buffers 'ibuffer) ; make ibuffer default
-
 ;; Back up
 ;; {{
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))

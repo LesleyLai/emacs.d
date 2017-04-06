@@ -60,9 +60,10 @@
 (use-package idle-require
   :ensure t
   :config
-  (setq idle-require-idle-delay 2)
+  (setq idle-require-idle-delay 1)
   (setq idle-require-symbols '(init-misc-lazy
-                               init-git))
+                               init-git
+                               init-ibuffer))
   (idle-require-mode 1) ;; starts loading
   )
 
