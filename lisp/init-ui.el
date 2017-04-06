@@ -11,15 +11,7 @@
             icon-title-format (list "%b " " - GNU %F " emacs-version))
       (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
       (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-      (when (fboundp 'horizontal-scroll-bar-mode) (horizontal-scroll-bar-mode -1))
-      ;; Git gutter
-      (use-package git-gutter                                                                                              
-        :ensure t                                                                                                          
-        :init                                                                                                                  
-        (use-package git-gutter-fringe                                                                                 
-          :ensure t)                                                                                                
-        (global-git-gutter-mode)
-        ))
+      (when (fboundp 'horizontal-scroll-bar-mode) (horizontal-scroll-bar-mode -1)))
   (progn (menu-bar-mode -1)
          ;; Show time in console
          (use-package time

@@ -8,10 +8,11 @@
 ;; eldoc
 (use-package eldoc
              :after paredit
-             :init
-             (eldoc-add-command
-              'paredit-backward-delete
-              'paredit-close-round))
+             ;; :init
+             ;; (eldoc-add-command
+             ;;  'paredit-backward-delete
+             ;;  'paredit-close-round)
+             )
 
 ;; Highlight brackets according to their depth
 (use-package rainbow-delimiters
