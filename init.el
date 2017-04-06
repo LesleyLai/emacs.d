@@ -13,6 +13,7 @@
 (defvar *cygwin* (eq system-type 'cygwin) )
 (defvar *linux* (or (eq system-type 'gnu/linux) (eq system-type 'linux)) )
 (defvar *unix* (or *linux* (eq system-type 'usg-unix-v) (eq system-type 'berkeley-unix)) )
+(defvar *use-GUI* (display-graphic-p))
 
 ;;-------------------------------------------------------------------
 ;; Universal packages

@@ -2,11 +2,10 @@
 ;; run command `pip install jedi flake8 importmagic autopep8` in shell,
 ;; check https://github.com/jorgenschaefer/elpy
 (use-package elpy
+  :commands elpy-enable
   :ensure t
   :after flycheck
-  :config
-  (elpy-enable)
-  
+  :config  
   ;;  flycheck for elpy
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode)
@@ -23,8 +22,6 @@
   :bind (:map elpy-mode-map
               ("f5" . elpy-shell-send-region-or-buffer))
   )
-
-
 
 ;; enable autopep8 formatting on save
 ;; need autopep8 installed

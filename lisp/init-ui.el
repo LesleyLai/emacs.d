@@ -1,56 +1,36 @@
+;; ==============================================
 ;; Initializes the UI of emacs that fit my habits
+;; ==============================================
 
-; GUI and terminal have some different UI setting
-(if (display-graphic-p)
-    (setq-default cursor-type 'bar) ; I-beam instad of block cursor
-   (menu-bar-mode -1))
-
-;;  menu bar stuffs
-;; {{
-(define-key menu-bar-edit-menu [search search-forward] nil)
-(define-key menu-bar-edit-menu [search search-backward] nil)
-(define-key menu-bar-edit-menu [search re-search-forward] nil)
-(define-key menu-bar-edit-menu [search re-search-backward] nil)
-(define-key menu-bar-edit-menu [search separator-repeat-search] nil)
-(define-key menu-bar-edit-menu [search repeat-search-fwd] nil)
-(define-key menu-bar-edit-menu [search repeat-search-back] nil)
-(define-key menu-bar-edit-menu [search separator-tag-search] nil)
-
-
-(global-unset-key (kbd "C-h t"))
-(define-key menu-bar-help-menu [emacs-tutorial] nil)
-(define-key menu-bar-help-menu [emacs-tutorial-language-specific] nil)
-
-(global-unset-key (kbd "C-h C-f"))
-(define-key menu-bar-help-menu [emacs-faq] nil)
-
-(global-unset-key (kbd "C-h C-p"))
-(define-key menu-bar-help-menu [view-emacs-problems] nil)
-
-(global-unset-key (kbd "C-h g"))
-(define-key menu-bar-help-menu [about-gnu-project] nil)
-
-(global-unset-key (kbd "C-h C-c"))
-(define-key menu-bar-help-menu [describe-copying] nil)
-
-(global-unset-key (kbd "C-h C-w"))
-(define-key menu-bar-help-menu [describe-no-warranty] nil)
-
-(global-unset-key (kbd "C-h C-o"))
-(define-key menu-bar-help-menu [getting-new-versions] nil)
-
-(define-key menu-bar-help-menu [emacs-known-problems] nil)
-
-(define-key menu-bar-tools-menu [games] nil)
-;; }}
+;; GUI and terminal have some different UI setting
+(if *use-GUI*
+    (progn
+      (setq-default cursor-type 'bar) ; I-beam instad of block cursor
+      ;; Window/frame titles
+      (setq frame-title-format (list "%b " "%[ - GNU %F " emacs-version)
+            icon-title-format (list "%b " " - GNU %F " emacs-version))
+      (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+      (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+      (when (fboundp 'horizontal-scroll-bar-mode) (horizontal-scroll-bar-mode -1))
+      ;; Git gutter
+      (use-package git-gutter                                                                                              
+        :ensure t                                                                                                          
+        :init                                                                                                                  
+        (use-package git-gutter-fringe                                                                                 
+          :ensure t)                                                                                                
+        (global-git-gutter-mode)
+        ))
+  (progn (menu-bar-mode -1)
+         ;; Show time in console
+         (use-package time
+           :config
+           (setq display-time-24hr-format t
+                 display-time-default-load-average nil)
+           (display-time-mode))))
 
 (show-paren-mode 1)
 
 (setq-default indent-tabs-mode nil)
-
-(when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-(when (fboundp 'horizontal-scroll-bar-mode) (horizontal-scroll-bar-mode -1))
 
 (setq x-select-enable-clipboard t
       x-select-enable-primary t
@@ -89,11 +69,9 @@
              )
 ;; }}
 
+
 ;; No startup screen
 (setq inhibit-startup-screen t)
 
-;; Window/frame titles
-(setq frame-title-format (list "%b " "%[ - GNU %F " emacs-version)
-      icon-title-format (list "%b " " - GNU %F " emacs-version))
 
 (provide 'init-ui)
