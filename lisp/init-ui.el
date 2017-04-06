@@ -61,9 +61,20 @@
              )
 ;; }}
 
+;; No GUI features
+(setq use-file-dialog nil)
+(setq use-dialog-box nil)
+
 
 ;; No startup screen
 (setq inhibit-startup-screen t)
+(setq inhibit-startup-echo-area-message t)
+
+;; Non-zero values for `line-spacing' can mess up ansi-term and co,
+;; so we zero it explicitly in those cases.
+(add-hook 'term-mode-hook
+          (lambda ()
+            (setq line-spacing 0)))
 
 
 (provide 'init-ui)

@@ -26,6 +26,7 @@
 ;; Do those before other things
 ;;-------------------------------------------------------------------
 (require 'init-elpa)
+(require 'init-elisp)
 
 ;;-------------------------------------------------------------------
 ;; Components
@@ -35,7 +36,6 @@
 (require 'init-cc-mode)
 (require 'init-c++)
 (require 'init-dired)
-(require 'init-elisp)
 (require 'init-flycheck)
 (require 'init-flyspell)
 (require 'init-python)

@@ -3,9 +3,10 @@
 ;; check https://github.com/jorgenschaefer/elpy
 (use-package elpy
   :ensure t
+  :commands elpy-enable
   :after flycheck
+  :init (with-eval-after-load 'python (elpy-enable))
   :config
-  (elpy-enable)
   ;;  flycheck for elpy
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode)

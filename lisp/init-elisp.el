@@ -1,4 +1,9 @@
+;; ------------------------------------------------------------------
 ;; Emacs lisp specify setup
+;; ------------------------------------------------------------------
+
+;; Load .el if newer than corresponding .elc
+(setq load-prefer-newer t)
 
 (defun recompile-elc-on-save ()
   "If you're saving an elisp file, likely the .elc is no longer valid."
@@ -12,7 +17,7 @@
 
 
 (defun elisp-mode-hook-setup ()
-  "Enable features useful in Emacs Lisp mode."
+  "Enable features only useful in Emacs Lisp mode."
     (checkdoc-minor-mode))
 
 (add-hook 'emacs-lisp-mode-hook 'elisp-mode-hook-setup)
