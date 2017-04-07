@@ -2,23 +2,11 @@
 ;; Initializes the UI of emacs that fit my habits
 ;; ==============================================
 
-;; GUI and terminal have some different UI setting
-(if *use-GUI*
-    (progn
-      (setq-default cursor-type 'bar) ; I-beam instad of block cursor
-      ;; Window/frame titles
-      (setq frame-title-format (list "%b " "%[ - GNU %F " emacs-version)
-            icon-title-format (list "%b " " - GNU %F " emacs-version))
-      (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-      (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-      (when (fboundp 'horizontal-scroll-bar-mode) (horizontal-scroll-bar-mode -1)))
-  (progn (menu-bar-mode -1)
-         ;; Show time in console
-         (use-package time
-           :config
-           (setq display-time-24hr-format t
-                 display-time-default-load-average nil)
-           (display-time-mode))))
+(setq-default cursor-type 'bar) ; I-beam instad of block cursor
+
+;; Window/frame titles
+(setq frame-title-format (list "%b " "%[ - GNU %F " emacs-version)
+      icon-title-format (list "%b " " - GNU %F " emacs-version))
 
 (show-paren-mode 1)
 
@@ -61,9 +49,13 @@
              )
 ;; }}
 
-;; No GUI features
+;; No useless GUI features
 (setq use-file-dialog nil)
 (setq use-dialog-box nil)
+(when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(when (fboundp 'horizontal-scroll-bar-mode)
+  (horizontal-scroll-bar-mode -1))
 
 
 ;; No startup screen

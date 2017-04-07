@@ -35,8 +35,6 @@
 (require 'init-elpa)
 (require 'init-elisp)
 
-
-
 ;;-------------------------------------------------------------------
 ;; Components
 ;;-------------------------------------------------------------------
@@ -60,6 +58,7 @@
 (require 'init-sh)
 (require 'init-glsl-mode)
 (require 'init-yasnippet)
+(require 'init-frame-hooks)
 
 (require 'init-keybinding)
 
@@ -72,7 +71,8 @@
   (setq idle-require-idle-delay 1)
   (setq idle-require-symbols '(init-misc-lazy
                                init-git
-                               init-ibuffer))
+                               init-ibuffer
+                               ))
   (idle-require-mode 1) ;; starts loading
   )
 
