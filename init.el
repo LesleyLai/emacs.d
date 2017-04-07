@@ -59,6 +59,7 @@
 (require 'init-glsl-mode)
 (require 'init-yasnippet)
 (require 'init-frame-hooks)
+(require 'init-speedbar)
 
 (require 'init-keybinding)
 

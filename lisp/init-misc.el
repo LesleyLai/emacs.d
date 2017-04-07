@@ -7,7 +7,7 @@
   (column-number-mode t)
   (idle-highlight-mode t)
   (if (not (string= major-mode "web-mode"))
-        (fci-mode t))  ; 80 column
+      (fci-mode t))  ; 80 column
   )
 
 (add-hook 'prog-mode-hook 'generic-programming-mode-hook-setup)
