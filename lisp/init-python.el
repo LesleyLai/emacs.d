@@ -12,7 +12,7 @@
   (add-hook 'elpy-mode-hook 'flycheck-mode)
   
   :bind (:map elpy-mode-map
-              ("f5" . elpy-shell-send-region-or-buffer))
+              ("<f5>" . elpy-shell-send-region-or-buffer))
   )
 
 ;; enable autopep8 formatting on save
