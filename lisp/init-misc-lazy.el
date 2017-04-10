@@ -18,6 +18,7 @@
   (global-set-key (kbd "C-x o") 'switch-window)
   )
 
+
 ;;  menu bar stuffs
 ;; {{
 (define-key menu-bar-edit-menu [search search-forward] nil)

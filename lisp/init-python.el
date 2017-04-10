@@ -10,15 +10,6 @@
   ;;  flycheck for elpy
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode)
-
-  ;;  Use python 3 by default
-  (if (executable-find "python3")
-      (progn (setq elpy-rpc-python-command "python3")
-             (elpy-use-cpython "python3")
-             (if (executable-find "ipython3") (elpy-use-ipython "ipython3"))
-             )
-    (if (executable-find "ipython") (elpy-use-ipython "ipython"))
-    )
   
   :bind (:map elpy-mode-map
               ("f5" . elpy-shell-send-region-or-buffer))
