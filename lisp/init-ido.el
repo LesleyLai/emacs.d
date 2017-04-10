@@ -11,8 +11,8 @@
   :config
   (ido-ubiquitous-mode 1)) ;; Use ido everywhere
 
-(use-package fix-ido
-  :ensure true
+(use-package flx-ido
+  :ensure t
   :config
   (flx-ido-mode +1)
   ;; disable ido faces to see flx highlights

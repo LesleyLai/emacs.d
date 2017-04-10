@@ -42,10 +42,13 @@
              
              ;; Block minor mode from show on mode line
              (setq rm-blacklist (quote (" hl-p" " company"
-                                        " Undo-Tree" " yas")))
+                                        " Undo-Tree" " yas"
+                                        " GitGutter" " ARev"
+                                        " Paredit" " Undo-Tree")))
              :init
              (setq sml/no-confirm-load-theme t)
              (sml/setup)
+
              )
 ;; }}
 

@@ -62,14 +62,6 @@
              kill-buffer-query-functions))
 
  ;; File delete to trash can
- (setq delete-by-moving-to-trash t)
-
-;; Show the bookmark page instead of scratch page at start up
-(use-package bookmark
-  :config
-  (bookmark-bmenu-list)
-  (setq initial-buffer-choice
-        (lambda () (list-bookmarks) (get-buffer "*Bookmark List*")))
-  )
+(setq delete-by-moving-to-trash t)
 
 (provide 'init-misc)
