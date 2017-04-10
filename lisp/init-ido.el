@@ -1,5 +1,4 @@
 (use-package ido
-  :ensure t
   :config
   (setq ido-enable-flex-matching t
         ido-default-file-method 'selected-window
@@ -11,6 +10,14 @@
   :ensure t
   :config
   (ido-ubiquitous-mode 1)) ;; Use ido everywhere
+
+(use-package fix-ido
+  :ensure true
+  :config
+  (flx-ido-mode +1)
+  ;; disable ido faces to see flx highlights
+  (setq ido-use-faces nil)
+  )
 
 ;; smex for M-x enhancement
 (use-package smex
