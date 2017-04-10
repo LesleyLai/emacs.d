@@ -49,29 +49,27 @@
 ;; Save cursor position
 ;; remember cursor position
 (if (version< emacs-version "25.0")
-    (progn
-      (require 'saveplace)
-      (setq-default save-place t))
-  (save-place-mode 1))
+     (progn
+       (require 'saveplace)
+       (setq-default save-place t))
+   (save-place-mode 1))
 
-;; Less prompts
-(defalias 'yes-or-no-p 'y-or-n-p)
-(setq confirm-nonexistent-file-or-buffer nil)
-(setq kill-buffer-query-functions
-  (remq 'process-kill-buffer-query-function
-        kill-buffer-query-functions))
+ ;; Less prompts
+ (defalias 'yes-or-no-p 'y-or-n-p)
+ (setq confirm-nonexistent-file-or-buffer nil)
+ (setq kill-buffer-query-functions
+       (remq 'process-kill-buffer-query-function
+             kill-buffer-query-functions))
 
-;; File delete to trash can
-(setq delete-by-moving-to-trash t)
+ ;; File delete to trash can
+ (setq delete-by-moving-to-trash t)
 
 ;; Show the bookmark page instead of scratch page at start up
-(let ((scratch "*scratch*")
-      (bookmark "*Bookmark List*"))
-  (if (buffer-live-p (get-buffer scratch))
-      (progn
-         (kill-buffer scratch)
-         (require 'bookmark)
-         (bookmark-bmenu-list)
-         (switch-to-buffer bookmark))))
+(use-package bookmark
+  :config
+  (bookmark-bmenu-list)
+  (setq initial-buffer-choice
+        (lambda () (list-bookmarks) (get-buffer "*Bookmark List*")))
+  )
 
 (provide 'init-misc)

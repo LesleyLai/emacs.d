@@ -25,8 +25,7 @@
   "Enable features useful in any Lisp mode."
   (enable-paredit-mode)
   (rainbow-delimiters-mode t)
-  (eldoc-mode)
-  (electric-pair-mode))
+  (eldoc-mode))
 
 (let* ((lispy-hooks '(lisp-mode-hook
                       inferior-lisp-mode-hook

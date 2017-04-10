@@ -127,15 +127,30 @@
 (define-key isearch-mode-map (kbd "M-i") 'isearch-repeat-backward)
 )
 
-
+;; Dired
 (add-hook 'dired-mode-hook
  (lambda ()
   (define-key dired-mode-map (kbd "C-n") 'new-empty-buffer) ; was dired-next-line
   (define-key dired-mode-map (kbd "M-o") 'forward-word) ; was dired-omit-mode
-  (define-key dired-mode-map (kbd "M-s") 'other-window) ; was prefix in emacs 23.
   (define-key dired-mode-map (kbd "M-i") 'previous-line)
   (define-key dired-mode-map (kbd "M-l") 'forward-char)
- ))
+  ))
+
+;; Paredit
+(add-hook
+ 'paredit-mode-hook
+ (lambda ()
+   (define-key paredit-mode-map (kbd "C-J") 'paredit-backward)
+   (define-key paredit-mode-map (kbd "C-L") 'paredit-forward)
+   ))
+
+
+;; reclaim some binding used by ibuffer.el
+(add-hook 'ibuffer-mode-hook
+ (lambda ()
+   (define-key ibuffer-mode-map (kbd "M-j") 'backward-char) ; was ibuffer-jump-to-filter-group.
+   (define-key ibuffer-mode-map (kbd "M-o") 'forward-word) ; was ibuffer-visit-buffer-1-window
+))
 
 ;; prevent cua-mode from going into selection mode when commands with Shift key is used.
 (add-hook 'cua-mode-hook
