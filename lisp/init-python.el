@@ -1,26 +1,24 @@
-;; Elpy
-;; run command `pip install jedi flake8 importmagic autopep8` in shell,
-;; check https://github.com/jorgenschaefer/elpy
-(use-package elpy
+(use-package anaconda-mode
   :ensure t
-  :commands elpy-enable
-  :after flycheck
-  :init (with-eval-after-load 'python (elpy-enable))
-  :config
-  ;;  flycheck for elpy
-  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-  (add-hook 'elpy-mode-hook 'flycheck-mode)
-  
-  :bind (:map elpy-mode-map
-              ("<f5>" . elpy-shell-send-region-or-buffer))
-  )
+  :commands anaconda-mode
+  :diminish anaconda-mode
+  :init
+  (progn
+    (add-hook 'python-mode-hook 'anaconda-mode)
+    (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
+    ))
+
+(use-package company-anaconda
+  :ensure t
+  :init (add-to-list 'company-backends 'company-anaconda))
 
 ;; enable autopep8 formatting on save
 ;; need autopep8 installed
 (use-package py-autopep8
   :ensure t
   :config
-  (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
+  (add-hook 'anaconda-mode-hook 'py-autopep8-enable-on-save)
+  )
 
 (defun python-mode-hook-setup ()
   (subword-mode +1)
@@ -34,5 +32,7 @@
 ;; need autopep8 installed
 (use-package pip-requirements
   :ensure t)
+
+(setq python-shell-interpreter "ipython3")
 
 (provide 'init-python)

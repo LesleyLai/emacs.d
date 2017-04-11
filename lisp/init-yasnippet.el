@@ -1,7 +1,9 @@
 (use-package yasnippet
   :ensure t
   :commands (yas-reload-all)
-  :config
+  :init
+  (yas-reload-all)
+  
   ;; my private snippets, should be placed before enabling yasnippet
   (setq my-yasnippets (expand-file-name "~/my-yasnippets"))
   (if (and  (file-exists-p my-yasnippets) (not (member my-yasnippets yas-snippet-dirs)))

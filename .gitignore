@@ -20,6 +20,9 @@ tramp
 .org-id-locations
 *_archive
 
+# anaconda-mode
+anaconda-mode/
+
 # flymake-mode
 *_flymake.*
 
