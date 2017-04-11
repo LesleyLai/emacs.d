@@ -55,6 +55,7 @@
 (require 'init-ruby)
 (require 'init-racket)
 (require 'init-scala)
+(require 'init-org)
 (require 'init-sh)
 (require 'init-glsl-mode)
 (require 'init-yasnippet)
