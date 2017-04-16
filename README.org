@@ -1,0 +1,10 @@
+* emacs.d
+My own setting of emacs
+
+* Usage
+Put the whole directory to **~/.emacs.d**
+
+* External packages
+Installing those packages are optional.
+** tern
+Run ~sudo npm install tern -g~. See [[http://ternjs.net/]] for more information about tern. We need tern for JavaScript completion.
