@@ -1,14 +1,39 @@
 ;; Hook for general programming
-(use-package fill-column-indicator :ensure t)
 (use-package idle-highlight-mode :ensure t)
+
+(use-package fill-column-indicator
+  :ensure t
+  :config
+  ;; See https://github.com/alpaker/Fill-Column-Indicator/issues/67
+  (defvar eos/fci-disabled nil)
+  (make-variable-buffer-local 'eos/fci-disabled)
+  ;; Add a hook that disables fci if enabled when the window changes
+  ;; and it isn't wide enough to display it.
+  (defun eos/maybe-disable-fci ()
+    (interactive)
+    ;; Disable FCI if necessary
+    (when (and fci-mode
+               (< (window-width) (or fci-rule-column fill-column)))
+      (fci-mode -1)
+      (setq-local eos/fci-disabled t))
+    ;; Enable FCI if necessary
+    (when (and eos/fci-disabled
+               (eq fci-mode nil)
+               (> (window-width) (or fci-rule-column fill-column)))
+      (fci-mode 1)
+      (setq-local eos/fci-disabled nil))))
+
 
 (defun generic-programming-mode-hook-setup ()
   (make-local-variable 'column-number-mode)
   (column-number-mode t)
   (idle-highlight-mode t)
-  (if (not (string= major-mode "web-mode"))
-      (fci-mode t))  ; 80 column
-  )
+  (flyspell-prog-mode) ; Spell checking in comment
+  (unless (string= major-mode "web-mode")
+    (progn (fci-mode t)  ; 80 column
+           (add-hook 'window-configuration-change-hook
+                     #'eos/maybe-disable-fci)
+           )))
 
 (add-hook 'prog-mode-hook 'generic-programming-mode-hook-setup)
 (add-hook 'css-mode-hook 'generic-programming-mode-hook-setup)
