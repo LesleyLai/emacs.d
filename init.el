@@ -38,6 +38,7 @@
 ;; Components
 ;;-------------------------------------------------------------------
 (require 'init-company)
+(require 'init-csv)
 (require 'init-css)
 (require 'init-cc-mode)
 (require 'init-c++)
