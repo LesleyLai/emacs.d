@@ -1,8 +1,7 @@
-* emacs.d
-My own setting of emacs
+This is my own setting of Emacs.
 
 * Usage
-Put the whole directory to **~/.emacs.d**
+Put the whole directory to =~/.emacs.d=
 
 * External packages
 Installing those packages are optional.

@@ -3,10 +3,11 @@
              :config
              (add-hook 'after-init-hook 'global-company-mode)
 
-             ;; align annotations to the right tooltip border
-             (setq company-tooltip-align-annotations 't)
-             ;; decrease delay before autocompletion popup shows
-             (setq company-idle-delay .3))
+             (setq
+              ;; align annotations to the right tooltip border
+              company-tooltip-align-annotations 't
+              ;; decrease delay before autocompletion popup shows
+              company-idle-delay .3))
 
 (use-package company-c-headers :ensure t)
 

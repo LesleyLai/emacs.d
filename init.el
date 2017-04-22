@@ -43,7 +43,7 @@
 (require 'init-c++)
 (require 'init-dired)
 (require 'init-flycheck)
-(require 'init-flyspell)
+(require 'init-spelling)
 (require 'init-python)
 (require 'init-ido)
 (require 'init-linum-mode)
@@ -60,6 +60,7 @@
 (require 'init-yasnippet)
 (require 'init-frame-hooks)
 (require 'init-speedbar)
+(require 'init-writing)
 
 (require 'init-keybinding)
 
@@ -73,6 +74,7 @@
   (setq idle-require-symbols '(init-misc-lazy
                                init-git
                                init-ibuffer
+                               
                                ))
   (idle-require-mode 1) ;; starts loading
   )
