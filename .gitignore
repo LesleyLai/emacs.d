@@ -1,6 +1,7 @@
 ido.last
 *.elc
 .cask
+.mc-lists.el
 *~
 /backups/
 *recentf

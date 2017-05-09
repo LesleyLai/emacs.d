@@ -29,6 +29,7 @@
   (column-number-mode t)
   (idle-highlight-mode t)
   (flyspell-prog-mode) ; Spell checking in comment
+  (electric-pair-mode t)
   (unless (string= major-mode "web-mode")
     (progn (fci-mode t)  ; 80 column
            (add-hook 'window-configuration-change-hook

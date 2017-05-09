@@ -62,7 +62,6 @@
 (require 'init-frame-hooks)
 (require 'init-speedbar)
 (require 'init-writing)
-
 (require 'init-keybinding)
 
 ;;-------------------------------------------------------------------
@@ -74,8 +73,8 @@
   (setq idle-require-idle-delay 1)
   (setq idle-require-symbols '(init-misc-lazy
                                init-git
+                               init-multiple-cursors
                                init-ibuffer
-                               
                                ))
   (idle-require-mode 1) ;; starts loading
   )
