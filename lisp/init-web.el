@@ -55,4 +55,8 @@
        ))
   )
 
+;; rjsx mode for jsx files
+(use-package rjsx-mode
+  :ensure t)
+
 (provide 'init-web)
