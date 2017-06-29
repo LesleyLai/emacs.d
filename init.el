@@ -50,6 +50,7 @@
 (require 'init-linum-mode)
 (require 'init-lisp)
 (require 'init-ui)
+(require 'init-markdown)
 (require 'init-misc)
 (require 'init-web)
 (require 'init-ruby)
