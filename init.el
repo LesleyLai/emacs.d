@@ -87,7 +87,7 @@
 ;; Private Setting
 (setq custom-file "~/.emacs.d/custom/custom.el")
 (if (file-exists-p "~/.emacs.d/custom/custom.el") (load-file "~/.emacs.d/custom/custom.el"))
-;; }}  
+;; }}
 
 (when (require 'time-date nil t)
   (message "Emacs startup time: %d seconds."

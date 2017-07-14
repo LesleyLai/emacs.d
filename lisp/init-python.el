@@ -33,6 +33,7 @@
 (use-package pip-requirements
   :ensure t)
 
-(setq python-shell-interpreter "python3")
+(if (executable-find "python3")
+(setq python-shell-interpreter "python3"))
 
 (provide 'init-python)

@@ -29,7 +29,6 @@
   ;; Enable JavaScript completion between <script>...</script> etc.
   (defadvice company-tern (before web-mode-set-up-ac-sources activate)
     "Set `tern-mode' based on current language before running company-tern."
-    (message "advice")
     (if (equal major-mode 'web-mode)
         (let ((web-mode-cur-language
                (web-mode-language-at-pos)))

@@ -5,5 +5,8 @@ Put the whole directory to =~/.emacs.d=
 
 * External packages
 Installing those packages are optional.
+** jedi
+The anaconda-mode uses ~jedi~ library to do completion.
+
 ** tern
-Run ~sudo npm install tern -g~. See [[http://ternjs.net/]] for more information about tern. We need tern for JavaScript completion.
+Run ~sudo npm install tern -g~. See [[http://ternjs.net/]] for more information about tern. We need tern for JavaScript completion. Note that tern do not work automatically, we need ~.tern-project~ file for setting in up.

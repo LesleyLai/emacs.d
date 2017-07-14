@@ -4,6 +4,10 @@
   :config
   (setq clang-format-style-option "llvm"))
 
+
+(use-package cmake-ide
+  :ensure t)
+
 (defun my-common-cc-mode-setup ()
   "setup shared by all languages (java/groovy/c++ ...)"
   (setq c-basic-offset 4)
@@ -20,7 +24,11 @@
 (defun my-c-mode-setup ()
   "C/C++ only setup"
 
-  (setq cc-search-directories '("." "/usr/include" "/usr/local/include/*" "../*/include" "$WXWIN/include"))
+  (setq cc-search-directories '("."
+                                "/usr/include"
+                                "/usr/local/include/*"
+                                "../*/include"
+                                "$WXWIN/include"))
 
   ;; make a #define be left-aligned
   (setq c-electric-pound-behavior (quote (alignleft))))

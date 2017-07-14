@@ -104,12 +104,8 @@
   (global-set-key (kbd "C--") 'text-scale-decrease)
   (global-set-key (kbd "C-0") 'text-scale-adjust)
 
-  (if *win64* (
-    (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
-    (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)))
   (global-set-key (kbd "<C-mouse-4>") 'text-scale-increase)
   (global-set-key (kbd "<C-mouse-5>") 'text-scale-decrease)
-
   )
 
 

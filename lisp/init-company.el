@@ -7,7 +7,7 @@
               ;; align annotations to the right tooltip border
               company-tooltip-align-annotations 't
               ;; decrease delay before autocompletion popup shows
-              company-idle-delay .3))
+              company-idle-delay .1))
 
 (use-package company-c-headers :ensure t)
 

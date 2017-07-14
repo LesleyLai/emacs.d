@@ -56,6 +56,23 @@
 (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
 ;; }}
 
+;; YAML mode support
+(use-package yaml-mode
+  :ensure
+  :config
+  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+  (add-hook 'yaml-mode-hook
+    '(lambda ()
+       (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
+
+(use-package flycheck-yamllint
+  :ensure t
+  :defer t
+  :init
+  (progn
+    (eval-after-load 'flycheck
+      '(add-hook 'flycheck-mode-hook 'flycheck-yamllint-setup))))
+
 ;; History
 ;;  From http://www.wisdomandwonder.com/wp-content/uploads/2014/03/C3F.html
 (use-package savehist
