@@ -2,7 +2,7 @@
 
 (use-package web-mode
   :ensure t
-  :after company company-web-html company-tern
+  :after company company-web-html company-tern tide
   :init
   (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
@@ -14,9 +14,11 @@
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.xml?\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.rhtml\\(\\.erb\\)?\\'" . web-mode)) ; ruby
   (add-to-list 'auto-mode-alist '("\\.jst\\.ejs\\'"  . web-mode)) ; ruby
-  :config  
+  :config
   (add-hook 'web-mode-hook (lambda ()
                              (set (make-local-variable 'company-backends)
                                   '(company-tern
@@ -24,7 +26,13 @@
                                     company-css
                                     company-yasnippet
                                     company-files))
+                             (when (or
+                                    (string-equal "tsx" (file-name-extension buffer-file-name))
+                                    (string-equal "jsx" (file-name-extension buffer-file-name)))
+                               (setup-tide-mode))
                              (company-mode t)))
+
+  (flycheck-add-mode 'typescript-tslint 'web-mode)
 
   ;; Enable JavaScript completion between <script>...</script> etc.
   (defadvice company-tern (before web-mode-set-up-ac-sources activate)
@@ -53,9 +61,5 @@
                (" \\(ng-[a-z]*\\)=\"\\([^\"]+\\)" 1 2 "=")))
        ))
   )
-
-;; rjsx mode for jsx files
-(use-package rjsx-mode
-  :ensure t)
 
 (provide 'init-web)

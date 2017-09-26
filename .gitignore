@@ -57,3 +57,5 @@ flycheck_*.el
 
 # ensime
 ensime
+
+network-security.data

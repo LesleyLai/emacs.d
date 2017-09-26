@@ -11,6 +11,15 @@
 (defvar emacs-load-start-time (current-time))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 
+(defun set-exec-path-from-shell-PATH ()
+        (interactive)
+        (let ((path-from-shell (replace-regexp-in-string "^.*\n.*shell\n" ""
+                                                         (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))))
+        (setenv "PATH" path-from-shell)
+        (setq exec-path (split-string path-from-shell path-separator))))
+ 
+(set-exec-path-from-shell-PATH)
+
 ;;--------------------------------------------------------------------
 ;; Which functionality to enable (use t or nil for true and false)
 ;;--------------------------------------------------------------------
@@ -64,6 +73,7 @@
 (require 'init-speedbar)
 (require 'init-writing)
 (require 'init-keybinding)
+(require 'init-typescript)
 
 ;;-------------------------------------------------------------------
 ;; Lazy loading components that do not need at start up

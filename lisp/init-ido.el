@@ -6,7 +6,7 @@
   (ido-mode t)
   (ido-everywhere 1))
 
-(use-package ido-ubiquitous
+(use-package ido-completing-read+
   :ensure t
   :config
   (ido-ubiquitous-mode 1)) ;; Use ido everywhere
