@@ -9,5 +9,8 @@
       (visual-line-mode 1))
     
     (add-hook 'org-mode-hook 'org-mode-hook-setup)))
-  
+
+(defvar org-setting-file "~/Dropbox/org/org.el")
+(if (file-exists-p org-setting-file) (load-file org-setting-file))
+
 (provide 'init-org)

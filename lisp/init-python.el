@@ -33,7 +33,14 @@
 (use-package pip-requirements
   :ensure t)
 
-(if (executable-find "python3")
-(setq python-shell-interpreter "python3"))
+(defun python-shell-completion-native-try ()
+  "Return non-nil if can trigger native completion."
+  (with-eval-after-load 'python
+    '(let ((python-shell-completion-native-enable t)
+           (python-shell-completion-native-output-timeout
+            python-shell-completion-native-try-output-timeout))
+       (python-shell-completion-native-get-completions
+        (get-buffer-process (current-buffer))
+        nil "_"))))
 
 (provide 'init-python)
