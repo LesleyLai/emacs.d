@@ -3,6 +3,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (qtcreator)))
+ '(custom-safe-themes
+   (quote
+    ("694dab4e0ec836cb4611b7e719c1acdc6e768f29026254074c80c5d9604b8907" default)))
  '(git-gutter:handled-backends (quote (svn hg git)))
  '(package-selected-packages
    (quote

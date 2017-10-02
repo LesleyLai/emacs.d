@@ -4,10 +4,6 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
-(defvar best-gc-cons-threshold 4000000 "Best default gc threshold value. Should't be too big.")
-;; don't GC during startup to save time
-(setq gc-cons-threshold most-positive-fixnum)
-
 (defvar emacs-load-start-time (current-time))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 
@@ -102,6 +98,3 @@
 (when (require 'time-date nil t)
   (message "Emacs startup time: %d seconds."
            (time-to-seconds (time-since emacs-load-start-time))))
-
-;; Start gc now
-(setq gc-cons-threshold best-gc-cons-threshold)
