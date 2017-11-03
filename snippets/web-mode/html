@@ -1,13 +1,13 @@
 #name : full <html>
 # --
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>$1</title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 
     <!-- see http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag -->
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1">
     
     <style>
         /* following two viewport lines are equivalent to meta viewport statement above, needed for Windows */

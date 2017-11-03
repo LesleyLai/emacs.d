@@ -13,4 +13,23 @@
 (defvar org-setting-file "~/Dropbox/org/org.el")
 (if (file-exists-p org-setting-file) (load-file org-setting-file))
 
+(setq org-modules
+   (quote
+    (org-bbdb org-bibtex org-ctags org-docview org-gnus org-habit
+              org-info org-irc org-mhe org-rmail org-w3m)))
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((shell . t)
+   (scala . t)
+   (js . t)
+   (C . t)))
+
+;; (setq org-babel-load-languages (quote ((C . t)
+;;                                        (emacs-lisp . t)
+;;                                        (scala . t)
+;;                                        (js . t))))
+
+
+
 (provide 'init-org)

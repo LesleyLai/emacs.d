@@ -55,6 +55,7 @@
 (require 'init-linum-mode)
 (require 'init-lisp)
 (require 'init-ui)
+(require 'init-javascript)
 (require 'init-markdown)
 (require 'init-misc)
 (require 'init-web)
