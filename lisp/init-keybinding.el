@@ -3,12 +3,6 @@
 ;; Cursur movement
 ;; {{
 
-;; Upset arrow keys
-(global-unset-key (kbd "<up>"))    ; ↑
-(global-unset-key (kbd "<down>"))  ; ↓
-(global-unset-key (kbd "<left>"))  ; ←
-(global-unset-key (kbd "<right>")) ; →
-
 ;; Single char movement
 (global-set-key (kbd "M-i") 'previous-line)
 (global-set-key (kbd "M-j") 'backward-char)
