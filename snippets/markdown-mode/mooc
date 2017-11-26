@@ -1,0 +1,16 @@
+#name : Mooc
+#contributor: Lesley Lai
+# --
+---
+title: ${1: title}
+complete: ${2: time}
+platform: ${3: platform}
+categories:
+- ${4: computer}
+institution: ${5: institution}
+link: ${6: link}
+certification:
+- [here](${7: link})
+rating: ${8: 3}
+---
+${0:description}
