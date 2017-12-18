@@ -5,6 +5,12 @@
              (add-hook 'prog-mode-hook 'global-flycheck-mode)
              (add-hook 'css-mode-hook 'global-flycheck-mode))
 
+(use-package flycheck-irony
+  :ensure
+  :config
+  (eval-after-load 'flycheck
+    '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
+
 (use-package flycheck-cstyle
              :ensure t
              :after flycheck

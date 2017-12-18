@@ -4,9 +4,23 @@
   :config
   (setq clang-format-style-option "llvm"))
 
+(use-package rtags
+  :ensure t)
 
 (use-package cmake-ide
-  :ensure t)
+  :ensure t
+  :config
+  (cmake-ide-setup))
+
+(use-package irony
+  :ensure t
+  :config
+  (add-hook 'c++-mode-hook 'irony-mode)
+  (add-hook 'c-mode-hook 'irony-mode)
+  (add-hook 'objc-mode-hook 'irony-mode)
+
+  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+  )
 
 (defun my-common-cc-mode-setup ()
   "setup shared by all languages (java/groovy/c++ ...)"
