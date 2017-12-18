@@ -18,6 +18,12 @@
   (global-set-key (kbd "C-x o") 'switch-window)
   )
 
+;; Set exec path from shell
+(use-package exec-path-from-shell
+  :ensure t
+  :init
+    (when (memq window-system '(mac ns))
+    (exec-path-from-shell-initialize)))
 
 ;;  menu bar stuffs
 ;; {{

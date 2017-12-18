@@ -4,9 +4,6 @@
   :config
   (setq clang-format-style-option "llvm"))
 
-(use-package rtags
-  :ensure t)
-
 (use-package cmake-ide
   :ensure t
   :config
