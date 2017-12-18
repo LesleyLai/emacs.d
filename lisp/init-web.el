@@ -50,10 +50,10 @@
   (eval-after-load 'web-mode
     '(progn
        (remove-hook 'web-mode-hook 'er/add-web-mode-expansions)
-       (setq web-mode-enable-auto-closing t) ; enable auto close tag in text-mode
-       (setq web-mode-enable-auto-pairing t)
-       (setq web-mode-enable-css-colorization t)
-       (setq web-mode-imenu-regexp-list
+       (customize-set-variable 'web-mode-enable-auto-closing t) ; enable auto close tag in text-mode
+       (customize-set-variable 'web-mode-enable-auto-pairing t)
+       (customize-set-variable 'web-mode-enable-css-colorization t)
+       (customize-set-variable 'web-mode-imenu-regexp-list
              '(("<\\(h[1-9]\\)\\([^>]*\\)>\\([^<]*\\)" 1 3 ">" nil)
                ("^[ \t]*<\\([@a-z]+\\)[^>]*>? *$" 1 " id=\"\\([a-zA-Z0-9_]+\\)\"" "#" ">")
                ("^[ \t]*<\\(@[a-z.]+\\)[^>]*>? *$" 1 " contentId=\"\\([a-zA-Z0-9_]+\\)\"" "=" ">")

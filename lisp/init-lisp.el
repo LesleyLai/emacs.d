@@ -39,3 +39,4 @@
     (add-hook hook 'lisp-modes-setup)))
 
 (provide 'init-lisp)
+;;; init-lisp.el ends here

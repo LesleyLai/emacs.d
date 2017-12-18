@@ -5,8 +5,7 @@
   :ensure t
   :config
   ;; See https://github.com/alpaker/Fill-Column-Indicator/issues/67
-  (defvar eos/fci-disabled nil)
-  (make-variable-buffer-local 'eos/fci-disabled)
+  (defvar-local eos/fci-disabled nil)
   ;; Add a hook that disables fci if enabled when the window changes
   ;; and it isn't wide enough to display it.
   (defun eos/maybe-disable-fci ()
@@ -47,64 +46,40 @@
 
 ;; Back up
 ;; {{
-(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+(customize-set-variable 'backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
 ;; Save a lot
-(setq delete-old-versions -1)
-(setq version-control t)
-(setq vc-make-backup-files t)
-(setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
+(customize-set-variable 'delete-old-versions -1)
+(customize-set-variable 'version-control t)
+(customize-set-variable 'vc-make-backup-files t)
+(customize-set-variable 'auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
 ;; }}
 
-;; YAML mode support
-(use-package yaml-mode
-  :ensure
-  :config
-  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
-  (add-hook 'yaml-mode-hook
-    '(lambda ()
-       (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
-
-(use-package flycheck-yamllint
-  :ensure t
-  :defer t
-  :init
-  (progn
-    (eval-after-load 'flycheck
-      '(add-hook 'flycheck-mode-hook 'flycheck-yamllint-setup))))
 
 ;; History
 ;;  From http://www.wisdomandwonder.com/wp-content/uploads/2014/03/C3F.html
 (use-package savehist
   :init
-  (setq savehist-file "~/.emacs.d/history")
+  (customize-set-variable 'savehist-file "~/.emacs.d/history")
   (savehist-mode 1)
   :config
-  (setq history-length t)
-  (setq history-delete-duplicates t)
-  (setq savehist-save-minibuffer-history 1)
-  (setq savehist-additional-variables
+  (customize-set-variable 'history-length t)
+  (customize-set-variable 'history-delete-duplicates t)
+  (customize-set-variable 'savehist-save-minibuffer-history 1)
+  (customize-set-variable 'savehist-additional-variables
         '(search
           kill-ring
           search-ring
           regexp-search-ring)))
 
-;; Save cursor position
-;; remember cursor position
-(if (version< emacs-version "25.0")
-     (progn
-       (require 'saveplace)
-       (setq-default save-place t))
-   (save-place-mode 1))
-
  ;; Less prompts
  (defalias 'yes-or-no-p 'y-or-n-p)
- (setq confirm-nonexistent-file-or-buffer nil)
- (setq kill-buffer-query-functions
+ (customize-set-variable 'confirm-nonexistent-file-or-buffer nil)
+ (customize-set-variable 'kill-buffer-query-functions
        (remq 'process-kill-buffer-query-function
              kill-buffer-query-functions))
 
  ;; File delete to trash can
-(setq delete-by-moving-to-trash t)
+(customize-set-variable 'delete-by-moving-to-trash t)
 
 (provide 'init-misc)

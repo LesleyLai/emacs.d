@@ -2,18 +2,18 @@
 ;; Initializes the UI of emacs that fit my habits
 ;; ==============================================
 
-(setq-default cursor-type 'bar) ; I-beam instad of block cursor
+(customize-set-variable 'cursor-type 'bar) ; I-beam instad of block cursor
 
 ;; Window/frame titles
-(setq frame-title-format (list "%b " "%[ - GNU %F " emacs-version)
-      icon-title-format (list "%b " " - GNU %F " emacs-version))
+(customize-set-variable 'frame-title-format (list "%b " "%[ - GNU %F " emacs-version))
+(customize-set-variable 'icon-title-format (list "%b " " - GNU %F " emacs-version))
 
 (show-paren-mode 1)
 
-(setq-default indent-tabs-mode nil)
+(customize-set-variable 'indent-tabs-mode nil)
 
-(setq x-select-enable-clipboard t
-      x-select-enable-primary t
+(setq select-enable-clipboard t
+      select-enable-primary t
       save-interprogram-paste-before-kill t
       apropos-do-all t
       mouse-yank-at-point t
@@ -53,8 +53,8 @@
 ;; }}
 
 ;; No useless GUI features
-(setq use-file-dialog nil)
-(setq use-dialog-box nil)
+(customize-set-variable 'use-file-dialog nil)
+(customize-set-variable 'use-dialog-box nil)
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (when (fboundp 'horizontal-scroll-bar-mode)
@@ -62,14 +62,14 @@
 
 
 ;; No startup screen
-(setq inhibit-startup-screen t)
-(setq inhibit-startup-echo-area-message t)
+(customize-set-variable 'inhibit-startup-screen t)
+(customize-set-variable 'inhibit-startup-echo-area-message t)
 
 ;; Non-zero values for `line-spacing' can mess up ansi-term and co,
 ;; so we zero it explicitly in those cases.
 (add-hook 'term-mode-hook
           (lambda ()
-            (setq line-spacing 0)))
+            (customize-set-variable 'line-spacing 0)))
 
 
 (provide 'init-ui)

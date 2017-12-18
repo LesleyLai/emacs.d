@@ -1,9 +1,10 @@
-;; ------------------------------------------------------------------
-;; Emacs lisp specify setup
-;; ------------------------------------------------------------------
+;;; init-elisp.el --- Emacs lisp specify setup
+;;; Commentary:
+;; 
 
-;; Load .el if newer than corresponding .elc
-(setq load-prefer-newer t)
+;;; Code:
+
+(customize-set-variable 'load-prefer-newer t)
 
 (defun recompile-elc-on-save ()
   "If you're saving an elisp file, likely the .elc is no longer valid."
@@ -23,3 +24,4 @@
 (add-hook 'emacs-lisp-mode-hook 'elisp-mode-hook-setup)
 
 (provide 'init-elisp)
+;;; init-elisp.el ends here

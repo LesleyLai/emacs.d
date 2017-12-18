@@ -9,7 +9,7 @@
 (use-package seeing-is-believing
              :ensure t
              :init
-             (setq seeing-is-believing-prefix "C-."))
+             (customize-set-variable 'seeing-is-believing-prefix "C-."))
 
 ;; Ruby inferior REPL
 (use-package inf-ruby

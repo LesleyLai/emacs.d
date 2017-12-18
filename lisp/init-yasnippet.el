@@ -4,11 +4,6 @@
   :init
   (yas-reload-all)
   
-  ;; my private snippets, should be placed before enabling yasnippet
-  (setq my-yasnippets (expand-file-name "~/my-yasnippets"))
-  (if (and  (file-exists-p my-yasnippets) (not (member my-yasnippets yas-snippet-dirs)))
-      (add-to-list 'yas-snippet-dirs my-yasnippets))
-
   (defun yasnippet-generic-setup-for-mode-hook ()
     (yas-minor-mode 1))
 

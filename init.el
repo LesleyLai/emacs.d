@@ -66,6 +66,7 @@
 (require 'init-sh)
 (require 'init-glsl-mode)
 (require 'init-yasnippet)
+(require 'init-yaml)
 (require 'init-frame-hooks)
 (require 'init-speedbar)
 (require 'init-writing)
@@ -92,8 +93,8 @@
 (setq custom-theme-directory "~/.emacs.d/themes")
 
 ;; Private Setting
-(setq custom-file "~/.emacs.d/custom/custom.el")
-(if (file-exists-p "~/.emacs.d/custom/custom.el") (load-file "~/.emacs.d/custom/custom.el"))
+(defconst custom-file "~/.emacs.d/custom/custom.el")
+(if (file-exists-p custom-file) (load-file custom-file))
 ;; }}
 
 (when (require 'time-date nil t)

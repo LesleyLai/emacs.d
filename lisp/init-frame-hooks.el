@@ -5,7 +5,7 @@
   :ensure t
   :config
   (dashboard-setup-startup-hook)
-  (setq dashboard-banner-logo-title "Welcome to Emacs.")
+  (customize-set-variable 'dashboard-banner-logo-title "Welcome Lesley :-)")
   )
 
 (defvar after-make-console-frame-hooks '()
@@ -45,8 +45,8 @@
             ;; Show time in console
             (use-package time
               :config
-              (setq display-time-24hr-format t
-                    display-time-default-load-average nil)
+              (customize-set-variable 'display-time-24hr-format t)
+              (customize-set-variable 'display-time-default-load-average t)
               (display-time-mode))
             ))
 

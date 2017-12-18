@@ -1,8 +1,8 @@
 (use-package ido
   :config
-  (setq ido-enable-flex-matching t
-        ido-default-file-method 'selected-window
-        ido-auto-merge-work-directories-length -1)
+  (customize-set-variable 'ido-enable-flex-matching t)
+  (customize-set-variable 'ido-default-file-method 'selected-window)
+  (customize-set-variable 'ido-auto-merge-work-directories-length -1)
   (ido-mode t)
   (ido-everywhere 1))
 
@@ -16,7 +16,7 @@
   :config
   (flx-ido-mode +1)
   ;; disable ido faces to see flx highlights
-  (setq ido-use-faces nil)
+  (customize-set-variable 'ido-use-faces nil)
   )
 
 ;; smex for M-x enhancement

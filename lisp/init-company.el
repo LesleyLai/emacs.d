@@ -1,18 +1,24 @@
+;;; init-company.el --- Company mode setup
+
+;;; Commentary:
+;; 
+
+;;; Code:
+
 (use-package company
              :ensure t
              :config
              (add-hook 'after-init-hook 'global-company-mode)
 
-             (setq
-              ;; align annotations to the right tooltip border
-              company-tooltip-align-annotations 't
-              ;; decrease delay before autocompletion popup shows
-              company-idle-delay .1))
+             ;; align annotations to the right tooltip border
+             (customize-set-variable 'company-tooltip-align-annotations 't)
+
+             ;; decrease delay before autocompletion popup shows
+             (customize-set-variable 'company-idle-delay .1))
 
 (use-package company-c-headers :ensure t)
 
 (use-package company-tern :ensure t)
-
 (use-package company-irony
   :ensure t)
 
@@ -40,3 +46,5 @@
 ;; }}
 
 (provide 'init-company)
+
+;;; init-company.el ends here

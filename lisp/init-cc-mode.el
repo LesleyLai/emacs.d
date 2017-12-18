@@ -24,28 +24,25 @@
 
 (defun my-common-cc-mode-setup ()
   "setup shared by all languages (java/groovy/c++ ...)"
-  (setq c-basic-offset 4)
+  (customize-set-variable 'c-basic-offset 4
+   )
   ;; give me NO newline automatically after electric expressions are entered
-  (setq c-auto-newline nil)
+  (customize-set-variable 'c-auto-newline nil)
 
   (local-set-key [C-tab] 'clang-format-region)
-  (local-set-key [C-M-tab] 'clang-format-buffer)
-  ;; syntax-highlight aggressively
-  ;; (setq font-lock-support-mode 'lazy-lock-mode)
-  (setq lazy-lock-defer-contextually t)
-  (setq lazy-lock-defer-time 0))
+  (local-set-key [C-M-tab] 'clang-format-buffer))
 
 (defun my-c-mode-setup ()
   "C/C++ only setup"
 
-  (setq cc-search-directories '("."
+  (customize-set-variable 'cc-search-directories '("."
                                 "/usr/include"
                                 "/usr/local/include/*"
                                 "../*/include"
                                 "$WXWIN/include"))
 
   ;; make a #define be left-aligned
-  (setq c-electric-pound-behavior (quote (alignleft))))
+  (customize-set-variable 'c-electric-pound-behavior (quote (alignleft))))
 
 ;; donot use c-mode-common-hook or cc-mode-hook because many major-modes use this hook
 (defun c-mode-common-hook-setup ()
