@@ -20,6 +20,7 @@
   :after company company-web-html company-tern tide
   :config
   (add-hook 'web-mode-hook (lambda ()
+                             (add-to-list 'company-dabbrev-code-modes 'web-mode)
                              (set (make-local-variable 'company-backends)
                                   '(company-tern
                                     company-web-html
@@ -50,6 +51,7 @@
   (eval-after-load 'web-mode
     '(progn
        (remove-hook 'web-mode-hook 'er/add-web-mode-expansions)
+       (customize-set-variable 'web-mode-markup-indent-offset 2)
        (customize-set-variable 'web-mode-enable-auto-closing t) ; enable auto close tag in text-mode
        (customize-set-variable 'web-mode-enable-auto-pairing t)
        (customize-set-variable 'web-mode-enable-css-colorization t)
