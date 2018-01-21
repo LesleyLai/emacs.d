@@ -63,6 +63,7 @@
 (require 'init-keybinding)
 (require 'init-typescript)
 (require 'init-elm)
+;;(require 'init-latex)
 
 ;;-------------------------------------------------------------------
 ;; Lazy loading components that do not need at start up
