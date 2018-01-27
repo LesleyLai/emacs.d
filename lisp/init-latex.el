@@ -1,12 +1,11 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (bind-key "C-c i" 'insert-latex LaTeX-mode-map)                      ;;
-;; (bind-key "C-c C-c" 'TeX-comment-or-uncomment-region LaTeX-mode-map) ;;
-;; (bind-key "C-c C-k" 'TeX-command-master LaTeX-mode-map)              ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (use-package auctex
   :ensure t
+  :defer t
   :config
+  (add-hook 'LaTeX-mode-hook 'flyspell-mode)
+  (setq TeX-auto-save t)
+  (setq TeX-parse-self t)
+  (setq-default TeX-master nil)
   (use-package auctex-latexmk
     :ensure t
     :config
@@ -15,7 +14,28 @@
     :ensure t
     :requires company
     :config
-    (company-auctex-init)))
+    (company-auctex-init))
+  )
+
+(use-package latex-preview-pane
+  :ensure t)
+
+(use-package company-math
+  :ensure t
+  :requires company
+  :config
+  (add-hook 'LaTeX-mode-hook (lambda ()
+                               (set (make-local-variable 'company-backends)
+                                    '(company-math-symbols-latex
+                                      company-latex-commands
+                                      company-math-symbols-unicode
+                                      company-files
+                                      company-capf
+                                      company-semantic
+                                      company-dabbrev
+                                      ))
+                               )))
+
 
 
 (provide 'init-latex)
