@@ -58,4 +58,10 @@ flycheck_*.el
 # ensime
 ensime
 
+# multiple cursors
+.mc-list.el
+
+# custom
+custom/custom.el
+
 network-security.data
