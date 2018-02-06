@@ -1,16 +1,26 @@
 (use-package elm-mode
   :ensure t
   :mode ("\\.elm\\'" . elm-mode)
+  :after company
   :config
   (when (executable-find "elm-format")
     (setq-default elm-format-on-save t))
+  (add-hook 'elm-mode-hook (lambda ()
+                             (set (make-local-variable 'company-backends)
+                                  '(company-elm
+                                    company-yasnippet
+                                    company-files))))
   )
 
 (use-package flycheck-elm
   :ensure t
-  :after elm-mode
+  :after elm-mode flycheck
   :config
-  (eval-after-load 'elm-mode (flycheck-elm-setup))
+   (eval-after-load 'flycheck
+    '(add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
   )
+
+(use-package elm-yasnippets
+  :ensure t)
 
 (provide 'init-elm)
