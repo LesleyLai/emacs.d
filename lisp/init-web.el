@@ -52,6 +52,8 @@
     '(progn
        (remove-hook 'web-mode-hook 'er/add-web-mode-expansions)
        (customize-set-variable 'web-mode-markup-indent-offset 2)
+       (customize-set-variable 'web-mode-css-indent-offset 2)
+       (customize-set-variable 'web-mode-code-indent-offset 2)
        (customize-set-variable 'web-mode-enable-auto-closing t) ; enable auto close tag in text-mode
        (customize-set-variable 'web-mode-enable-auto-pairing t)
        (customize-set-variable 'web-mode-enable-css-colorization t)
