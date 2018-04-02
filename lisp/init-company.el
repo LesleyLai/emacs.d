@@ -22,12 +22,15 @@
 (use-package company-irony
   :ensure t)
 
+(use-package company-cmake
+  :ensure t)
 
 (eval-after-load 'company
   '(progn
      (add-to-list 'company-backends 'company-c-headers)
      (add-to-list 'company-backends 'company-tern)
-     (add-to-list 'company-backends 'company-irony)))
+     (add-to-list 'company-backends 'company-irony)
+     (add-to-list 'company-backends 'company-cmake)))
 
 ;; Resolve conflicts with fci mode by temporarily prohibit it {{
 (defvar-local company-fci-mode-on-p nil)
