@@ -55,6 +55,8 @@
 (customize-set-variable 'auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
 ;; }}
 
+;; auto revert
+(customize-set-variable 'revert-without-query '("package.json"))
 
 ;; History
 ;;  From http://www.wisdomandwonder.com/wp-content/uploads/2014/03/C3F.html
