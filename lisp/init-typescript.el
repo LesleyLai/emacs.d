@@ -27,4 +27,5 @@
     (add-hook 'typescript-mode-hook #'setup-tide-mode)
     ))
 
+
 (provide 'init-typescript)
