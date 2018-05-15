@@ -26,16 +26,18 @@
   :config
   (add-hook 'LaTeX-mode-hook (lambda ()
                                (set (make-local-variable 'company-backends)
-                                    '(company-math-symbols-latex
-                                      company-latex-commands
-                                      company-math-symbols-unicode
-                                      company-files
-                                      company-capf
-                                      company-semantic
-                                      company-dabbrev
-                                      ))
-                               )))
-
-
+                                     '(company-math-symbols-latex
+                                       company-latex-commands
+                                       company-math-symbols-unicode
+                                       company-files
+                                       company-capf
+                                       company-semantic
+                                       company-dabbrev
+                                       ))
+                               (TeX-fold-mode 1)
+                               (add-hook 'find-file-hook
+                                         'TeX-fold-buffer t t)))
+  (add-hook 'LaTeX-mode-hook #'outline-minor-mode)
+  )
 
 (provide 'init-latex)

@@ -9,6 +9,18 @@
   :config
   (cmake-ide-setup))
 
+(use-package cmake-mode
+  :ensure)
+
+(use-package cmake-font-lock
+  :ensure
+  :after (cmake-mode)
+  :config
+  (progn
+    (autoload 'cmake-font-lock-activate "cmake-font-lock" nil t)
+    (add-hook 'cmake-mode-hook 'cmake-font-lock-activate))
+  )
+
 (use-package irony
   :ensure t
   :config

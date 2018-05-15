@@ -14,3 +14,7 @@ Run ~sudo npm install tern -g~. See [[http://ternjs.net/]] for more information 
 ** elm-oracle
 elm-oracle is needed for elm-auto-completion.
 ~npm install -g elm-oracle~
+
+** tslint
+Tslint is used to linting typescript codes
+~npm install -g tslint~
