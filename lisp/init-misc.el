@@ -84,4 +84,6 @@
  ;; File delete to trash can
 (customize-set-variable 'delete-by-moving-to-trash t)
 
+(customize-set-variable 'recentf-auto-cleanup 'never)
+
 (provide 'init-misc)

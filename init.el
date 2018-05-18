@@ -51,6 +51,7 @@
 (require 'init-web)
 (require 'init-ruby)
 (require 'init-racket)
+(require 'init-rust)
 (require 'init-scala)
 (require 'init-org)
 (require 'init-sh)

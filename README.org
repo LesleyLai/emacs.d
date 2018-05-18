@@ -18,3 +18,16 @@ elm-oracle is needed for elm-auto-completion.
 ** tslint
 Tslint is used to linting typescript codes
 ~npm install -g tslint~
+
+** Rust
+
+Some tools that needed for rust-mode and cargo-mode.
+
+#+begin_src text
+cargo install rustfmt
+cargo install cargo-check
+cargo install clippy
+#+end_src
+
+
+
