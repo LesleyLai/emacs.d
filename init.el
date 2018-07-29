@@ -29,6 +29,18 @@
 (require 'init-elpa)
 (require 'init-elisp)
 
+;; use package
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+
+(setq use-package-verbose t)
+(require 'use-package)
+
+;; Always compile packages, and use the newest version available.
+(use-package auto-compile
+  :config (auto-compile-on-load-mode))
+(setq load-prefer-newer t)
+
 ;;-------------------------------------------------------------------
 ;; Components
 ;;-------------------------------------------------------------------

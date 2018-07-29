@@ -21,6 +21,9 @@
   :after company company-web-html company-tern tide
   )
 
+(use-package reason-mode
+  :ensure t)
+
 (eval-after-load 'web-mode
   '(progn
      (remove-hook 'web-mode-hook 'er/add-web-mode-expansions)
