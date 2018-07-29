@@ -25,4 +25,10 @@
    (js . t)
    (C . t)))
 
+; An outline of pretty bullets instead of a list of asterisks.
+(use-package org-bullets
+  :ensure
+  :init
+  (add-hook 'org-mode-hook #'org-bullets-mode))
+
 (provide 'init-org)
