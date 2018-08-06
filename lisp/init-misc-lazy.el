@@ -1,8 +1,5 @@
 ;; Misc load later
 
-;; display “lambda” as “λ”
-(global-prettify-symbols-mode 1)
-
 ;; Sudo edit
 (use-package sudo-edit :ensure t)
 
