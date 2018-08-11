@@ -1,13 +1,5 @@
 ;; GUI and terminal have some different UI setting
 
-;; Start up dashboard
-(use-package dashboard
-  :ensure t
-  :config
-  (dashboard-setup-startup-hook)
-  (customize-set-variable 'dashboard-banner-logo-title "Welcome Lesley :-)")
-  )
-
 (defvar after-make-console-frame-hooks '()
   "Hooks to run after creating a new TTY frame")
 (defvar after-make-window-system-frame-hooks '()
