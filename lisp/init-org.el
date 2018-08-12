@@ -28,6 +28,7 @@
 ; An outline of pretty bullets instead of a list of asterisks.
 (use-package org-bullets
   :ensure
+  :defer
   :init
   (add-hook 'org-mode-hook #'org-bullets-mode))
 

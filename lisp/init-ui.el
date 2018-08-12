@@ -52,6 +52,14 @@
              )
 ;; }}
 
+;; Emacs which-key showes displays the key bindings following your
+;; currently entered incomplete command (a prefix) in a popup.
+(use-package which-key
+  :ensure t
+  :defer t
+  :config
+  (which-key-mode))
+
 ;; No useless GUI features
 (customize-set-variable 'use-file-dialog nil)
 (customize-set-variable 'use-dialog-box nil)
