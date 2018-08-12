@@ -4,7 +4,6 @@
 ;; 
 
 ;;; Code:
-
 (use-package company
              :ensure t
              :config
@@ -15,6 +14,15 @@
 
              ;; decrease delay before autocompletion popup shows
              (customize-set-variable 'company-idle-delay .1))
+
+(use-package company-quickhelp
+  :ensure t
+  :after company
+  :defer t
+  :config
+  (company-quickhelp-mode)
+  (customize-set-variable 'company-quickhelp-delay .1)
+  )
 
 (use-package company-c-headers :ensure t)
 
