@@ -1,10 +1,10 @@
 ;; Modern c++ syntax highlighter
 (use-package modern-cpp-font-lock :ensure t)
 
-(defun c++-mode-hook-setup ()
+(use-package c++-mode
+  :after  modern-cpp-font-lock
+  :init
   (modern-c++-font-lock-global-mode t)
-  )
-
-(add-hook 'c++-mode-hook 'c++-mode-hook-setup)
+)
 
 (provide 'init-c++)
