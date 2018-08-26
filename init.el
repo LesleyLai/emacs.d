@@ -1,9 +1,3 @@
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(package-initialize)
-
 (defvar emacs-load-start-time (current-time))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 
@@ -16,11 +10,6 @@
 (defvar *linux* (or (eq system-type 'gnu/linux) (eq system-type 'linux)) )
 (defvar *unix* (or *linux* (eq system-type 'usg-unix-v) (eq system-type 'berkeley-unix)) )
 (defvar *use-GUI* (display-graphic-p))
-
-;;-------------------------------------------------------------------
-;; Universal packages
-;;-------------------------------------------------------------------
-(require 'cl)
 
 ;;-------------------------------------------------------------------
 ;; Bootstrap config
@@ -38,6 +27,7 @@
 
 ;; Always compile packages, and use the newest version available.
 (use-package auto-compile
+  :ensure
   :config (auto-compile-on-load-mode))
 (setq load-prefer-newer t)
 
