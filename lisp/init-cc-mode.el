@@ -39,11 +39,12 @@
   (customize-set-variable 'c-auto-newline nil)
 
   (local-set-key [C-tab] 'clang-format-region)
-  (local-set-key [C-M-tab] 'clang-format-buffer))
+  (local-set-key [C-M-tab] 'clang-format-buffer)
+  (local-set-key (kbd "M-j") 'backward-char)
+  )
 
 (defun my-c-mode-setup ()
   "C/C++ only setup"
-
   (customize-set-variable 'cc-search-directories '("."
                                 "/usr/include"
                                 "/usr/local/include/*"
