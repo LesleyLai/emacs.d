@@ -40,7 +40,6 @@
 
   (local-set-key [C-tab] 'clang-format-region)
   (local-set-key [C-M-tab] 'clang-format-buffer)
-  (local-set-key (kbd "M-j") 'backward-char)
   )
 
 (defun my-c-mode-setup ()
