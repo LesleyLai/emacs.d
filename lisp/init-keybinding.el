@@ -81,14 +81,6 @@
 
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)
 
-(if window-system
-  (progn
-    (define-key global-map (kbd "C-2") 'er/expand-region)
-    (define-key global-map (kbd "C-M-2") 'er/contract-region)
-    )
-  (define-key global-map (kbd "C-@") 'er/expand-region)
-  (define-key global-map (kbd "C-M-@") 'er/contract-region))
-
 (global-set-key (kbd "C-h a") 'apropos)
 
 (when (display-graphic-p)
