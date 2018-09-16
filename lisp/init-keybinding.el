@@ -1,31 +1,29 @@
 ;; A lot of thing come from ergoemacs
 
+
+
 ;; Cursur movement
-;; {{
+(bind-keys*
+ ;; Single char movement
+ ("M-i" . previous-line)
+ ("M-j" . backward-char)
+ ("M-k" . next-line)
+ ("M-l" . forward-char)
+ ;; Move by word
+ ("M-u" . backward-word)
+ ("M-o" . forward-word)
 
-;; Single char movement
-(global-set-key (kbd "M-i") 'previous-line)
-(global-set-key (kbd "M-j") 'backward-char)
-(global-set-key (kbd "M-k") 'next-line)
-(global-set-key (kbd "M-l") 'forward-char)
+ ;; Move by paragraph
+ ("M-U" . backward-paragraph)
+ ("M-O" . forward-paragraph)
 
-;; Move by word
-(global-set-key (kbd "M-u") 'backward-word)
-(global-set-key (kbd "M-o") 'forward-word)
-
-;; Move by paragraph
-(global-set-key (kbd "M-U") 'backward-paragraph)
-(global-set-key (kbd "M-O") 'forward-paragraph)
-
-;; Move to beginning/ending of line
-(global-set-key (kbd "M-h") 'move-beginning-of-line)
-(global-set-key (kbd "M-H") 'move-end-of-line)
-;; }}
+ ;; Move to beginning/ending of line
+ ("M-h" . move-beginning-of-line)
+ ("M-H" . move-end-of-line))
 
 ;; Search
 ;; {{
 ;;Use regex searches by default.
-
 (global-set-key (kbd "C-f")   'isearch-forward-regexp)
 (global-set-key (kbd "C-S-f")   'isearch-backward-regexp)
 (global-set-key (kbd "C-M-f")   'isearch-forward)
@@ -82,14 +80,6 @@
 (global-set-key [f1] 'menu-bar-mode)
 
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)
-
-(if window-system
-  (progn
-    (define-key global-map (kbd "C-2") 'er/expand-region)
-    (define-key global-map (kbd "C-M-2") 'er/contract-region)
-    )
-  (define-key global-map (kbd "C-@") 'er/expand-region)
-  (define-key global-map (kbd "C-M-@") 'er/contract-region))
 
 (global-set-key (kbd "C-h a") 'apropos)
 
