@@ -21,4 +21,11 @@
   (with-eval-after-load 'rust-mode
     (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
 
+(use-package lsp-rust
+  :ensure t
+  :disabled t
+  :after lsp-mode
+  :init
+  (add-hook 'rust-mode-hook #'lsp-rust-enable))
+
 (provide 'init-rust)
