@@ -20,10 +20,10 @@ Tslint is used to linting typescript codes
 ~npm install -g tslint~
 
 ** Rust
-
-Some tools that needed for rust-mode and cargo-mode.
+Some tools that needed for ~rust-mode~, ~lsp-rust~, and ~cargo-mode~.
 
 #+begin_src text
+rustup component add rls-preview rust-analysis rust-src
 cargo install rustfmt
 cargo install cargo-check
 cargo install clippy

@@ -2,7 +2,7 @@
   :ensure t
   :after lsp-mode
   :init
-  (setq lsp-rust-rls-command '("rustup" "run" "nightly" "rls")))
+  (setq lsp-rust-rls-command '("rustup" "run" "stable" "rls")))
 
 (use-package rust-mode
   :ensure t
