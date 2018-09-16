@@ -9,8 +9,8 @@
 ;; Adopts Use package to on-demand installation of packages
 ;; {{
 (defvar my-packages '(use-package
-                      use-package-chords
-                      ))
+                       use-package-chords
+                       ))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))

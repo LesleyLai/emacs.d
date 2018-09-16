@@ -1,7 +1,22 @@
+(use-package lsp-rust
+  :ensure t
+  :after lsp-mode
+  :init
+  (setq lsp-rust-rls-command '("rustup" "run" "nightly" "rls")))
+
 (use-package rust-mode
   :ensure t
+  :hook ((rust-mode . (lambda ()
+                        (lsp-rust-enable)
+                        (lsp-ui-mode)
+                        (lsp-ui-sideline-mode)
+                        (lsp-ui-doc-mode)
+                        (eldoc-mode -1)
+                        (flycheck-mode)
+                        (smart-dash-mode))))
   :config
-  (customize-set-variable 'rust-format-on-save t))
+  (customize-set-variable 'rust-format-on-save t)
+  )
 
 (use-package cargo
   :ensure t
@@ -21,11 +36,6 @@
   (with-eval-after-load 'rust-mode
     (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
 
-(use-package lsp-rust
-  :ensure t
-  :disabled t
-  :after lsp-mode
-  :init
-  (add-hook 'rust-mode-hook #'lsp-rust-enable))
+
 
 (provide 'init-rust)
