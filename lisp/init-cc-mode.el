@@ -21,6 +21,8 @@
     (add-hook 'cmake-mode-hook 'cmake-font-lock-activate))
   )
 
+
+
 (defun my-common-cc-mode-setup ()
   "setup shared by all languages (java/groovy/c++ ...)"
   (customize-set-variable 'c-basic-offset 4
