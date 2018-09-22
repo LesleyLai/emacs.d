@@ -21,16 +21,6 @@
     (add-hook 'cmake-mode-hook 'cmake-font-lock-activate))
   )
 
-(use-package irony
-  :ensure t
-  :config
-  (add-hook 'c++-mode-hook 'irony-mode)
-  (add-hook 'c-mode-hook 'irony-mode)
-  (add-hook 'objc-mode-hook 'irony-mode)
-
-  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-  )
-
 (defun my-common-cc-mode-setup ()
   "setup shared by all languages (java/groovy/c++ ...)"
   (customize-set-variable 'c-basic-offset 4
