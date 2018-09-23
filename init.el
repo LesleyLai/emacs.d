@@ -51,7 +51,6 @@
 (require 'init-spelling)
 (require 'init-python)
 (require 'init-ido)
-(require 'init-linum-mode)
 (require 'init-lisp)
 (require 'init-lsp-mode)
 (require 'init-ui)

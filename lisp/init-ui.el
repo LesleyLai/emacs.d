@@ -25,6 +25,19 @@
       backup-directory-alist `(("." . ,(concat user-emacs-directory
                                                "backups"))))
 
+;; Line number
+(when (version<= "26.0.50" emacs-version)
+  (global-display-line-numbers-mode))
+
+;; Git gutter
+(use-package git-gutter
+  :ensure t
+  :init
+  (if *use-GUI*
+      (use-package git-gutter-fringe :ensure t))
+  (global-git-gutter-mode)
+  (customize-set-variable 'git-gutter:handled-backends '(svn hg git)))
+
 
 ;; Smart Mode line
 ;; {{
