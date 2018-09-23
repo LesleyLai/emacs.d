@@ -2,8 +2,6 @@
 ;; Initializes the UI of emacs that fit my habits
 ;; ==============================================
 
-(customize-set-variable 'cursor-type 'bar) ; I-beam instad of block cursor
-
 ;; Window/frame titles
 (customize-set-variable 'frame-title-format (list "%b " "%[ - GNU %F " emacs-version))
 (customize-set-variable 'icon-title-format (list "%b " " - GNU %F " emacs-version))
