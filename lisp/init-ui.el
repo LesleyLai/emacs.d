@@ -26,8 +26,11 @@
                                                "backups"))))
 
 ;; Line number
-(when (version<= "26.0.50" emacs-version)
-  (global-display-line-numbers-mode))
+(use-package display-line-numbers
+  :if (version<= "26.0.50" emacs-version)
+  :init
+  (global-display-line-numbers-mode)
+  )
 
 ;; Git gutter
 (use-package git-gutter
