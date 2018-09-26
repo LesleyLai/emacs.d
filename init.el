@@ -45,7 +45,6 @@
 (require 'init-csv)
 (require 'init-css)
 (require 'init-cc-mode)
-(require 'init-c++)
 (require 'init-dired)
 (require 'init-flycheck)
 (require 'init-spelling)

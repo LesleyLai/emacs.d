@@ -9,6 +9,7 @@
   :config
   (cmake-ide-setup))
 
+;; CMake
 (use-package cmake-mode
   :ensure)
 
@@ -21,12 +22,26 @@
     (add-hook 'cmake-mode-hook 'cmake-font-lock-activate))
   )
 
+(use-package lsp-clangd
+  :ensure t
+  :after lsp-mode
+  :hook
+  ((c-mode . lsp-clangd-c-enable)
+   (c++-mode . lsp-clangd-c++-enable)
+   (objc-mode . lsp-clangd-objc-enable)))
 
+;; Modern c++ syntax highlighter
+(use-package modern-cpp-font-lock :ensure t)
+
+(use-package cc-mode
+  :after modern-cpp-font-lock
+  :init
+  (modern-c++-font-lock-global-mode t)
+)
 
 (defun my-common-cc-mode-setup ()
   "setup shared by all languages (java/groovy/c++ ...)"
-  (customize-set-variable 'c-basic-offset 4
-   )
+  (customize-set-variable 'c-basic-offset 2)
   ;; give me NO newline automatically after electric expressions are entered
   (customize-set-variable 'c-auto-newline nil)
 
@@ -36,12 +51,6 @@
 
 (defun my-c-mode-setup ()
   "C/C++ only setup"
-  (customize-set-variable 'cc-search-directories '("."
-                                "/usr/include"
-                                "/usr/local/include/*"
-                                "../*/include"
-                                "$WXWIN/include"))
-
   ;; make a #define be left-aligned
   (customize-set-variable 'c-electric-pound-behavior (quote (alignleft))))
 
@@ -50,17 +59,6 @@
   (my-common-cc-mode-setup)
   (unless (or (derived-mode-p 'java-mode) (derived-mode-p 'groovy-mode))
     (my-c-mode-setup))
-
-  ;; GNU Global source code tagging system
-  (use-package ggtags
-    :ensure t
-    :config
-    (when (and (executable-find "global")
-               ;; `man global' to figure out why
-               (not (string-match-p "GTAGS not found"
-                                    (shell-command-to-string "global -p"))))
-      (setq gtags-suggested-key-mapping t)
-      (ggtags-mode 1)))
   )
 
 (add-hook 'c-mode-common-hook 'c-mode-common-hook-setup)

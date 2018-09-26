@@ -72,7 +72,6 @@
 ; Which key mode
 (use-package which-key
   :ensure
-  :defer t
   :config
   (which-key-setup-side-window-right-bottom)
   )
