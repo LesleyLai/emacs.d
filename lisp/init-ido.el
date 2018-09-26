@@ -1,4 +1,6 @@
 (use-package ido
+  :custom
+  (ido-create-new-buffer 'always)
   :config
   (customize-set-variable 'ido-enable-flex-matching t)
   (customize-set-variable 'ido-default-file-method 'selected-window)
