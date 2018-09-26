@@ -41,6 +41,7 @@
 ;;-------------------------------------------------------------------
 ;; Components
 ;;-------------------------------------------------------------------
+(require 'init-keybinding)
 (require 'init-company)
 (require 'init-csv)
 (require 'init-css)
@@ -69,7 +70,6 @@
 (require 'init-frame-hooks)
 (require 'init-speedbar)
 (require 'init-writing)
-(require 'init-keybinding)
 (require 'init-typescript)
 (require 'init-elm)
 (require 'init-latex)
