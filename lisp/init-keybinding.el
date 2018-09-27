@@ -131,6 +131,7 @@
   (define-key modalka-mode-map (kbd "SPC 1") #'delete-other-window)
   (define-key modalka-mode-map (kbd "SPC 2") #'split-window-below)
   (define-key modalka-mode-map (kbd "SPC 3") #'split-window-right)
+  ;; "SPC g" used by magit
   ;; }}
 
   (modalka-global-mode 1)
