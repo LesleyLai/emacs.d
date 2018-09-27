@@ -4,11 +4,6 @@
   :config
   (setq clang-format-style-option "llvm"))
 
-(use-package cmake-ide
-  :ensure t
-  :config
-  (cmake-ide-setup))
-
 ;; CMake
 (use-package cmake-mode
   :ensure)
@@ -22,13 +17,12 @@
     (add-hook 'cmake-mode-hook 'cmake-font-lock-activate))
   )
 
-(use-package lsp-clangd
-  :ensure t
-  :after lsp-mode
-  :hook
-  ((c-mode . lsp-clangd-c-enable)
-   (c++-mode . lsp-clangd-c++-enable)
-   (objc-mode . lsp-clangd-objc-enable)))
+(use-package cquery
+  :ensure
+  :config
+  (setq cquery-executable "/path/to/cquery/build/release/bin/cquery")
+  (setq cquery-extra-init-params '(:index (:comments 2) :cacheFormat "msgpack"))
+  )
 
 ;; Modern c++ syntax highlighter
 (use-package modern-cpp-font-lock :ensure t)

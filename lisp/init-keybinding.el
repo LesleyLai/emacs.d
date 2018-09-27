@@ -1,17 +1,5 @@
 ;; A lot of thing come from ergoemacs
 
-(use-package xah-fly-keys
-  :ensure t
-  :init
-  (setq xah-fly-use-meta-key nil) ;; Disable change to meta key
-  :config
-  (xah-fly-keys-set-layout "qwerty")
-  (xah-fly-keys 1)
-
-  (global-set-key (kbd "<apps>") 'xah-fly-command-mode-activate)
-  (global-set-key (kbd "<escape>") 'xah-fly-command-mode-activate))
-
-
 ;; Cursur movement
 (bind-keys*
  ;; Single char movement
@@ -22,11 +10,24 @@
  ;; Move by word
  ("M-u" . backward-word)
  ("M-o" . forward-word)
+
+ ;; Edit
+ ("M-d" . delete-char)
+ ("C-M-d" . kill-word)
  )
 
-;; Replace
-(global-set-key (kbd "C-f") 'query-replace-regexp)
-;; }}
+;; Copy, paste and cut
+(cua-mode)
+
+(use-package undo-tree
+  :ensure t
+  :config
+  (global-undo-tree-mode 1)
+  (defalias 'redo 'undo-tree-redo)
+  (global-set-key (kbd "C-z") 'undo) 
+  (global-set-key (kbd "C-S-z") 'redo) ;Apple style redo
+  (global-set-key (kbd "C-y") 'redo) ;MS style redo
+  )
 
 ;; ;; Buffer movement
 ;; ;; Use <Shift> + arrowkeys to move between buffers
@@ -34,9 +35,27 @@
 (windmove-default-keybindings)
 ;; ;; }}
 
+;; Search & Replace {{
+(global-set-key (kbd "C-f") 'isearch-forward-regexp)
+(global-set-key (kbd "C-S-f") 'query-replace-regexp)
 
-;; ;; Copy, paste and cut
-(cua-mode)
+
+;; ;; set arrow keys in isearch. left/right is backward/forward,
+;; ;; up/down is history. press Return to exit
+(define-key isearch-mode-map (kbd "<up>") 'isearch-ring-retreat)
+(define-key isearch-mode-map (kbd "<down>") 'isearch-ring-advance)
+
+(define-key isearch-mode-map (kbd "<left>") 'isearch-repeat-backward)
+(define-key isearch-mode-map (kbd "<right>") 'isearch-repeat-forward)
+(define-key isearch-mode-map (kbd "C-f") 'isearch-repeat-forward)
+
+(define-key minibuffer-local-isearch-map (kbd "<left>")
+  'isearch-reverse-exit-minibuffer)
+(define-key minibuffer-local-isearch-map (kbd "<right>")
+  'isearch-forward-exit-minibuffer)
+;; }}
+
+
 
 ;; ;; Menu bar
 (global-set-key [f1] 'menu-bar-mode)
@@ -61,6 +80,62 @@
    )
  )
 
+;; Standard Shortcuts
+(global-set-key (kbd "C-w") 'close-current-buffer) ; Close
+(global-set-key (kbd "C-o") 'find-file) ; Open
+(global-set-key (kbd "C-s") 'save-buffer) ; Save
+(global-set-key (kbd "C-S-s") 'write-file) ; Save As.
+(global-set-key (kbd "C-a") 'mark-whole-buffer) ; Select all
+
+;; Roll my own modal keys
+(use-package modalka
+  :ensure
+  :demand
+  :bind (("<escape>" . modalka-mode)
+         ("<apps>" . modalka-mode))
+  :init
+  (add-to-list 'modalka-excluded-modes 'magit-status-mode)
+  (add-to-list 'modalka-excluded-modes 'magit-popup-mode)
+  (add-to-list 'modalka-excluded-modes 'dired-mode)
+  (add-to-list 'modalka-excluded-modes 'help-mode)
+  (setq-default cursor-type '(bar . 1))
+  (setq modalka-cursor-type 'box)
+  :config
+  ; Command inputs
+  (modalka-define-kbd "a" "M-x")
+  (modalka-define-kbd ":" "M-x")
+
+  ; Navigation
+  (modalka-define-kbd "i" "M-i")
+  (modalka-define-kbd "j" "M-j")
+  (modalka-define-kbd "k" "M-k")
+  (modalka-define-kbd "l" "M-l")
+  (modalka-define-kbd "u" "M-u")
+  (modalka-define-kbd "o" "M-o")
+
+  (define-key modalka-mode-map (kbd "f") #'modalka-mode)
+  (define-key modalka-mode-map (kbd "h") #'move-beginning-of-line)
+  (define-key modalka-mode-map (kbd ";") #'move-end-of-line)
+
+  ;; CUA
+  (define-key modalka-mode-map (kbd "z") #'undo)
+  (define-key modalka-mode-map (kbd "x") #'cua-cut-region)
+  (define-key modalka-mode-map (kbd "c") #'cua-copy-region)
+  (define-key modalka-mode-map (kbd "v") #'cua-paste) 
+
+  ;; Deleter
+  (modalka-define-kbd "d" "M-d")
+
+  ;; space leading group {{
+  (define-key modalka-mode-map (kbd "SPC 0") #'delete-window)
+  (define-key modalka-mode-map (kbd "SPC 1") #'delete-other-window)
+  (define-key modalka-mode-map (kbd "SPC 2") #'split-window-below)
+  (define-key modalka-mode-map (kbd "SPC 3") #'split-window-right)
+  ;; }}
+
+  (modalka-global-mode 1)
+  )
+
 ;; Command history of interpretor
 (use-package comint
   :defer t
@@ -77,6 +152,16 @@
   :config
   (which-key-setup-side-window-right-bottom)
   )
+
+;; Dired
+(add-hook 'dired-mode-hook
+ (lambda ()
+  (define-key dired-mode-map (kbd "C-n") 'new-empty-buffer) ; was dired-next-line
+  (define-key dired-mode-map (kbd "M-o") 'forward-word) ; was dired-omit-mode
+  (define-key dired-mode-map (kbd "M-i") 'previous-line)
+  (define-key dired-mode-map (kbd "M-l") 'forward-char)
+  ))
+
 
 
 (provide 'init-keybinding)
