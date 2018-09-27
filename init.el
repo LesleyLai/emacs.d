@@ -38,6 +38,16 @@
   :config (auto-compile-on-load-mode))
 (setq load-prefer-newer t)
 
+
+;; Customize {{
+;; Theme
+(setq custom-theme-directory "~/.emacs.d/themes")
+
+;; Private Setting
+(defconst custom-file "~/.emacs.d/custom/custom.el")
+(if (file-exists-p custom-file) (load-file custom-file))
+;; }}
+
 ;;-------------------------------------------------------------------
 ;; Components
 ;;-------------------------------------------------------------------
@@ -48,7 +58,6 @@
 (require 'init-cc-mode)
 (require 'init-dired)
 (require 'init-flycheck)
-(require 'init-spelling)
 (require 'init-python)
 (require 'init-ido)
 (require 'init-lisp)
@@ -85,18 +94,11 @@
                                init-git
                                init-multiple-cursors
                                init-ibuffer
+                               init-spelling
                                ))
   (idle-require-mode 1) ;; starts loading
   )
 
-;; Customize {{
-;; Theme
-(setq custom-theme-directory "~/.emacs.d/themes")
-
-;; Private Setting
-(defconst custom-file "~/.emacs.d/custom/custom.el")
-(if (file-exists-p custom-file) (load-file custom-file))
-;; }}
 
 (when (require 'time-date nil t)
   (message "Emacs startup time: %d seconds."

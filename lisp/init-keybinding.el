@@ -2,6 +2,8 @@
 
 (use-package xah-fly-keys
   :ensure t
+  :init
+  (setq xah-fly-use-meta-key nil) ;; Disable change to meta key
   :config
   (xah-fly-keys-set-layout "qwerty")
   (xah-fly-keys 1)

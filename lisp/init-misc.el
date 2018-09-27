@@ -43,6 +43,7 @@
 
 ;; Recent files
 (recentf-mode 1)
+(customize-set-variable 'recentf-max-saved-items 50)
 
 ;; Back up
 ;; {{

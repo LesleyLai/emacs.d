@@ -42,27 +42,29 @@
 
 ;; Smart Mode line
 ;; {{
-(use-package smart-mode-line-powerline-theme :ensure t)
 (use-package smart-mode-line
-             :ensure t
-             :config
-             (add-to-list 'sml/replacer-regexp-list '("^~/dev/" ":DEV:"))
-             (add-to-list 'sml/replacer-regexp-list '("^~/dev/web/" ":WEB:"))
-             (add-to-list 'sml/replacer-regexp-list '("^~/dev/Graphics/" ":CG:"))
-             (add-to-list 'sml/replacer-regexp-list '("^~/Downloads/" ":D/L:"))
-             (add-to-list 'sml/replacer-regexp-list '(".+/C\\+\\+/" ":C++:"))
-             (add-to-list 'sml/replacer-regexp-list '(".+/blog/" ":BLOG:"))
-             (add-to-list 'sml/replacer-regexp-list '(".+/wiki/" ":WIKI:"))
-             
-             ;; Block minor mode from show on mode line
-             (setq rm-blacklist (quote (" hl-p" " company"
-                                        " Undo-Tree" " yas"
-                                        " GitGutter" " ARev"
-                                        " Paredit" " Undo-Tree")))
-             :init
-             (setq sml/no-confirm-load-theme t)
-             (sml/setup)
-             )
+  :ensure t
+  :init
+  (use-package smart-mode-line-powerline-theme
+    :ensure t
+    :defer t)
+  (setq sml/theme 'light-powerline)
+  (setq sml/no-confirm-load-theme t)
+  
+  :config  
+  (add-to-list 'sml/replacer-regexp-list '(".+/C\\+\\+/" ":C++:"))
+  (add-to-list 'sml/replacer-regexp-list '(".+/blog/" ":BLOG:"))
+  (add-to-list 'sml/replacer-regexp-list '(".+/wiki/" ":WIKI:"))
+  
+  ;; Block minor mode from show on mode line
+  (setq rm-blacklist (quote (" hl-p" " company"
+                             " Undo-Tree" " yas"
+                             " GitGutter" " ARev"      
+                             " Paredit" " Undo-Tree"
+                             "∑flykeys" " WK")))
+
+  (sml/setup)
+  )
 ;; }}
 
 ;; Emacs which-key showes displays the key bindings following your
@@ -80,7 +82,6 @@
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (when (fboundp 'horizontal-scroll-bar-mode)
   (horizontal-scroll-bar-mode -1))
-
 
 ;; No startup screen
 (customize-set-variable 'inhibit-startup-screen t)
