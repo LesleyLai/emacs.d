@@ -81,7 +81,7 @@
  )
 
 ;; Standard Shortcuts
-(global-set-key (kbd "C-w") 'close-current-buffer) ; Close
+(global-set-key (kbd "C-w") 'kill-current-buffer) ; Close
 (global-set-key (kbd "C-o") 'find-file) ; Open
 (global-set-key (kbd "C-s") 'save-buffer) ; Save
 (global-set-key (kbd "C-S-s") 'write-file) ; Save As.
