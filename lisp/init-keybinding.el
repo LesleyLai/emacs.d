@@ -10,10 +10,6 @@
  ;; Move by word
  ("M-u" . backward-word)
  ("M-o" . forward-word)
-
- ;; Edit
- ("M-d" . delete-char)
- ("C-M-d" . kill-word)
  )
 
 ;; Copy, paste and cut
@@ -124,13 +120,14 @@
   (define-key modalka-mode-map (kbd "v") #'cua-paste) 
 
   ;; Deleter
-  (modalka-define-kbd "d" "M-d")
+  (modalka-define-kbd "d" "DEL")
 
   ;; space leading group {{
   (define-key modalka-mode-map (kbd "SPC 0") #'delete-window)
   (define-key modalka-mode-map (kbd "SPC 1") #'delete-other-window)
   (define-key modalka-mode-map (kbd "SPC 2") #'split-window-below)
   (define-key modalka-mode-map (kbd "SPC 3") #'split-window-right)
+
   ;; "SPC g" used by magit
   ;; }}
 
