@@ -1,6 +1,5 @@
 ;; A lot of thing come from ergoemacs
 
-;; Cursur movement
 (bind-keys*
  ;; Single char movement
  ("M-i" . previous-line)
@@ -98,6 +97,8 @@
   (add-to-list 'modalka-excluded-modes 'magit-popup-mode)
   (add-to-list 'modalka-excluded-modes 'dired-mode)
   (add-to-list 'modalka-excluded-modes 'help-mode)
+  (add-to-list 'modalka-excluded-modes 'eshell-mode)
+
   (setq-default cursor-type '(bar . 1))
   (setq modalka-cursor-type 'box)
   :config
