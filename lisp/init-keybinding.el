@@ -164,6 +164,4 @@
   (define-key dired-mode-map (kbd "M-l") 'forward-char)
   ))
 
-
-
 (provide 'init-keybinding)

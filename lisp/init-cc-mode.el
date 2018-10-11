@@ -17,12 +17,12 @@
     (add-hook 'cmake-mode-hook 'cmake-font-lock-activate))
   )
 
-(use-package cquery
+(use-package lsp-clangd
   :ensure
-  :config
-  (setq cquery-executable "/path/to/cquery/build/release/bin/cquery")
-  (setq cquery-extra-init-params '(:index (:comments 2) :cacheFormat "msgpack"))
-  )
+  :hook
+  ((c-mode . lsp-clangd-c-enable)
+   (c++-mode . lsp-clangd-c++-enable)
+   (objc-mode . lsp-clangd-objc-enable)))
 
 ;; Modern c++ syntax highlighter
 (use-package modern-cpp-font-lock :ensure t)
