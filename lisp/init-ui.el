@@ -93,5 +93,19 @@
           (lambda ()
             (customize-set-variable 'line-spacing 0)))
 
+(use-package paradox
+  :ensure t
+  :defer 1
+  :custom
+  (paradox-column-width-package 27)
+  (paradox-column-width-version 13)
+  (paradox-execute-asynchronously t)
+  (paradox-hide-wiki-packages t)
+  :config
+  (paradox-enable)
+  (remove-hook 'paradox-after-execute-functions #'paradox--report-buffer-print)
+)
+
+
 
 (provide 'init-ui)
