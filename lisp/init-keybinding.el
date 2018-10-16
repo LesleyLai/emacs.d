@@ -82,58 +82,16 @@
 (global-set-key (kbd "C-S-s") 'write-file) ; Save As.
 (global-set-key (kbd "C-a") 'mark-whole-buffer) ; Select all
 
-;; Roll my own modal keys
-(use-package modalka
-  :ensure
-  :demand
-  :bind (("<escape>" . modalka-mode)
-         ("<apps>" . modalka-mode))
-  :init
-  (add-to-list 'modalka-excluded-modes 'magit-status-mode)
-  (add-to-list 'modalka-excluded-modes 'magit-popup-mode)
-  (add-to-list 'modalka-excluded-modes 'dired-mode)
-  (add-to-list 'modalka-excluded-modes 'help-mode)
-  (add-to-list 'modalka-excluded-modes 'eshell-mode)
-
-  (setq-default cursor-type '(bar . 1))
-  (setq modalka-cursor-type 'box)
+;; Modal mode
+(use-package xah-fly-keys
+  :ensure t
   :config
-  ; Command inputs
-  (modalka-define-kbd "a" "M-x")
-  (modalka-define-kbd ":" "M-x")
-
-  ; Navigation
-  (modalka-define-kbd "i" "M-i")
-  (modalka-define-kbd "j" "M-j")
-  (modalka-define-kbd "k" "M-k")
-  (modalka-define-kbd "l" "M-l")
-  (modalka-define-kbd "u" "M-u")
-  (modalka-define-kbd "o" "M-o")
-
-  (define-key modalka-mode-map (kbd "f") #'modalka-mode)
-  (define-key modalka-mode-map (kbd "h") #'move-beginning-of-line)
-  (define-key modalka-mode-map (kbd ";") #'move-end-of-line)
-
-  ;; CUA
-  (define-key modalka-mode-map (kbd "z") #'undo)
-  (define-key modalka-mode-map (kbd "x") #'cua-cut-region)
-  (define-key modalka-mode-map (kbd "c") #'cua-copy-region)
-  (define-key modalka-mode-map (kbd "v") #'cua-paste) 
-
-  ;; Deleter
-  (modalka-define-kbd "d" "DEL")
-
-  ;; space leading group {{
-  (define-key modalka-mode-map (kbd "SPC 0") #'delete-window)
-  (define-key modalka-mode-map (kbd "SPC 1") #'delete-other-window)
-  (define-key modalka-mode-map (kbd "SPC 2") #'split-window-below)
-  (define-key modalka-mode-map (kbd "SPC 3") #'split-window-right)
-
-  ;; "SPC g" used by magit
-  ;; }}
-
-  (modalka-global-mode 1)
-  )
+  (xah-fly-keys-set-layout "qwerty")
+  (xah-fly-keys 1)
+  (global-set-key (kbd "C-i") 'xah-fly-mode-toggle)
+  (global-set-key (kbd "<escape>") 'xah-fly-mode-toggle)
+  (global-set-key (kbd "<apps>") 'xah-fly-mode-toggle)
+)
 
 ;; Command history of interpretor
 (use-package comint
@@ -160,7 +118,5 @@
   (define-key dired-mode-map (kbd "M-i") 'previous-line)
   (define-key dired-mode-map (kbd "M-l") 'forward-char)
   ))
-
-
 
 (provide 'init-keybinding)

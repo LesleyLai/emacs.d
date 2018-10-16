@@ -1,4 +1,4 @@
-;; Colourise CSS colour literals
+;; Colourise  colour literals
 ;; web-mode does not like rainbow-mode
 (use-package rainbow-mode
              :ensure t
