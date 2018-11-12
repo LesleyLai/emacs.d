@@ -51,7 +51,6 @@
 ;;-------------------------------------------------------------------
 ;; Components
 ;;-------------------------------------------------------------------
-(require 'init-keybinding)
 (require 'init-company)
 (require 'init-csv)
 (require 'init-css)
@@ -82,6 +81,7 @@
 (require 'init-typescript)
 (require 'init-elm)
 (require 'init-latex)
+(require 'init-keybinding)
 
 ;;-------------------------------------------------------------------
 ;; Lazy loading components that do not need at start up

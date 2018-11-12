@@ -22,6 +22,10 @@
     (when (memq window-system '(mac ns))
       (exec-path-from-shell-initialize)))
 
+;; For org-mode html exportation
+(use-package htmlize
+  :ensure t)
+
 ;;  menu bar stuffs
 ;; {{
 (define-key menu-bar-edit-menu [search search-forward] nil)
