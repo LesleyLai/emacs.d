@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+#name : Class
+# --
+class ${1:name} {
+  constructor($2) {
+    $0
+  }
+}

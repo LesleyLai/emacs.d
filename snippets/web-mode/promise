@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: promise
+# key: promise
+# --
+new Promise(function(resolve, reject) {
+  $0
+});
