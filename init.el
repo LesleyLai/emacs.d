@@ -25,19 +25,25 @@
 (require 'init-elpa)
 (require 'init-elisp)
 
-;; use package
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
+;; quelpa
+(if (require 'quelpa nil t)
+    (quelpa-self-upgrade)
+  (with-temp-buffer
+    (url-insert-file-contents "https://framagit.org/steckerhalter/quelpa/raw/master/bootstrap.el")
+    (eval-buffer)))
 
-(setq use-package-verbose t)
-(require 'use-package)
+;; use package
+(quelpa
+ '(quelpa-use-package
+   :fetcher git
+   :url "https://framagit.org/steckerhalter/quelpa-use-package.git"))
+(require 'quelpa-use-package)
 
 ;; Always compile packages, and use the newest version available.
 (use-package auto-compile
   :ensure
   :config (auto-compile-on-load-mode))
 (setq load-prefer-newer t)
-
 
 ;; Customize {{
 ;; Theme
@@ -51,6 +57,7 @@
 ;;-------------------------------------------------------------------
 ;; Components
 ;;-------------------------------------------------------------------
+(require 'init-keybinding)
 (require 'init-asm)
 (require 'init-company)
 (require 'init-csv)
