@@ -81,6 +81,7 @@
 (require 'init-org)
 (require 'init-sh)
 (require 'init-glsl-mode)
+(require 'init-treemacs)
 (require 'init-yasnippet)
 (require 'init-yaml)
 (require 'init-frame-hooks)

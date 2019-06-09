@@ -67,3 +67,4 @@ custom/custom.el
 network-security.data
 quelpa
 transient
+.cache

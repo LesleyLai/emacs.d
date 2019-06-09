@@ -25,4 +25,8 @@
         company-lsp-async t)
   )
 
+(use-package lsp-treemacs
+  :ensure t
+  )
+
 (provide 'init-lsp-mode)

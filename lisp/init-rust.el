@@ -1,7 +1,7 @@
 (use-package rust-mode
   :ensure t
   :hook ((rust-mode . (lambda ()
-                        (lsp-rust-enable)
+                        (lsp)
                         (lsp-ui-mode)
                         (lsp-ui-sideline-mode)
                         (lsp-ui-doc-mode)
