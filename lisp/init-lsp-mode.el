@@ -1,7 +1,10 @@
 (use-package lsp-mode
   :ensure t
-  :after typescript-mode
+  :after typescript-mode web-mode js2-mode rust-mode
   :hook (typescript-mode . lsp)
+  :hook (web-mode . lsp)
+  :hook (js2-mode . lsp)
+  :hook (rust-mode . lsp)
   :commands lsp
   )
 
@@ -10,7 +13,7 @@
   :after lsp-mode
   :init
   (add-hook 'lsp-after-open-hook #'lsp-ui-mode)
-  (setq lsp-ui-doc-enable nil
+  (setq lsp-ui-doc-enable t
         lsp-ui-doc-header t
         lsp-ui-doc-include-signature t
         ;; lsp-ui-doc-position 'at-point
