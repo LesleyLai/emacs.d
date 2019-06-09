@@ -26,6 +26,9 @@
 (use-package htmlize
   :ensure t)
 
+;; Update quelpa
+(quelpa-self-upgrade)
+
 ;;  menu bar stuffs
 ;; {{
 (define-key menu-bar-edit-menu [search search-forward] nil)

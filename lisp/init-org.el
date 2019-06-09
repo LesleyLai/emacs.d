@@ -1,4 +1,5 @@
 (use-package org
+  :defer t
   :ensure org-plus-contrib
   :config
   (progn

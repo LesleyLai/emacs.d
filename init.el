@@ -26,8 +26,8 @@
 (require 'init-elisp)
 
 ;; quelpa
-(if (require 'quelpa nil t)
-    (quelpa-self-upgrade)
+
+(unless (require 'quelpa nil t)
   (with-temp-buffer
     (url-insert-file-contents "https://framagit.org/steckerhalter/quelpa/raw/master/bootstrap.el")
     (eval-buffer)))
@@ -70,7 +70,6 @@
 (require 'init-lisp)
 (require 'init-lsp-mode)
 (require 'init-ui)
-(require 'init-javascript)
 (require 'init-markdown)
 (require 'init-misc)
 (require 'init-web)
@@ -87,7 +86,6 @@
 (require 'init-frame-hooks)
 (require 'init-speedbar)
 (require 'init-writing)
-(require 'init-typescript)
 (require 'init-elm)
 (require 'init-latex)
 (require 'init-keybinding)

@@ -1,5 +1,9 @@
 (use-package lsp-mode
-  :ensure t)
+  :ensure t
+  :after typescript-mode
+  :hook (typescript-mode . lsp)
+  :commands lsp
+  )
 
 (use-package lsp-ui
   :ensure t
@@ -25,8 +29,10 @@
         company-lsp-async t)
   )
 
+
 (use-package lsp-treemacs
   :ensure t
+  :commands lsp-treemacs-errors-list
   )
 
 (provide 'init-lsp-mode)

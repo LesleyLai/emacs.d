@@ -11,8 +11,11 @@ Install those optional third-party packages to setup for certain languages.
 The anaconda-mode uses ~jedi~ library to do completion.
 
 ** Javascript & Typescript
-*** tern
-Run ~sudo npm install tern -g~. See [[http://ternjs.net/]] for more information about tern. We need tern for JavaScript completion. Note that tern do not work automatically, we need ~.tern-project~ file for setting in up.
+*** lsp mode support
+```
+[sudo] npm i -g typescript-language-server
+[sudo] npm i -g typescript
+```
 
 *** tslint
 Tslint is used to linting typescript codes

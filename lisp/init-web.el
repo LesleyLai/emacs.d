@@ -16,11 +16,13 @@
 (add-to-list 'auto-mode-alist '("\\.rhtml\\(\\.erb\\)?\\'" . web-mode)) ; ruby
 (add-to-list 'auto-mode-alist '("\\.jst\\.ejs\\'"  . web-mode)) ; ruby
 
+;; Web mode
 (use-package web-mode
   :ensure t
-  :after company company-web-html company-tern tide
+  :after company company-web-html
   )
 
+;; Reason
 (use-package reason-mode
   :ensure t)
 
@@ -44,8 +46,7 @@
 (add-hook 'web-mode-hook (lambda ()
                            (add-to-list 'company-dabbrev-code-modes 'web-mode)
                            (set (make-local-variable 'company-backends)
-                                '(company-tern
-                                  company-web-html
+                                '(company-web-html
                                   company-css
                                   company-yasnippet
                                   company-files))
@@ -57,16 +58,33 @@
 
 (flycheck-add-mode 'typescript-tslint 'web-mode)
 
-;; Enable JavaScript completion between <script>...</script> etc.
-(defadvice company-tern (before web-mode-set-up-ac-sources activate)
-  "Set `tern-mode' based on current language before running company-tern."
-  (if (equal major-mode 'web-mode)
-      (let ((web-mode-cur-language
-             (web-mode-language-at-pos)))
-        (if (or (string= web-mode-cur-language "javascript")
-                (string= web-mode-cur-language "jsx")
-                )
-            (unless tern-mode (tern-mode))
-          (if tern-mode (tern-mode -1))))))
+;; Js2-mode
+(use-package js-mode
+  :mode ("\\.json$" . js-mode)
+  :init
+  (progn
+    (add-hook 'js-mode-hook (lambda () (customize-set-variable 'js-indent-level 2)))))
+
+(use-package js2-mode
+  :ensure
+  :mode ("\\.js$" . js2-mode)
+  :interpreter ("node" . js2-mode)
+  :bind (("C-a" . back-to-indentation-or-beginning-of-line)
+         ("C-M-h" . backward-kill-word))
+  :config
+  (progn
+    (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
+    (add-hook 'js2-mode-hook (lambda () (setq js2-basic-offset 2)))
+    (add-hook 'js2-mode-hook (lambda ()
+                               (bind-key "M-j"
+                                         'join-line-or-lines-in-region
+                                         js2-mode-map)))))
+
+;; Typescript
+(use-package typescript-mode
+  :ensure t)
+
+
+
 
 (provide 'init-web)
