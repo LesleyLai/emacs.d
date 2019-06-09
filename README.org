@@ -4,20 +4,23 @@ This is my own setting of Emacs.
 Put the whole directory to =~/.emacs.d=
 
 * External packages
-Installing those packages are optional.
-** jedi
+Install those optional third-party packages to setup for certain languages.
+
+** Python
+*** jedi
 The anaconda-mode uses ~jedi~ library to do completion.
 
-** tern
+** Javascript & Typescript
+*** tern
 Run ~sudo npm install tern -g~. See [[http://ternjs.net/]] for more information about tern. We need tern for JavaScript completion. Note that tern do not work automatically, we need ~.tern-project~ file for setting in up.
 
-** elm-oracle
-elm-oracle is needed for elm-auto-completion.
-~npm install -g elm-oracle~
-
-** tslint
+*** tslint
 Tslint is used to linting typescript codes
 ~npm install -g tslint~
+
+** Elm
+elm-oracle is needed for elm-auto-completion.
+~npm install -g elm-oracle~
 
 ** Rust
 Some tools that needed for ~rust-mode~, ~lsp-rust~, and ~cargo-mode~.
@@ -26,7 +29,7 @@ Some tools that needed for ~rust-mode~, ~lsp-rust~, and ~cargo-mode~.
 rustup component add rls-preview rust-analysis rust-src
 cargo install rustfmt
 cargo install cargo-check
-cargo install clippy
+rustup component add clippy-preview
 #+end_src
 
 

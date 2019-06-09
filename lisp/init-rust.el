@@ -1,9 +1,3 @@
-(use-package lsp-rust
-  :ensure t
-  :after lsp-mode
-  :init
-  (setq lsp-rust-rls-command '("rustup" "run" "stable" "rls")))
-
 (use-package rust-mode
   :ensure t
   :hook ((rust-mode . (lambda ()
@@ -35,7 +29,5 @@
   :config
   (with-eval-after-load 'rust-mode
     (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
-
-
 
 (provide 'init-rust)
