@@ -82,17 +82,6 @@
 (global-set-key (kbd "C-S-s") 'write-file) ; Save As.
 (global-set-key (kbd "C-a") 'mark-whole-buffer) ; Select all
 
-;; Modal mode
-(use-package xah-fly-keys
-  :ensure t
-  :config
-  (xah-fly-keys-set-layout "qwerty")
-  (xah-fly-keys 1)
-  (global-set-key (kbd "C-i") 'xah-fly-mode-toggle)
-  (global-set-key (kbd "<escape>") 'xah-fly-mode-toggle)
-  (global-set-key (kbd "<apps>") 'xah-fly-mode-toggle)
-)
-
 ;; Command history of interpretor
 (use-package comint
   :defer t
