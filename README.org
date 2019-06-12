@@ -7,6 +7,13 @@ Put the whole directory to =~/.emacs.d=
 Install those optional third-party packages to setup for certain languages.
 
 ** Python
+*** Python language server
+[plys](https://github.com/palantir/python-language-server) needs to be installed:
+
+```shell
+pip install 'python-language-server[all]'
+```
+
 *** jedi
 The anaconda-mode uses ~jedi~ library to do completion.
 
