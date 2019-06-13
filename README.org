@@ -9,12 +9,6 @@ Install those optional third-party packages to setup for certain languages.
 ** C/C++
 *Clangd* is used for C and C++ support.
 
-** CSS
-Install [[https://github.com/vscode-langservers/vscode-css-languageserver-bin][CSS language server]]  by
-#+begin_src shell
-[sudo] npm install -g vscode-css-languageserver-bin
-#+end_src
-
 ** Python
 Python language server
 [[https://github.com/palantir/python-language-server][plys]] needs to be installed:
@@ -25,6 +19,13 @@ pip install 'python-language-server[all]'
 
 *** jedi
 The anaconda-mode uses ~jedi~ library to do completion.
+
+** HTML & CSS
+Install [[https://github.com/vscode-langservers/vscode-html-languageserver][HTML language Server]] and [[https://github.com/vscode-langservers/vscode-css-languageserver-bin][CSS language server]] by
+#+begin_src shell
+[sudo] npm install -g vscode-html-languageserver-bin
+[sudo] npm install -g vscode-css-languageserver-bin
+#+end_src
 
 ** Javascript & Typescript
 *** lsp mode support

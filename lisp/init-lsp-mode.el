@@ -1,15 +1,20 @@
 (use-package lsp-mode
   :ensure t
-  :after typescript-mode web-mode js2-mode rust-mode python-mode
+  :after c-mode c++-mode css-mode typescript-mode web-mode
+  js2-mode rust-mode python-mode
   :hook (c-mode . lsp)
   :hook (c++-mode . lsp)
   :hook (css-mode . lsp)
   :hook (python-mode . lsp)
+  :hook (html-mode . lsp)
   :hook (typescript-mode . lsp)
   :hook (web-mode . lsp)
   :hook (js2-mode . lsp)
   :hook (rust-mode . lsp)
   :commands lsp
+  :config
+  (require 'lsp-imenu)
+  (add-hook 'lsp-after-open-hook 'lsp-enable-imenu)
   )
 
 (use-package lsp-ui
