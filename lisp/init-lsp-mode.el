@@ -1,6 +1,7 @@
 (use-package lsp-mode
   :ensure t
-  :after typescript-mode web-mode js2-mode rust-mode
+  :after typescript-mode web-mode js2-mode rust-mode python-mode
+  :hook (python-mode . lsp)
   :hook (typescript-mode . lsp)
   :hook (web-mode . lsp)
   :hook (js2-mode . lsp)
