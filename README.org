@@ -6,6 +6,10 @@ Put the whole directory to =~/.emacs.d=
 * External packages
 Install those optional third-party packages to setup for certain languages.
 
+* C/C++
+** Clangd
+`Clangd` is used for C and C++ support.
+
 ** Python
 *** Python language server
 [plys](https://github.com/palantir/python-language-server) needs to be installed:
