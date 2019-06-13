@@ -57,7 +57,6 @@
 ;;-------------------------------------------------------------------
 ;; Components
 ;;-------------------------------------------------------------------
-(require 'init-keybinding)
 (require 'init-asm)
 (require 'init-company)
 (require 'init-csv)
