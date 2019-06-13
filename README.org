@@ -6,27 +6,32 @@ Put the whole directory to =~/.emacs.d=
 * External packages
 Install those optional third-party packages to setup for certain languages.
 
-* C/C++
-** Clangd
-`Clangd` is used for C and C++ support.
+** C/C++
+*Clangd* is used for C and C++ support.
+
+** CSS
+Install [[https://github.com/vscode-langservers/vscode-css-languageserver-bin][CSS language server]]  by
+#+begin_src shell
+[sudo] npm install -g vscode-css-languageserver-bin
+#+end_src
 
 ** Python
-*** Python language server
-[plys](https://github.com/palantir/python-language-server) needs to be installed:
+Python language server
+[[https://github.com/palantir/python-language-server][plys]] needs to be installed:
 
-```shell
+#+begin_src shell
 pip install 'python-language-server[all]'
-```
+#+end_src
 
 *** jedi
 The anaconda-mode uses ~jedi~ library to do completion.
 
 ** Javascript & Typescript
 *** lsp mode support
-```
+#+begin_src shell
 [sudo] npm i -g typescript-language-server
 [sudo] npm i -g typescript
-```
+#+end_src
 
 *** tslint
 Tslint is used to linting typescript codes
