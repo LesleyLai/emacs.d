@@ -1,4 +1,5 @@
 (use-package ido
+  :ensure t
   :custom
   (ido-create-new-buffer 'always)
   :config
@@ -23,12 +24,10 @@
   (customize-set-variable 'ido-use-faces nil)
   )
 
-;; smex for M-x enhancement
-(use-package smex
-             :ensure t
-             :config
-             (smex-initialize)
-             (global-set-key (kbd "M-x") 'smex)
-             (global-set-key (kbd "M-X") 'smex-major-mode-commands))
+;; amx for M-x enhancement
+(use-package amx
+  :ensure t
+  :after (:any ivy ido)
+  :config (amx-mode))
 
 (provide 'init-ido)
