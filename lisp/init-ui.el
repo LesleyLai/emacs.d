@@ -77,6 +77,9 @@
   :config
   (which-key-mode))
 
+;; Cursor Type
+(setq-default cursor-type 'bar)
+
 ;; No useless GUI features
 (customize-set-variable 'use-file-dialog nil)
 (customize-set-variable 'use-dialog-box nil)
