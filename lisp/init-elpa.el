@@ -23,6 +23,16 @@
   (require 'bind-key))
 ;; }}
 
+(use-package auto-package-update
+  :ensure t
+  :defer 5
+  :config
+  (customize-set-variable 'auto-package-update-interval 7) ;; in days
+  (customize-set-variable 'auto-package-update-prompt-before-update t)
+  (customize-set-variable 'auto-package-update-delete-old-versions t)
+  (customize-set-variable 'auto-package-update-hide-results t)
+  (auto-package-update-maybe))
+
 (use-package counsel :ensure t :defer 1) ;; auto completion tool
 
 (provide 'init-elpa)
