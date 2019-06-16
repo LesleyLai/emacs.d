@@ -1,6 +1,5 @@
 (use-package ensime
   :ensure t
-  :defer t
-  :pin melpa-stable)
+  :defer t)
 
 (provide 'init-scala)

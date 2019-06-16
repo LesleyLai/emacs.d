@@ -82,6 +82,7 @@
 ;; Typescript
 (use-package typescript-mode
   :ensure t
+  :defer t
   :config
   (setq-default typescript-indent-level 2))
 

@@ -1,22 +1,26 @@
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
-(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
-(customize-set-variable 'package-archive-priorities '(("melpa" . 1)))
+(setq package-user-dir "~/.emacs.d/elpa"
+      package-archives
+      '(("gnu"   . "http://elpa.gnu.org/packages/")
+        ("melpa" . "https://melpa.org/packages/")
+        ("melpa stable" . "http://stable.melpa.org/packages/")
+        ("org" . "http://orgmode.org/elpa/")
+        ("cselpa" . "https://elpa.thecybershadow.net/packages/")))
+
+(unless (bound-and-true-p package--initialized) ; To avoid warnings in 27
+  (setq package-enable-at-startup nil)          ; To prevent initializing twice
+  (package-initialize))
 
 ;; Adopts Use package to on-demand installation of packages
 ;; {{
-(defvar my-packages '(use-package
-                       use-package-chords
-                       ))
+;; Install use-package if not installed yet.
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package)
+  (package-install 'use-package-chord))
 
-(dolist (p my-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
-
-
-(require 'use-package)
-(require 'bind-key)                ;; if you use any :bind variant
+(eval-when-compile
+  (require 'use-package)
+  (require 'bind-key))
 ;; }}
 
 (use-package counsel :ensure t :defer 1) ;; auto completion tool

@@ -1,5 +1,6 @@
 (use-package rust-mode
   :ensure t
+  :defer t
   :hook ((rust-mode . (lambda ()
                         (lsp-mode)
                         (lsp-ui-mode)
@@ -15,6 +16,7 @@
 (use-package cargo
   :ensure t
   :after (rust-mode)
+  :defer 3
   :config
   (add-hook 'rust-mode-hook 'cargo-minor-mode)
   (add-hook 'rust-mode-hook
@@ -26,6 +28,7 @@
 (use-package flycheck-rust
   :ensure t
   :after (rust-mode)
+  :defer t
   :config
   (with-eval-after-load 'rust-mode
     (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
