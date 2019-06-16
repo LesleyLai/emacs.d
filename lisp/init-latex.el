@@ -18,6 +18,7 @@
   )
 
 (use-package latex-preview-pane
+  :defer 5
   :ensure t)
 
 (use-package company-math

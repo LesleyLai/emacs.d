@@ -11,8 +11,6 @@
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.xml?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.rhtml\\(\\.erb\\)?\\'" . web-mode)) ; ruby
 (add-to-list 'auto-mode-alist '("\\.jst\\.ejs\\'"  . web-mode)) ; ruby
 
@@ -24,24 +22,22 @@
 
 ;; Reason
 (use-package reason-mode
-  :ensure t)
-
-(eval-after-load 'web-mode
-  '(progn
-     (remove-hook 'web-mode-hook 'er/add-web-mode-expansions)
-     (customize-set-variable 'web-mode-markup-indent-offset 2)
-     (customize-set-variable 'web-mode-css-indent-offset 2)
-     (customize-set-variable 'web-mode-code-indent-offset 2)
-     (customize-set-variable 'web-mode-enable-auto-closing t) ; enable auto close tag in text-mode
-     (customize-set-variable 'web-mode-enable-auto-pairing t)
-     (customize-set-variable 'web-mode-enable-css-colorization t)
-     (customize-set-variable 'web-mode-imenu-regexp-list
-                             '(("<\\(h[1-9]\\)\\([^>]*\\)>\\([^<]*\\)" 1 3 ">" nil)
-                               ("^[ \t]*<\\([@a-z]+\\)[^>]*>? *$" 1 " id=\"\\([a-zA-Z0-9_]+\\)\"" "#" ">")
-                               ("^[ \t]*<\\(@[a-z.]+\\)[^>]*>? *$" 1 " contentId=\"\\([a-zA-Z0-9_]+\\)\"" "=" ">")
-                               ;; angular imenu
-                               (" \\(ng-[a-z]*\\)=\"\\([^\"]+\\)" 1 2 "=")))
-     ))
+  :ensure t
+  :config
+  (remove-hook 'web-mode-hook 'er/add-web-mode-expansions)
+  (customize-set-variable 'web-mode-markup-indent-offset 2)
+  (customize-set-variable 'web-mode-css-indent-offset 2)
+  (customize-set-variable 'web-mode-code-indent-offset 2)
+  (customize-set-variable 'web-mode-enable-auto-closing t) ; enable auto close tag in text-mode
+  (customize-set-variable 'web-mode-enable-auto-pairing t)
+  (customize-set-variable 'web-mode-enable-css-colorization t)
+  (customize-set-variable 'web-mode-imenu-regexp-list
+                          '(("<\\(h[1-9]\\)\\([^>]*\\)>\\([^<]*\\)" 1 3 ">" nil)
+                            ("^[ \t]*<\\([@a-z]+\\)[^>]*>? *$" 1 " id=\"\\([a-zA-Z0-9_]+\\)\"" "#" ">")
+                            ("^[ \t]*<\\(@[a-z.]+\\)[^>]*>? *$" 1 " contentId=\"\\([a-zA-Z0-9_]+\\)\"" "=" ">")
+                            ;; angular imenu
+                            (" \\(ng-[a-z]*\\)=\"\\([^\"]+\\)" 1 2 "=")))
+  )
 
 (add-hook 'web-mode-hook (lambda ()
                            (add-to-list 'company-dabbrev-code-modes 'web-mode)
@@ -49,21 +45,15 @@
                                 '(company-web-html
                                   company-css
                                   company-yasnippet
-                                  company-files))
-                           (when (or
-                                  (string-equal "tsx" (file-name-extension buffer-file-name))
-                                  (string-equal "jsx" (file-name-extension buffer-file-name)))
-                             (setup-tide-mode))
+                                  company-files
+                                  company-lsp))
                            (company-mode t)))
 
+(use-package json-mode
+  :ensure
+  :mode "\\.json\\'")
 
 ;; Js2-mode
-(use-package js-mode
-  :mode ("\\.json$" . js-mode)
-  :init
-  (progn
-    (add-hook 'js-mode-hook (lambda () (customize-set-variable 'js-indent-level 2)))))
-
 (use-package js2-mode
   :ensure
   :mode ("\\.js$" . js2-mode)
@@ -83,7 +73,10 @@
 (use-package typescript-mode
   :ensure t
   :defer t
+  :init
+  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
   :config
-  (setq-default typescript-indent-level 2))
+  (setq-default typescript-indent-level 2)
+  )
 
 (provide 'init-web)

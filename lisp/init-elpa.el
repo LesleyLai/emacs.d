@@ -33,6 +33,5 @@
   (customize-set-variable 'auto-package-update-hide-results t)
   (auto-package-update-maybe))
 
-(use-package counsel :ensure t :defer 1) ;; auto completion tool
 
 (provide 'init-elpa)

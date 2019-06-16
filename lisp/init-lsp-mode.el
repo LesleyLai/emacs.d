@@ -1,20 +1,19 @@
 (use-package lsp-mode
   :ensure t
-  :after c-mode c++-mode css-mode typescript-mode web-mode
-  js2-mode rust-mode python-mode
-  :hook (c-mode . lsp)
-  :hook (c++-mode . lsp)
-  :hook (css-mode . lsp)
-  :hook (python-mode . lsp)
-  :hook (html-mode . lsp)
-  :hook (typescript-mode . lsp)
-  :hook (web-mode . lsp)
-  :hook (js2-mode . lsp)
-  :hook (rust-mode . lsp)
+  :defer t
   :commands lsp
-  :config
-  (require 'lsp-imenu)
-  (add-hook 'lsp-after-open-hook 'lsp-enable-imenu)
+  :init
+  (setq lsp-auto-guess-root nil)
+  (setq lsp-prefer-flymake nil)
+  :hook ((c-mode . lsp)
+         (c++-mode . lsp)
+         (css-mode . lsp)
+         (python-mode . lsp)
+         (html-mode . lsp)
+         (typescript-mode . lsp)
+         (web-mode . lsp)
+         (js2-mode . lsp)
+         (rust-mode . lsp))
   )
 
 (use-package lsp-ui
@@ -35,8 +34,9 @@
   :init
   (push 'company-lsp company-backends)
   :config
-  (setq company-lsp-enable-recompletion t
+  (setq company-lsp-enable-recompletion 'auto
         company-lsp-enable-snippet t
+        company-lsp-filter-candidates nil
         company-lsp-cache-candidates t
         company-lsp-async t)
   )

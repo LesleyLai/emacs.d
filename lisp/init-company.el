@@ -5,15 +5,15 @@
 
 ;;; Code:
 (use-package company
-             :ensure t
-             :config
-             (add-hook 'after-init-hook 'global-company-mode)
+  :ensure t
+  :config
+  (add-hook 'after-init-hook 'global-company-mode)
 
-             ;; align annotations to the right tooltip border
-             (customize-set-variable 'company-tooltip-align-annotations 't)
+  ;; align annotations to the right tooltip border
+  (customize-set-variable 'company-tooltip-align-annotations 't)
 
-             ;; decrease delay before autocompletion popup shows
-             (customize-set-variable 'company-idle-delay .1))
+  ;; decrease delay before autocompletion popup shows
+  (customize-set-variable 'company-idle-delay .1))
 
 (use-package company-quickhelp
   :ensure t
