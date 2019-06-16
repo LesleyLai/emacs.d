@@ -30,7 +30,8 @@
 
 (use-package company-lsp
   :ensure t
-  :after company lsp-mode
+  :defer t
+  :after company lsp-mode yasnippet
   :init
   (push 'company-lsp company-backends)
   :config

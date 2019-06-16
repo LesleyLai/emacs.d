@@ -68,3 +68,8 @@ network-security.data
 quelpa
 transient
 .cache
+
+.last-package-update-day
+.lsp-session-v1
+amx-items
+session.*
