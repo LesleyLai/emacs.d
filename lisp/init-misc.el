@@ -43,6 +43,8 @@
 
 ;; Recent files
 (use-package recentf
+  ;; Loads after 1 second of idle time.
+  :init
   :config
   (customize-set-variable 'recentf-max-saved-items 50)
   (recentf-mode +1)

@@ -42,7 +42,6 @@
 (require 'init-asm)
 (require 'init-company)
 (require 'init-csv)
-(require 'init-css)
 (require 'init-cc-mode)
 (require 'init-dired)
 (require 'init-flycheck)
@@ -68,6 +67,7 @@
 (require 'init-writing)
 (require 'init-elm)
 (require 'init-latex)
+(require 'init-yasnippet)
 (require 'init-keybinding)
 
 ;;-------------------------------------------------------------------
@@ -82,7 +82,6 @@
                                init-multiple-cursors
                                init-ibuffer
                                init-spelling
-                               init-yasnippet
                                ))
   (idle-require-mode 1) ;; starts loading
   )

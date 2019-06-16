@@ -71,12 +71,22 @@
 
 ;; Typescript
 (use-package typescript-mode
-  :ensure t
+  :ensure
   :defer t
   :init
   (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
   :config
   (setq-default typescript-indent-level 2)
   )
+
+;; Rainbow mode
+(use-package rainbow-mode
+  :after js2-mode typescript-mode
+  :ensure
+  :config
+  (add-hook 'web-mode-hook 'rainbow-mode)
+  (add-hook 'css-mode-hook 'rainbow-mode)
+  (add-hook 'js2-mode-hook 'rainbow-mode)
+  (add-hook 'typescript-mode-hook 'rainbow-mode))
 
 (provide 'init-web)

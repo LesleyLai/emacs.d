@@ -2,7 +2,7 @@
   :ensure t
   :commands (yas-reload-all)
   :defer t
-  :init
+  :config
   (yas-reload-all)
   
   (defun yasnippet-generic-setup-for-mode-hook ()
