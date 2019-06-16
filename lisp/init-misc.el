@@ -39,11 +39,17 @@
 (add-hook 'css-mode-hook 'generic-programming-mode-hook-setup)
 
 ;;  Standard ML mode
-(use-package sml-mode :ensure t)
+(use-package sml-mode :ensure t :defer t)
 
 ;; Recent files
-(recentf-mode 1)
-(customize-set-variable 'recentf-max-saved-items 50)
+(use-package recentf
+  ;; Loads after 1 second of idle time.
+  :defer 1
+  :init
+  (customize-set-variable 'recentf-max-saved-items 50)
+  :config
+  (recentf-mode +1)
+  )
 
 ;; Back up
 ;; {{
@@ -86,12 +92,5 @@
 (customize-set-variable 'delete-by-moving-to-trash t)
 
 (customize-set-variable 'recentf-auto-cleanup 'never)
-
-;; benchmark initialization
-(use-package benchmark-init
-  :ensure t
-  :config
-  ;; To disable collection of benchmark data after init is done.
-  (add-hook 'after-init-hook 'benchmark-init/deactivate))
 
 (provide 'init-misc)

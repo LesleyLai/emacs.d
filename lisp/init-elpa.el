@@ -19,6 +19,6 @@
 (require 'bind-key)                ;; if you use any :bind variant
 ;; }}
 
-(use-package counsel :ensure t) ;; auto completion tool
+(use-package counsel :ensure t :defer 1) ;; auto completion tool
 
 (provide 'init-elpa)

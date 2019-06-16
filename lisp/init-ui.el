@@ -33,9 +33,11 @@
 ;; Git gutter
 (use-package git-gutter
   :ensure t
+  :defer 2
   :init
   (if *use-GUI*
-      (use-package git-gutter-fringe :ensure t))
+      (use-package git-gutter-fringe :ensure t :defer 2))
+  :config
   (global-git-gutter-mode)
   (customize-set-variable 'git-gutter:handled-backends '(svn hg git)))
 
@@ -78,7 +80,7 @@
 ;; No useless GUI features
 (customize-set-variable 'use-file-dialog nil)
 (customize-set-variable 'use-dialog-box nil)
-(when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(push '(tool-bar-lines . 0) default-frame-alist)
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (when (fboundp 'horizontal-scroll-bar-mode)
   (horizontal-scroll-bar-mode -1))

@@ -10,11 +10,13 @@
 
 (use-package ido-completing-read+
   :ensure t
+  :defer 1
   :config
   (ido-ubiquitous-mode 1)) ;; Use ido everywhere
 
 (use-package flx-ido
   :ensure t
+  :defer 1
   :config
   (flx-ido-mode +1)
   ;; disable ido faces to see flx highlights

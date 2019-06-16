@@ -56,7 +56,6 @@
                              (setup-tide-mode))
                            (company-mode t)))
 
-(flycheck-add-mode 'typescript-tslint 'web-mode)
 
 ;; Js2-mode
 (use-package js-mode
@@ -85,8 +84,5 @@
   :ensure t
   :config
   (setq-default typescript-indent-level 2))
-
-
-
 
 (provide 'init-web)

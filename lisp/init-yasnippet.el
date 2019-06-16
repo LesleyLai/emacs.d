@@ -1,6 +1,7 @@
 (use-package yasnippet
   :ensure t
   :commands (yas-reload-all)
+  :defer t
   :init
   (yas-reload-all)
   

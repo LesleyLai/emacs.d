@@ -25,19 +25,6 @@
 (require 'init-elpa)
 (require 'init-elisp)
 
-;; quelpa
-
-(unless (require 'quelpa nil t)
-  (with-temp-buffer
-    (url-insert-file-contents "https://framagit.org/steckerhalter/quelpa/raw/master/bootstrap.el")
-    (eval-buffer)))
-
-;; use package
-(quelpa
- '(quelpa-use-package
-   :fetcher git
-   :url "https://framagit.org/steckerhalter/quelpa-use-package.git"))
-(require 'quelpa-use-package)
 
 ;; Always compile packages, and use the newest version available.
 (use-package auto-compile
@@ -80,7 +67,6 @@
 (require 'init-sh)
 (require 'init-glsl-mode)
 (require 'init-treemacs)
-(require 'init-yasnippet)
 (require 'init-yaml)
 (require 'init-frame-hooks)
 (require 'init-speedbar)
@@ -101,6 +87,7 @@
                                init-multiple-cursors
                                init-ibuffer
                                init-spelling
+                               init-yasnippet
                                ))
   (idle-require-mode 1) ;; starts loading
   )

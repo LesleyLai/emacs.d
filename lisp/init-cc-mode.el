@@ -1,6 +1,7 @@
 ;; clang-format
 (use-package clang-format
   :ensure t
+  :defer 3
   :config
   (setq clang-format-style-option "llvm"))
 
@@ -17,19 +18,13 @@
     (add-hook 'cmake-mode-hook 'cmake-font-lock-activate))
   )
 
-(use-package lsp-clangd
-  :ensure
-  :hook
-  ((c-mode . lsp-clangd-c-enable)
-   (c++-mode . lsp-clangd-c++-enable)
-   (objc-mode . lsp-clangd-objc-enable)))
-
 ;; Modern c++ syntax highlighter
 (use-package modern-cpp-font-lock :ensure t)
 
 (use-package cc-mode
   :after modern-cpp-font-lock
-  :init
+  :defer 2
+  :config
   (modern-c++-font-lock-global-mode t)
 )
 

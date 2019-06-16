@@ -26,8 +26,6 @@
 (use-package htmlize
   :ensure t)
 
-;; Update quelpa
-(quelpa-self-upgrade)
 
 ;;  menu bar stuffs
 ;; {{
