@@ -46,7 +46,7 @@ elm-oracle is needed for elm-auto-completion.
 Some tools that needed for ~rust-mode~, ~lsp-rust~, and ~cargo-mode~.
 
 #+begin_src text
-rustup component add rls-preview rust-analysis rust-src
+rustup component add rls rust-analysis rust-src
 cargo install rustfmt
 cargo install cargo-check
 rustup component add clippy-preview
