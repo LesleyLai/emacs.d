@@ -48,8 +48,7 @@
   :ensure t
   :init
   (use-package smart-mode-line-powerline-theme
-    :ensure t
-    :defer t)
+    :ensure t)
   (setq sml/theme 'light-powerline)
   (setq sml/no-confirm-load-theme t)
   
