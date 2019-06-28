@@ -27,6 +27,7 @@
       (choc-1 "#e9b96e") (choc-2 "#c17d11") (choc-3 "#8f5902")
       (cham-1 "#8ae234") (cham-2 "#73d216") (cham-3 "#4e9a06")
       (blue-1 "#729fcf") (blue-2 "#3465a4") (blue-3 "#204a87")
+      (blue-4 "#092e64")
       (plum-1 "#ad7fa8") (plum-2 "#75507b") (plum-3 "#5c3566")
       (red-1 "#ef2929")  (red-2 "#cc0000")  (red-3 "#a40000")
       (alum-1 "#eeeeec") (alum-2 "#d3d7cf") (alum-3 "#babdb6")
@@ -68,9 +69,7 @@
    `(font-lock-string-face ((,class (:foreground ,"#008000"))))
    `(font-lock-type-face ((,class (:foreground ,"#800080"))))
    `(font-lock-preprocessor-face ((,class (:foreground ,"#000080"))))
-
-   
-   ;; `(font-lock-variable-name-face ((,class (:foreground ,orange-4))))
+   `(font-lock-variable-name-face ((,class (:foreground ,orange-4))))
    ;; ;; Button and link faces
    `(link ((,class (:underline t :foreground ,"#0000FE"))))
    ;; `(link-visited ((,class (:underline t :foreground ,blue-2))))
@@ -95,9 +94,6 @@
    ;; `(ediff-fine-diff-A ((,class (:background ,plum-1))))
    ;; `(ediff-current-diff-B ((,class (:background ,butter-1))))
    ;; `(ediff-fine-diff-B ((,class (:background ,orange-1))))
-   ;; ;; Flyspell
-   ;; `(flyspell-duplicate ((,class (:underline ,cccorange-1))))
-   ;; `(flyspell-incorrect ((,class (:underline ,red-1))))
    )
 
   (custom-theme-set-variables
