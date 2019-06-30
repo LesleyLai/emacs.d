@@ -1,6 +1,8 @@
 (use-package org
   :defer t
   :ensure org-plus-contrib
+  :init
+  :bind ("C-x a" . org-agenda)
   :config
   (progn
     (defun org-mode-hook-setup ()
