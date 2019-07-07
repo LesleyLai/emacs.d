@@ -17,9 +17,6 @@ Python language server
 pip install 'python-language-server[all]'
 #+end_src
 
-*** jedi
-The anaconda-mode uses ~jedi~ library to do completion.
-
 ** HTML & CSS
 Install [[https://github.com/vscode-langservers/vscode-html-languageserver][HTML language Server]] and [[https://github.com/vscode-langservers/vscode-css-languageserver-bin][CSS language server]] by
 #+begin_src shell
