@@ -35,7 +35,8 @@
     (add-hook 'emacs-lisp-mode-hook 'recompile-elc-on-save)
     (add-to-list 'completion-styles 'initials t)
     (add-hook 'emacs-lisp-mode-hook 'elisp-mode-hook-setup))
-  :bind (("C-c C-c" . eval-region-or-buffer)
+  :bind (:map emacs-lisp-mode-map
+         ("C-c C-c" . eval-region-or-buffer)
          ("<f5>" . eval-region-or-buffer))
   :interpreter (("emacs" . emacs-lisp-mode))
   )
