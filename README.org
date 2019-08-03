@@ -35,10 +35,6 @@ Install [[https://github.com/vscode-langservers/vscode-html-languageserver][HTML
 Tslint is used to linting typescript codes
 ~npm install -g tslint~
 
-** Elm
-elm-oracle is needed for elm-auto-completion.
-~npm install -g elm-oracle~
-
 ** Rust
 Some tools that needed for ~rust-mode~, ~lsp-rust~, and ~cargo-mode~.
 
