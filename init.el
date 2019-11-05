@@ -49,6 +49,7 @@
 (require 'init-ido)
 (require 'init-lisp)
 (require 'init-lsp-mode)
+(require 'init-fsharp)
 (require 'init-ui)
 (require 'init-markdown)
 (require 'init-misc)
