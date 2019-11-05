@@ -31,10 +31,6 @@ Install [[https://github.com/vscode-langservers/vscode-html-languageserver][HTML
 [sudo] npm i -g typescript
 #+end_src
 
-*** tslint
-Tslint is used to linting typescript codes
-~npm install -g tslint~
-
 ** Rust
 Some tools that needed for ~rust-mode~, ~lsp-rust~, and ~cargo-mode~.
 
