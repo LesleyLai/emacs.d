@@ -5,7 +5,6 @@
   :defer t
   :config
   (add-hook 'prog-mode-hook 'global-flycheck-mode)
-  (add-hook 'css-mode-hook 'global-flycheck-mode)
-  (flycheck-add-mode 'typescript-tslint 'web-mode))
+  (add-hook 'css-mode-hook 'global-flycheck-mode))
 
 (provide 'init-flycheck)
