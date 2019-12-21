@@ -31,6 +31,27 @@ Install [[https://github.com/vscode-langservers/vscode-html-languageserver][HTML
 [sudo] npm i -g typescript
 #+end_src
 
+** OCaml
+Follow the instruction on https://ocaml.org/docs/install.html#OPAM to setup OPAM and OCamlc. And install the following packages:
+
+#+begin_src sh
+opam install utop # Better repl
+opam install ocamlformat # Formatter
+opam install merlin # IDE features
+#+end_src
+
+*** On Windows
+Install opam on WSL and use [[https://github.com/leongrdic/wsl-alias][wsl-alias]]. Add =eval $(opam env)= to =~/.wsl-alias/env.sh=.
+
+#+begin_src sh
+b wsl-alias add opam opam
+b wsl-alias add ocamlformat ocamlformat
+b wsl-alias add ocaml ocaml
+b wsl-alias add ocamlc ocamlc
+b wsl-alias add utop utop
+b wsl-alias add ocamlmerlin ocamlmerlin
+#+end_src
+
 ** Rust
 Some tools that needed for ~rust-mode~, ~lsp-rust~, and ~cargo-mode~.
 

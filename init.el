@@ -67,6 +67,7 @@
 (require 'init-speedbar)
 (require 'init-writing)
 (require 'init-elm)
+(require 'init-ocaml)
 (require 'init-latex)
 (require 'init-yasnippet)
 (require 'init-keybinding)
