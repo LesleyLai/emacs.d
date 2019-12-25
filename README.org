@@ -50,6 +50,7 @@ b wsl-alias add ocaml ocaml
 b wsl-alias add ocamlc ocamlc
 b wsl-alias add utop utop
 b wsl-alias add ocamlmerlin ocamlmerlin
+b wsl-alias add ocamlfind ocamlfind
 #+end_src
 
 ** Rust
