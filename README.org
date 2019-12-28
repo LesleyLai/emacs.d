@@ -38,6 +38,7 @@ Follow the instruction on https://ocaml.org/docs/install.html#OPAM to setup OPAM
 opam install utop # Better repl
 opam install ocamlformat # Formatter
 opam install merlin # IDE features
+opam install ocp-indent
 #+end_src
 
 *** On Windows
@@ -50,6 +51,8 @@ b wsl-alias add ocaml ocaml
 b wsl-alias add ocamlc ocamlc
 b wsl-alias add utop utop
 b wsl-alias add ocamlmerlin ocamlmerlin
+b wsl-alias add dune dune
+b wsl-alias add ocp-indent ocp-indent
 #+end_src
 
 ** Rust

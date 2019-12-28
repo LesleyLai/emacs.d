@@ -50,7 +50,16 @@
       )
 
 
+(use-package dune
+  :ensure
+  :when (executable-find "dune")
+  :mode "\dune\\'"
+  )
 
+(use-package ocp-indent
+  :ensure
+  :when (executable-find "ocp-indent")
+  :hook (tuareg-mode . ocp-setup-indent))
 
 
 (provide 'init-ocaml)

@@ -22,6 +22,21 @@
       (fci-mode 1)
       (setq-local eos/fci-disabled nil))))
 
+;; Remove trailing whitespaces
+(setq show-trailing-whitespace t)
+(use-package ws-butler
+  :ensure
+  :diminish ws-butler-mode
+  :commands (ws-butler-mode)
+  :init
+  (add-hook 'prog-mode-hook #'ws-butler-mode)
+  (add-hook 'org-mode-hook #'ws-butler-mode)
+  (add-hook 'text-mode-hook #'ws-butler-mode)
+  (add-hook 'proof-mode-hook #'ws-butler-mode)
+  (add-hook 'bibtex-mode-hook #'ws-butler-mode)
+  :config
+  (setq ws-butler-convert-leading-tabs-or-spaces t))
+
 
 (defun generic-programming-mode-hook-setup ()
   (make-local-variable 'column-number-mode)
