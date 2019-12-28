@@ -53,6 +53,7 @@ b wsl-alias add utop utop
 b wsl-alias add ocamlmerlin ocamlmerlin
 b wsl-alias add dune dune
 b wsl-alias add ocp-indent ocp-indent
+b wsl-alias add ocamlfind ocamlfind
 #+end_src
 
 ** Rust
