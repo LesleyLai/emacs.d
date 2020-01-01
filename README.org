@@ -17,6 +17,11 @@ Python language server
 pip install 'python-language-server[all]'
 #+end_src
 
+** Bash
+#+begin_src shell
+[sudo] npm install -g bash-language-server
+#+end_src
+
 ** HTML & CSS
 Install [[https://github.com/vscode-langservers/vscode-html-languageserver][HTML language Server]] and [[https://github.com/vscode-langservers/vscode-css-languageserver-bin][CSS language server]] by
 #+begin_src shell

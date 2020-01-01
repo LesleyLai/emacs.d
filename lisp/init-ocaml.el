@@ -5,19 +5,28 @@
   (setq tuareg-interactive-program "utop"
         tuareg-opam "opam"))
 
+
+;; Reason
+(use-package reason-mode
+  :ensure t
+  )
+
 ;; Interective Repl
 (use-package utop
+  :after (tuareg reason-mode)
   :ensure
-  :hook (tuareg-mode . utop-minor-mode))
+  :hook (tuareg-mode . utop-minor-mode)
+  :hook (reason-mode . utop-minor-mode))
 
 (use-package ocamlformat
   :commands ocamlformat
   :custom
   (ocamlformat-command "ocamlformat")
-  :hook (tuareg-mode .
-                     (lambda ()
-                         (add-hook 'before-save-hook #'ocamlformat-before-save)))
-  )
+  :hook (tuareg-mode . (lambda ()
+                         (if tuareg-mode
+                             (add-hook 'before-save-hook #'ocamlformat-before-save)
+                           (remove-hook 'before-save-hook #'ocamlformat-before-save)
+                           ))))
 
 
 (use-package merlin

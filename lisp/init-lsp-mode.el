@@ -1,19 +1,20 @@
 (use-package lsp-mode
   :ensure t
-  :defer t
-  :commands lsp
+    :commands (lsp lsp-deferred)
   :init
   (setq lsp-auto-guess-root nil)
   (setq lsp-prefer-flymake nil)
-  :hook ((c-mode . lsp)
-         (c++-mode . lsp)
-         (css-mode . lsp)
-         (python-mode . lsp)
-         (html-mode . lsp)
-         (typescript-mode . lsp)
-         (web-mode . lsp)
-         (js2-mode . lsp)
-         (rust-mode . lsp))
+  :hook ((c-mode . lsp-deferred)
+         (c++-mode . lsp-deferred)
+         (css-mode . lsp-deferred)
+         (python-mode . lsp-deferred)
+         (html-mode . lsp-deferred)
+         (typescript-mode . lsp-deferred)
+         (web-mode . lsp-deferred)
+         (js2-mode . lsp-deferred)
+         (rust-mode . lsp-deferred)
+         (sh-mode . lsp-deferred)
+         )
   )
 
 (use-package lsp-ui

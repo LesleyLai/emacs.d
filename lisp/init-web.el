@@ -19,11 +19,6 @@
 (use-package web-mode
   :ensure t
   :after company company-web-html
-  )
-
-;; Reason
-(use-package reason-mode
-  :ensure t
   :config
   (remove-hook 'web-mode-hook 'er/add-web-mode-expansions)
   (customize-set-variable 'web-mode-markup-indent-offset 2)
