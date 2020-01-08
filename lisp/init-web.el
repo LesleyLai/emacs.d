@@ -85,4 +85,20 @@
   (add-hook 'js2-mode-hook 'rainbow-mode)
   (add-hook 'typescript-mode-hook 'rainbow-mode))
 
+;; Prettier
+(use-package prettier-js
+  :after (markdown-mode web-mode js2-mode web-mode typescript-mode)
+  :ensure
+  :commands prettier-js-mode
+  :init
+  (when (executable-find "gdiff")
+    (setq prettier-js-diff-command "gdiff"))
+  :hook ((css-mode . prettier-js-mode)
+         (web-mode . prettier-js-mode)
+         (markdown-mode . prettier-js-mode)
+         (js2-mode . prettier-js-mode)
+         (typescript-mode . prettier-js-mode)
+         (json-mode . prettier-js-mode))
+  )
+
 (provide 'init-web)

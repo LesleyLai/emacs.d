@@ -30,13 +30,19 @@ Install [[https://github.com/vscode-langservers/vscode-html-languageserver][HTML
 #+end_src
 
 ** Javascript & Typescript
+*** Linter and formatters
+#+begin_src shell
+[sudo] npm i -g eslint
+[sudo] npm i -g prettier
+#+end_src
+
 *** lsp mode support
 #+begin_src shell
 [sudo] npm i -g typescript-language-server
 [sudo] npm i -g typescript
 #+end_src
 
-** OCaml
+** OCaml/Reaspn
 Follow the instruction on https://ocaml.org/docs/install.html#OPAM to setup OPAM and OCamlc. And install the following packages:
 
 #+begin_src sh
@@ -44,6 +50,7 @@ opam install utop # Better repl
 opam install ocamlformat # Formatter
 opam install merlin # IDE features
 opam install ocp-indent
+opam install reaspn # Reason ML
 #+end_src
 
 *** On Windows
