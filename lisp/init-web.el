@@ -47,7 +47,11 @@
 
 (use-package json-mode
   :ensure
-  :mode "\\.json\\'")
+  :mode "\\.json\\'"
+  :config
+  (customize-set-variable 'json-reformat:indent-width 2)
+  (customize-set-variable 'js-indent-level 2)
+  )
 
 ;; Js2-mode
 (use-package js2-mode
