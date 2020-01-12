@@ -58,7 +58,6 @@
         ((reason-mode tuareg-mode caml-mode) . merlin-eldoc-setup))
       )
 
-
 (use-package dune
   :ensure
   :when (executable-find "dune")
