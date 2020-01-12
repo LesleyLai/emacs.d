@@ -1,4 +1,4 @@
-;; Author: Lesley Lai <laisililai@live.cn>
+;; Author: Lesley Lai <lesley@lesleylai.info>
 ;;
 ;; Note: Mimics the Qt Creators' default color theme.
 
@@ -9,11 +9,6 @@
   "Qtcreator theme options. Reload the theme after changing to see effect."
   :group 'faces)
 
-(defcustom qtcreator-theme-bold-current-linum t
-  " Bold the current line number if you have opened the `linum-mode'."
-  :type 'boolean
-  :group 'qtcreator-theme)
-
 (unless (>= emacs-major-version 24)
   (error "qtcreator-theme requires Emacs 24 or later."))
 
@@ -21,6 +16,8 @@
 
 (let ((class '((class color) (min-colors 89)))
       ;; Tango palette colors.
+
+      (white "#FFFFFF") (black "#000000")
 
       (butter-1 "#fce94f") (butter-2 "#edd400") (butter-3 "#c4a000")
       (orange-1 "#fcaf3e") (orange-2 "#f57900") (orange-3 "#ce5c00")
@@ -37,15 +34,14 @@
 
   (custom-theme-set-faces
    'qtcreator
-   `(default ((t (:foreground ,"#000000" :background ,"#FFFFFF"))))
+   `(default ((t (:foreground ,black :background ,white))))
    ;; ;; Highlighting faces
    ;; `(fringe ((,class (:background ,alum-2))))
    ;; `(highlight ((,class (:background ,alum-3))))
-    `(region ((t (:foreground "#FFFFFF" :background "#2D83DE"))))
+    `(region ((t (:foreground white :background "#2D83DE"))))
    ;; `(secondary-selection ((,class (:background ,blue-0))))
-   `(isearch ((,class (:foreground "#ffffff" :background ,orange-3))))
+   `(isearch ((,class (:foreground white :background ,orange-3))))
    `(lazy-highlight ((,class (:background ,"#FEEE0B"))))
-   `(linum ((,class (:inherit default :background ,"#CDCDCD" :foreground ,"#ABABAB"))))
    ;; `(trailing-whitespace ((,class (:background ,red-1))))
    ;; ;; Mode line faces
    ;; `(mode-line ((,class (:box (:line-width -1 :style released-button)
@@ -73,27 +69,15 @@
    ;; ;; Button and link faces
    `(link ((,class (:underline t :foreground ,"#0000FE"))))
    ;; `(link-visited ((,class (:underline t :foreground ,blue-2))))
+
+   ;; Bold line number currently pointed by cursor
+   `(line-number ((,class (:inherit default :background ,"#CDCDCD" :foreground ,"#ABABAB"))))
+   `(line-number-current-line ((t :inherit line-number :weight bold :foreground ,"#888888")))
    
    ;; Dired+
    '(diredp-dir-name ((t (:foreground "blue" :weight bold))))
    '(diredp-dir-priv ((t (:background "LightGray" :foreground "blue" :weight bold))))
    '(diredp-rare-priv ((t (:background "SpringGreen" :foreground "Magenta" :weight bold))))
-   
-   ;; ;; Message faces
-   ;; `(message-header-name ((,class (:foreground ,blue-3))))
-   ;; `(message-header-cc ((,class (:foreground ,butter-3))))
-   ;; `(message-header-other ((,class (:foreground ,choc-2))))
-   ;; `(message-header-subject ((,class (:foreground ,red-3))))
-   ;; `(message-header-to ((,class (:weight bold :foreground ,butter-3))))
-   ;; `(message-cited-text ((,class (:slant italic :foreground ,alum-5))))
-   ;; `(message-separator ((,class (:weight bold :foreground ,cham-3))))
-   ;; ;; SMerge
-   ;; `(smerge-refined-change ((,class (:background ,plum-1))))
-   ;; ;; Ediff
-   ;; `(ediff-current-diff-A ((,class (:background ,blue-1))))
-   ;; `(ediff-fine-diff-A ((,class (:background ,plum-1))))
-   ;; `(ediff-current-diff-B ((,class (:background ,butter-1))))
-   ;; `(ediff-fine-diff-B ((,class (:background ,orange-1))))
    )
 
   (custom-theme-set-variables
@@ -102,45 +86,6 @@
 				      ,blue-3 ,plum-3 ,blue-1 ,alum-1])
    `(git-gutter:modified-sign "✱"))
   )
-
-
-
-;;----------------------------------------------------------------------------
-;;  Bold line number currently pointed by cursor
-;;----------------------------------------------------------------------------
-;; See http://stackoverflow.com/questions/10591334/colorize-current-line-number
-
-(defface current-linum
-  `((t :inherit linum :weight bold :foreground ,"#888888"))
-  "Face for the current line number."
-  :group 'linum)
-
-(defvar current-linum-format-string "%3d")
-
-(add-hook 'linum-before-numbering-hook 'current-linum-get-format-string)
-
-(defun current-linum-get-format-string ()
-  (let* ((width (1+  (length (number-to-string
-                             (count-lines (point-min) (point-max))))))
-         (format (concat "%" (number-to-string width) "d")))
-    (setq current-linum-format-string format)))
-
-(defvar current-linum 0)
-
-(setq linum-format 'current-linum-format)
-
-(defun current-linum-format (line-number)
-  (propertize (format current-linum-format-string line-number) 'face
-              (if (eq line-number current-linum)
-                  'current-linum
-                'linum)))
-
-(defadvice linum-update (around current-linum-update activate compile)
-  (if qtcreator-theme-bold-current-linum
-    (let ((current-linum (line-number-at-pos)))
-      ad-do-it)))
-
-;;(ad-activate 'linum-update)
 
 ;;----------------------------------------------------------------------------
 
