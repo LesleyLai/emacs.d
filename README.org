@@ -50,7 +50,7 @@ opam install utop # Better repl
 opam install ocamlformat # Formatter
 opam install merlin # IDE features
 opam install ocp-indent
-opam install reaspn # Reason ML
+opam install reason # Reason ML
 #+end_src
 
 *** On Windows

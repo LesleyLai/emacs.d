@@ -12,78 +12,78 @@
 (unless (>= emacs-major-version 24)
   (error "qtcreator-theme requires Emacs 24 or later."))
 
-;;  LocalWords:  pre
+;;  LocalWords:  pre flycheck
 
 (let ((class '((class color) (min-colors 89)))
       ;; Tango palette colors.
 
       (white "#FFFFFF") (black "#000000")
 
-      (butter-1 "#fce94f") (butter-2 "#edd400") (butter-3 "#c4a000")
-      (orange-1 "#fcaf3e") (orange-2 "#f57900") (orange-3 "#ce5c00")
-      (choc-1 "#e9b96e") (choc-2 "#c17d11") (choc-3 "#8f5902")
-      (cham-1 "#8ae234") (cham-2 "#73d216") (cham-3 "#4e9a06")
-      (blue-1 "#729fcf") (blue-2 "#3465a4") (blue-3 "#204a87")
-      (blue-4 "#092e64")
-      (plum-1 "#ad7fa8") (plum-2 "#75507b") (plum-3 "#5c3566")
-      (red-1 "#ef2929")  (red-2 "#cc0000")  (red-3 "#a40000")
-      (alum-1 "#eeeeec") (alum-2 "#d3d7cf") (alum-3 "#babdb6")
-      (alum-4 "#888a85") (alum-5 "#5f615c") (alum-6 "#2e3436")
-      ;; Not in Tango palette; used for better contrast.
-      (cham-4 "#346604") (blue-0 "#8cc4ff") (orange-4 "#b35000"))
+      (bg-0 "#EFEFEF")
+      (fg-0 "#ABABAB") (fg-1 "#888888")
+      (red-0 "#FE0000")
+      (orange-1 "#ce5c00") (orange-2 "#b35000") (orange-3 "#EFC846")
+      (yellow-0 "#FEEE0B") (yellow-1 "#808000")
+      (green-0 "#008000") (green-1 "#B4EDB3")
+      (blue-0 "#2D83DE") (blue-1 "#0000FE") (blue-2 "#000080")
+      (cyan-1 "#00677C")
+      (purple-0 "#800080")
+      )
 
   (custom-theme-set-faces
    'qtcreator
-   `(default ((t (:foreground ,black :background ,white))))
-   ;; ;; Highlighting faces
-   ;; `(fringe ((,class (:background ,alum-2))))
-   ;; `(highlight ((,class (:background ,alum-3))))
-    `(region ((t (:foreground white :background "#2D83DE"))))
-   ;; `(secondary-selection ((,class (:background ,blue-0))))
-   `(isearch ((,class (:foreground white :background ,orange-3))))
-   `(lazy-highlight ((,class (:background ,"#FEEE0B"))))
-   ;; `(trailing-whitespace ((,class (:background ,red-1))))
-   ;; ;; Mode line faces
-   ;; `(mode-line ((,class (:box (:line-width -1 :style released-button)
-   ;;  		 :background ,alum-2 :foreground ,alum-6))))
-   ;; `(mode-line-inactive ((,class (:box (:line-width -1 :style released-button)
-   ;;  			  :background ,alum-4 :foreground ,alum-6))))
-   ;; ;; Escape and prompt faces
-   ;; `(minibuffer-prompt ((,class (:weight bold :foreground ,blue-3))))
-   ;; `(escape-glyph ((,class (:foreground ,red-3))))
-   ;; `(error ((,class (:foreground ,red-3))))
-   ;; `(warning ((,class (:foreground ,orange-3))))
-   ;; `(success ((,class (:foreground ,cham-3))))
-   `(show-paren-match ((,t (:background "#B4EDB3" :foreground "#FE0000"))))
-   ;; ;; Font lock faces
-   `(font-lock-builtin-face ((,t (:foreground ,"#808000"))))
-   `(font-lock-comment-face ((,t (:foreground ,"#008000"))))
+
+   ;; Built-in
+   ;; basic coloring
+   `(default ((t (:foreground , black :background , white))))
+   `(fringe ((,class (:background ,bg-0))))
+   `(region ((t (:foreground ,white :background ,blue-0))))
+   `(isearch ((,class (:foreground ,white :background ,orange-1))))
+   `(lazy-highlight ((,class (:background ,yellow-0))))
+   `(show-paren-match ((,t (:background ,green-1 :foreground ,red-0))))
+
+   ;; Font lock faces
+   `(font-lock-builtin-face ((,t (:foreground ,yellow-1))))
+   `(font-lock-comment-face ((,t (:foreground ,green-0))))
    `(font-lock-comment-delimiter-face((t (:inherit font-lock-comment-face))))
-   `(font-lock-constant-face ((,t (:foreground ,"#000080"))))
-   ;; `(font-lock-function-name-face ((,class (:foreground ,red-3))))
-   `(font-lock-keyword-face ((,class (:foreground ,"#808000"))))
-   `(font-lock-string-face ((,class (:foreground ,"#008000"))))
-   `(font-lock-type-face ((,class (:foreground ,"#800080"))))
-   `(font-lock-preprocessor-face ((,class (:foreground ,"#000080"))))
-   `(font-lock-variable-name-face ((,class (:foreground ,orange-4))))
-   ;; ;; Button and link faces
-   `(link ((,class (:underline t :foreground ,"#0000FE"))))
+   `(font-lock-constant-face ((,t (:foreground ,blue-2))))
+   `(font-lock-function-name-face ((,class (:foreground ,cyan-1))))
+   `(font-lock-keyword-face ((,class (:foreground ,yellow-1))))
+   `(font-lock-string-face ((,class (:foreground ,green-0))))
+   `(font-lock-type-face ((,class (:foreground ,purple-0))))
+   `(font-lock-preprocessor-face ((,class (:foreground ,blue-2))))
+   `(font-lock-variable-name-face ((,class (:foreground ,orange-2))))
+
+   ;; Link faces
+   `(link ((,class (:underline t :foreground ,blue-1))))
    ;; `(link-visited ((,class (:underline t :foreground ,blue-2))))
 
-   ;; Bold line number currently pointed by cursor
-   `(line-number ((,class (:inherit default :background ,"#CDCDCD" :foreground ,"#ABABAB"))))
-   `(line-number-current-line ((t :inherit line-number :weight bold :foreground ,"#888888")))
-   
-   ;; Dired+
-   '(diredp-dir-name ((t (:foreground "blue" :weight bold))))
-   '(diredp-dir-priv ((t (:background "LightGray" :foreground "blue" :weight bold))))
-   '(diredp-rare-priv ((t (:background "SpringGreen" :foreground "Magenta" :weight bold))))
+   ;; Line-number-mode
+   `(line-number ((,class (:inherit default :background ,bg-0 :foreground ,fg-0))))
+   `(line-number-current-line ((t :inherit line-number :weight bold :foreground ,fg-1)))
    )
+
+  ;; flycheck
+  `(flycheck-error
+    ((((supports :underline (:style wave)))
+      (:underline (:style wave :color ,red-0) :inherit unspecified))
+     (t (:foreground ,red-0 :weight bold :underline t))))
+  `(flycheck-warning
+    ((((supports :underline (:style wave)))
+      (:underline (:style wave :color ,orange-3) :inherit unspecified))
+     (t (:foreground ,orange-3 :weight bold :underline t))))
+  `(flycheck-info
+    ((((supports :underline (:style wave)))
+      (:underline (:style wave :color ,green-0) :inherit unspecified))
+     (t (:foreground ,green-0 :weight bold :underline t))))
+  `(flycheck-fringe-error ((t (:foreground ,red-0 :weight bold))))
+  `(flycheck-fringe-warning ((t (:foreground ,orange-3 :weight bold))))
+  `(flycheck-fringe-info ((t (:foreground ,green-0 :weight bold))))
 
   (custom-theme-set-variables
    'qtcreator
-   `(ansi-color-names-vector [,alum-6 ,red-3 ,cham-3 ,butter-3
-				      ,blue-3 ,plum-3 ,blue-1 ,alum-1])
+   ;; `(ansi-color-names-vector [,alum-6 ,red-3 ,cham-3 ,butter-3
+   ;;      			      ,blue-3 ,plum-3 ,blue-1 ,alum-1])
    `(git-gutter:modified-sign "✱"))
   )
 
