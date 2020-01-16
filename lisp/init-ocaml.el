@@ -5,10 +5,11 @@
   (setq tuareg-interactive-program "utop"
         tuareg-opam "opam"))
 
-
 ;; Reason
 (use-package reason-mode
   :ensure t
+  :hook
+  (reason-mode . (lambda () (add-hook 'before-save-hook 'refmt-before-save)))
   )
 
 ;; Interective Repl
