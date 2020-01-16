@@ -25,9 +25,8 @@
 
 ;; Line number
 (use-package display-line-numbers
-  :if (version<= "26.0.50" emacs-version)
-  :init
-  (global-display-line-numbers-mode)
+  :hook ((prog-mode . display-line-numbers-mode)
+         (text-mode . display-line-numbers-mode))
   )
 
 ;; Git gutter
