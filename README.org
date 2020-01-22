@@ -28,7 +28,10 @@ Install [[https://github.com/vscode-langservers/vscode-html-languageserver][HTML
 [sudo] npm install -g vscode-html-languageserver-bin
 [sudo] npm install -g vscode-css-languageserver-bin
 #+end_src
-
+** Elm
+#+begin_src shell
+[sudo] npm i -g @elm-tooling/elm-language-server
+#+end_src
 ** Javascript & Typescript
 *** Linter and formatters
 #+begin_src shell
@@ -40,6 +43,16 @@ Install [[https://github.com/vscode-langservers/vscode-html-languageserver][HTML
 #+begin_src shell
 [sudo] npm i -g typescript-language-server
 [sudo] npm i -g typescript
+#+end_src
+
+** Json
+#+begin_src shell
+[sudo] npm i -g vscode-json-languageserver
+#+end_src
+
+** Markdown lint
+#+begin_src shell
+[sudo] npm install -g markdownlint-cli
 #+end_src
 
 ** OCaml/Reaspn
@@ -66,6 +79,7 @@ b wsl-alias add ocamlmerlin ocamlmerlin
 b wsl-alias add dune dune
 b wsl-alias add ocp-indent ocp-indent
 b wsl-alias add ocamlfind ocamlfind
+b wsl-alias add refmt refmt
 #+end_src
 
 ** Rust
