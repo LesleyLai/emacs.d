@@ -1,4 +1,3 @@
-;; Hook for general programming
 (use-package idle-highlight-mode :ensure t)
 
 (use-package fill-column-indicator

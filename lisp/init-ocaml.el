@@ -31,7 +31,6 @@
                            (remove-hook 'before-save-hook #'ocamlformat-before-save)
                            ))))
 
-
 (use-package merlin
   :ensure
   :custom
@@ -71,6 +70,5 @@
   :ensure
   :when (executable-find "ocp-indent")
   :hook (tuareg-mode . ocp-setup-indent))
-
 
 (provide 'init-ocaml)

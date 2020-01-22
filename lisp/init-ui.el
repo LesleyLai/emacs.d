@@ -109,6 +109,14 @@
   (remove-hook 'paradox-after-execute-functions #'paradox--report-buffer-print)
 )
 
-
+(use-package helpful
+  :ensure t
+  :defer t
+  :bind
+  ("C-h f" . helpful-callable)
+  ("C-h v" . helpful-variable)
+  ("C-h k" . helpful-key)
+  ("C-h C" . helpful-command)
+  )
 
 (provide 'init-ui)
