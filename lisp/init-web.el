@@ -105,4 +105,7 @@
          (json-mode . prettier-js-mode))
   )
 
+;; Auto revert package.json
+(add-to-list 'revert-without-query "package.jsonS")
+
 (provide 'init-web)

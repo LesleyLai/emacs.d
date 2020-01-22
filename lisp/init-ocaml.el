@@ -10,6 +10,8 @@
   :ensure t
   :hook
   (reason-mode . (lambda () (add-hook 'before-save-hook 'refmt-before-save)))
+  :config
+  (add-to-list 'revert-without-query "\\.bs.js$")
   )
 
 ;; Interective Repl

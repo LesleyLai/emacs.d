@@ -42,7 +42,6 @@
   (make-local-variable 'column-number-mode)
   (column-number-mode t)
   (idle-highlight-mode t)
-  (flyspell-prog-mode) ; Spell checking in comment
   (electric-pair-mode t)
   (setq tab-always-indent 'complete)
   (unless (string= major-mode "web-mode")
@@ -77,9 +76,6 @@
 (customize-set-variable 'auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
 ;; }}
 
-;; auto revert
-(customize-set-variable 'revert-without-query '("package.json"))
-
 ;; History
 ;;  From http://www.wisdomandwonder.com/wp-content/uploads/2014/03/C3F.html
 (use-package savehist
@@ -105,7 +101,6 @@
 
  ;; File delete to trash can
 (customize-set-variable 'delete-by-moving-to-trash t)
-
 (customize-set-variable 'recentf-auto-cleanup 'never)
 
 (use-package exec-path-from-shell
