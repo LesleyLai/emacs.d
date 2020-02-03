@@ -95,3 +95,6 @@ rustup component add clippy-preview
 ** Yaml
 Install [[https://github.com/adrienverge/yamllint][yamllint]]
 ~pip install yamllint~
+
+Install [[https://github.com/redhat-developer/yaml-language-server][yaml-language-server]]
+npm install -g yaml-language-server

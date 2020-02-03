@@ -7,6 +7,7 @@
   :hook ((c-mode . lsp-deferred)
          (c++-mode . lsp-deferred)
          (css-mode . lsp-deferred)
+         (elm-mode . lsp-deferred)
          (python-mode . lsp-deferred)
          (html-mode . lsp-deferred)
          (typescript-mode . lsp-deferred)
@@ -14,6 +15,7 @@
          (js2-mode . lsp-deferred)
          (rust-mode . lsp-deferred)
          (sh-mode . lsp-deferred)
+         (yaml-mode . lsp-deferred)
          )
   )
 
