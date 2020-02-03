@@ -9,6 +9,14 @@
 (use-package cmake-mode
   :ensure)
 
+(use-package highlight-doxygen
+  :ensure t
+  :after cc-mode
+  :defer t
+  :hook ((cc-mode . highlight-doxygen-mode)
+         (c-mode . highlight-doxygen-mode)
+         (c++-mode . highlight-doxygen-mode)))
+
 (use-package cmake-font-lock
   :ensure
   :after (cmake-mode)
