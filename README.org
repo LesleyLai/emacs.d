@@ -9,6 +9,11 @@ Install those optional third-party packages to setup for certain languages.
 ** C/C++
 *Clangd* is used for C and C++ support.
 
+** CMake
+#+begin_src shell
+pip install cmake-language-server
+#+end_src
+
 ** Python
 Python language server
 [[https://github.com/palantir/python-language-server][plys]] needs to be installed:
