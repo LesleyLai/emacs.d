@@ -12,6 +12,7 @@
          (html-mode . lsp-deferred)
          (js2-mode . lsp-deferred)
          (json-mode . lsp-deferred)
+         (LaTeX-mode . lsp-deferred)
          (python-mode . lsp-deferred)
          (powershell-mode . lsp-deferred)
          (rust-mode . lsp-deferred)

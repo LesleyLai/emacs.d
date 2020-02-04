@@ -60,6 +60,8 @@ Install [[https://github.com/vscode-langservers/vscode-html-languageserver][HTML
 [sudo] npm install -g markdownlint-cli
 #+end_src
 
+** Latex
+   Install [[https://github.com/astoff/digestif][digestif]]
 ** OCaml/Reaspn
 Follow the instruction on https://ocaml.org/docs/install.html#OPAM to setup OPAM and OCamlc. And install the following packages:
 
