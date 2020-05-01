@@ -62,15 +62,15 @@ Install [[https://github.com/vscode-langservers/vscode-html-languageserver][HTML
 
 ** Latex
    Install [[https://github.com/astoff/digestif][digestif]]
-** OCaml/Reaspn
-Follow the instruction on https://ocaml.org/docs/install.html#OPAM to setup OPAM and OCamlc. And install the following packages:
+** OCaml/Reason
+Follow the instruction on https://ocaml.org/docs/install.html#OPAM to setup OPAM and OCamlc. To make the toolchain work properly with [[https://bucklescript.github.io/][bucklescript]], the version of ocamlc must be the one that bucklescript is based on (for example: BS 7.x is based on OCaml 4.06.1.) And install the following packages:
 
 #+begin_src sh
 opam install utop # Better repl
 opam install ocamlformat # Formatter
 opam install merlin # IDE features
 opam install ocp-indent
-opam install reason # Reason ML
+opam install reason # ReasonML
 #+end_src
 
 *** On Windows
