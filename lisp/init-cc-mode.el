@@ -37,7 +37,7 @@
 )
 
 (defun my-common-cc-mode-setup ()
-  "setup shared by all languages (java/groovy/c++ ...)"
+  "setup shared by all languages."
   (customize-set-variable 'c-basic-offset 2)
   ;; give me NO newline automatically after electric expressions are entered
   (customize-set-variable 'c-auto-newline nil)

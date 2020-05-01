@@ -96,6 +96,51 @@
           (lambda ()
             (customize-set-variable 'line-spacing 0)))
 
+(defun prettify-symbols-hook ()
+  "Set pretty symbols for programming modes."
+  (setq prettify-symbols-alist
+        '(;; Symbols
+          ("lambda" . ?λ)
+          ("fun" . ?λ)
+          ("\\(fn\\[\[[:space:]]" . ?λ)
+
+          ;; Operators
+          ("<=" . ?≤)
+          (">=" . ?≥)
+          ("<-" . ?←)
+          ("->" . ?→)
+          ("=>" . ?⇒)
+          ("==" . ?≡)
+          ("!=" . ?≠)
+          (">>" . ?»)
+          ("<<" . ?«)
+          (".." . ?‥)
+          ("...". ?…)
+          ;; ("in" . ?∈)
+          ;; ("not in" . ?∉)
+          ("return" . ?⟾)
+
+          ;; ml generic
+          ("'a" . ?α)
+          ("'b" . ?β)
+
+          ;; Math
+          ("pi" . ?π)
+          ("theta" . ?θ)
+          ("sqrt" . ?√)
+          ("sum"  . ?Σ)
+          )
+        ))
+
+(use-package prettify-symbols-mode
+  :init
+  (global-prettify-symbols-mode 1)
+  :bind ("C-c <C-return>" . prettify-symbols-mode)
+  :config
+  (setq prettify-symbols-unprettify-at-point 'right-edge)
+  :hook((prog-mode . prettify-symbols-hook))
+  )
+
 (use-package paradox
   :ensure t
   :defer 1
@@ -111,7 +156,6 @@
 
 (use-package helpful
   :ensure t
-  :defer t
   :bind
   ("C-h f" . helpful-callable)
   ("C-h v" . helpful-variable)

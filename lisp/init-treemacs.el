@@ -61,11 +61,11 @@
         ("C-x t M-t" . treemacs-find-tag)))
 
 (use-package treemacs-projectile
-  :after projectile
+  :after projectile treemacs
   :ensure t)
 
 (use-package treemacs-icons-dired
-  :after dired
+  :after dired treemacs
   :ensure t
   :init (treemacs-icons-dired-mode))
 
