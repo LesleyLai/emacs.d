@@ -17,8 +17,6 @@
          (powershell-mode . lsp-deferred)
          (rust-mode . lsp-deferred)
          (sh-mode . lsp-deferred)
-         (typescript-mode . lsp-deferred)
-         (web-mode . lsp-deferred)
          (yaml-mode . lsp-deferred)
          )
   )
