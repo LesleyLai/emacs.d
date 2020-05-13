@@ -71,4 +71,13 @@
   :when (executable-find "ocp-indent")
   :hook (tuareg-mode . ocp-setup-indent))
 
+
+(defun opam-env ()
+  (interactive nil)
+  (dolist (var
+           (car (read-from-string
+                 (shell-command-to-string "opam config env --sexp"))))
+    (setenv (car var) (cadr var))))
+(opam-env)
+
 (provide 'init-ocaml)

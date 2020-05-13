@@ -98,11 +98,11 @@
 
 (defun prettify-symbols-hook ()
   "Set pretty symbols for programming modes."
-  (setq prettify-symbols-alist
+  (setq-local
+   prettify-symbols-alist
+   (append
         '(;; Symbols
           ("lambda" . ?λ)
-          ("fun" . ?λ)
-          ("\\(fn\\[\[[:space:]]" . ?λ)
 
           ;; Operators
           ("<=" . ?≤)
@@ -110,19 +110,14 @@
           ("<-" . ?←)
           ("->" . ?→)
           ("=>" . ?⇒)
-          ("==" . ?≡)
-          ("!=" . ?≠)
           (">>" . ?»)
           ("<<" . ?«)
           (".." . ?‥)
           ("...". ?…)
+          ("infinity" . ?∞)
           ;; ("in" . ?∈)
           ;; ("not in" . ?∉)
           ("return" . ?⟾)
-
-          ;; ml generic
-          ("'a" . ?α)
-          ("'b" . ?β)
 
           ;; Math
           ("pi" . ?π)
@@ -130,7 +125,8 @@
           ("sqrt" . ?√)
           ("sum"  . ?Σ)
           )
-        ))
+        prettify-symbols-alist
+        )))
 
 (use-package prettify-symbols-mode
   :init
