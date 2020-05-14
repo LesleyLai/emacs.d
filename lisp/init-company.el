@@ -13,7 +13,12 @@
   (customize-set-variable 'company-tooltip-align-annotations 't)
 
   ;; decrease delay before autocompletion popup shows
-  (customize-set-variable 'company-idle-delay .1))
+  (customize-set-variable 'company-idle-delay .1)
+
+
+  (define-key company-active-map (kbd "M-i") 'company-select-previous-or-abort)
+  (define-key company-active-map (kbd "M-k") 'company-select-next-or-abort)
+  )
 
 (use-package company-quickhelp
   :ensure t
