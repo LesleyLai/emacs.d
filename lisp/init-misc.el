@@ -102,11 +102,11 @@
 (customize-set-variable 'delete-by-moving-to-trash t)
 (customize-set-variable 'recentf-auto-cleanup 'never)
 
-(use-package exec-path-from-shell
-  :ensure
-  :init
-  (when (memq window-system '(mac ns x))
-    (exec-path-from-shell-initialize))
-  )
+;; (use-package exec-path-from-shell
+;;   :ensure
+;;   :init
+;;   (when (memq window-system '(mac ns x))
+;;     (exec-path-from-shell-initialize))
+;;   )
 
 (provide 'init-misc)
