@@ -53,4 +53,17 @@
   :commands lsp-treemacs-errors-list
   )
 
+(use-package dap-mode
+  :ensure t
+  :commands dap-mode
+  :hook (dap-stopped . (lambda (arg) (call-interactively #'dap-hydra)))
+  :config
+  (dap-mode 1)
+  (dap-tooltip-mode 1)
+  (tooltip-mode 1)
+  (dap-ui-controls-mode 1)
+  (require 'dap-ui)
+  (dap-ui-mode 1)
+  (require 'dap-lldb))
+
 (provide 'init-lsp-mode)

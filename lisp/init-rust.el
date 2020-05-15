@@ -21,6 +21,7 @@
   (add-hook 'rust-mode-hook 'cargo-minor-mode)
   (add-hook 'rust-mode-hook
             (lambda ()
+              (local-set-key (kbd "C-c C-b") #'cargo-process-build)
               (local-set-key (kbd "C-c C-r") #'cargo-process-run)
               (local-set-key (kbd "C-c C-t") #'cargo-process-test)
               )))
