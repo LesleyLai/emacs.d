@@ -75,6 +75,9 @@
 (customize-set-variable 'auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
 ;; }}
 
+;; Do not create lock file
+(customize-set-variable 'create-lockfiles nil)
+
 ;; History
 ;;  From http://www.wisdomandwonder.com/wp-content/uploads/2014/03/C3F.html
 (use-package savehist
