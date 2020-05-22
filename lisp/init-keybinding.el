@@ -9,6 +9,9 @@
  ;; Move by word
  ("M-u" . backward-word)
  ("M-o" . forward-word)
+ ;; Move by sexp
+ ("C-M-j" . backward-sexp)
+ ("C-M-l" . forward-sexp)
  )
 
 ;; Copy, paste and cut

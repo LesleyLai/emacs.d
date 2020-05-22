@@ -3,7 +3,16 @@
              :ensure t
              :config
              (add-hook 'eval-expression-minibuffer-setup-hook
-                       #'enable-paredit-mode))
+                       #'enable-paredit-mode)
+             )
+
+
+(eval-after-load 'paredit
+  '(progn
+     (define-key paredit-mode-map (kbd "C-M-j") 'paredit-backward)
+     (define-key paredit-mode-map (kbd "C-M-l") 'paredit-forward)
+     (define-key paredit-mode-map (kbd "C-M-b") nil)
+     (define-key paredit-mode-map (kbd "C-M-f") nil)))
 
 ;; eldoc
 (use-package eldoc
