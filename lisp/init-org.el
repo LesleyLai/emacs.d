@@ -2,16 +2,13 @@
   :defer t
   :ensure org-plus-contrib
   :init
+  (add-hook 'org-shiftup-final-hook 'windmove-up)
+  (add-hook 'org-shiftleft-final-hook 'windmove-left)
+  (add-hook 'org-shiftdown-final-hook 'windmove-down)
+  (add-hook 'org-shiftright-final-hook 'windmove-right)
   :bind ("C-x a" . org-agenda)
   :config
   (progn
-    (defun org-mode-hook-setup ()
-      (flyspell-mode 1)
-
-      ;; display wrapped lines instead of truncated lines
-      (visual-line-mode 1))
-
-    (add-hook 'org-mode-hook 'org-mode-hook-setup)
     (defvar org-setting-file "~/Dropbox/org/org.el")
     (if (file-exists-p org-setting-file) (load-file org-setting-file))
 
@@ -28,9 +25,14 @@
      '((shell . t)
        (js . t)
        (C . t)))
-    ))
+    )
 
-                                        ; An outline of pretty bullets instead of a list of asterisks.
+  :hook ((org-mode . flyspell-mode)
+         (org-mode . visual-line-mode))
+
+  )
+
+; An outline of pretty bullets instead of a list of asterisks.
 (use-package org-bullets
   :after org
   :ensure t
