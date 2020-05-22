@@ -83,7 +83,7 @@
 
 ;; Rainbow mode
 (use-package rainbow-mode
-  :after js2-mode typescript-mode
+  :after js2-mode typescript-mode web-mode
   :ensure
   :config
   (add-hook 'web-mode-hook 'rainbow-mode)

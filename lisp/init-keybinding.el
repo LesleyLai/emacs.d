@@ -108,4 +108,16 @@
   (define-key dired-mode-map (kbd "M-l") 'forward-char)
   ))
 
+
+;;
+;; Statistics
+;; -----------------------------------------------------------------------------
+
+;; https://github.com/dacap/keyfreq
+(use-package keyfreq
+  :ensure
+  :hook
+  (after-init . keyfreq-mode)
+  (after-init . keyfreq-autosave-mode))
+
 (provide 'init-keybinding)
