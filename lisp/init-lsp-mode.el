@@ -15,6 +15,7 @@
          (LaTeX-mode . lsp-deferred)
          (python-mode . lsp-deferred)
          (powershell-mode . lsp-deferred)
+         (racket-mode . lsp-deferred)
          (rust-mode . lsp-deferred)
          (sh-mode . lsp-deferred)
          (yaml-mode . lsp-deferred)

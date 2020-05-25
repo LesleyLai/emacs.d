@@ -89,6 +89,9 @@ b wsl-alias add ocamlfind ocamlfind
 b wsl-alias add refmt refmt
 #+end_src
 
+** Racket
+First install Racket, and then install the [[https://github.com/jeapostrophe/racket-langserver][racket-langserver]] by ~raco pkg install racket-langserver~
+
 ** Rust
 Some tools that needed for ~rust-mode~, ~lsp-rust~, and ~cargo-mode~.
 
