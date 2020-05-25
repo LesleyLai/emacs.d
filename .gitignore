@@ -73,3 +73,9 @@ transient
 .lsp-session-v1
 amx-items
 session.*
+
+# racket mode
+racket-mode
+
+# dap mode
+.dap-breakpoints
