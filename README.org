@@ -92,6 +92,9 @@ b wsl-alias add refmt refmt
 ** Racket
 First install Racket, and then install the [[https://github.com/jeapostrophe/racket-langserver][racket-langserver]] by ~raco pkg install racket-langserver~
 
+** Readme Preview
+Install [[https://github.com/joeyespo/grip][Grip]] by `pip install grip`. Then we can use `grip-mode` to live preview github flaver markdown and org files.
+
 ** Rust
 Some tools that needed for ~rust-mode~, ~lsp-rust~, and ~cargo-mode~.
 

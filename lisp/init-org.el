@@ -28,9 +28,7 @@
     )
 
   :hook ((org-mode . flyspell-mode)
-         (org-mode . visual-line-mode))
-
-  )
+         (org-mode . visual-line-mode)))
 
 ; An outline of pretty bullets instead of a list of asterisks.
 (use-package org-bullets
