@@ -121,6 +121,24 @@
   :ensure
   :hook
   (after-init . keyfreq-mode)
-  (after-init . keyfreq-autosave-mode))
+  (after-init . keyfreq-autosave-mode)
+  :config
+  (setq keyfreq-excluded-commands
+        '(self-insert-command
+          mouse-drag-region
+          mouse-set-point
+          mouse-set-region
+          mwheel-scroll
+          forward-char
+          backward-char
+          right-char
+          left-char
+          previous-line
+          next-line
+          newline
+          forward-word
+          backward-word
+          cua-cut-region
+          cua-paste)))
 
 (provide 'init-keybinding)
