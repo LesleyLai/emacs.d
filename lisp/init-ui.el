@@ -157,4 +157,6 @@
   ("C-h C" . helpful-command)
   )
 
+(use-package posframe :defer t :ensure t)
+
 (provide 'init-ui)

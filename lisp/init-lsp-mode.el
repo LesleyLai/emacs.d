@@ -57,6 +57,7 @@
 (use-package dap-mode
   :ensure t
   :commands dap-mode
+  :after posframe
   :hook (dap-stopped . (lambda (arg) (call-interactively #'dap-hydra)))
   :config
   (dap-mode 1)
