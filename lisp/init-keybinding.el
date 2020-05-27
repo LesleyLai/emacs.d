@@ -1,4 +1,4 @@
-;; A lot of thing come from ergoemacs
+;; A lot of things come from ergoemacs
 
 (bind-keys*
  ;; Single char movement
@@ -42,14 +42,21 @@
 ;; ;; up/down is history. press Return to exit
 (define-key isearch-mode-map (kbd "<up>") 'isearch-ring-retreat)
 (define-key isearch-mode-map (kbd "<down>") 'isearch-ring-advance)
-
 (define-key isearch-mode-map (kbd "<left>") 'isearch-repeat-backward)
 (define-key isearch-mode-map (kbd "<right>") 'isearch-repeat-forward)
+(define-key isearch-mode-map (kbd "M-i") 'isearch-ring-retreat)
+(define-key isearch-mode-map (kbd "M-k") 'isearch-ring-advance)
+(define-key isearch-mode-map (kbd "M-j") 'isearch-repeat-backward)
+(define-key isearch-mode-map (kbd "M-l") 'isearch-repeat-forward)
 (define-key isearch-mode-map (kbd "C-f") 'isearch-repeat-forward)
 
 (define-key minibuffer-local-isearch-map (kbd "<left>")
   'isearch-reverse-exit-minibuffer)
+(define-key minibuffer-local-isearch-map (kbd "M-j")
+  'isearch-reverse-exit-minibuffer)
 (define-key minibuffer-local-isearch-map (kbd "<right>")
+  'isearch-forward-exit-minibuffer)
+(define-key minibuffer-local-isearch-map (kbd "M-l")
   'isearch-forward-exit-minibuffer)
 ;; }}
 
@@ -80,10 +87,35 @@
 
 ;; Standard Shortcuts
 (global-set-key (kbd "C-w") 'kill-current-buffer) ; Close
-(global-set-key (kbd "C-o") 'find-file) ; Open
+(global-set-key (kbd "C-o") 'find-file) ; Openi
 (global-set-key (kbd "C-s") 'save-buffer) ; Save
 (global-set-key (kbd "C-S-s") 'write-file) ; Save As.
 (global-set-key (kbd "C-a") 'mark-whole-buffer) ; Select all
+
+(use-package cheatsheet
+  :ensure
+  :config
+  (cheatsheet-add-group 'Common
+                        '(:key "C-z" :description "Undo")
+                        '(:key "C-S-z" :description "Redo")
+                        '(:key "C-y" :description "Redo")
+                        '(:key "C-w" :description "Close buffer")
+                        '(:key "C-x" :description "Cut")
+                        '(:key "C-c" :description "Copy")
+                        '(:key "C-v" :description "Paste")
+                        '(:key "C-o" :description "Find file")
+                        '(:key "C-s" :description "Save")
+                        '(:key "C-S-s" :description "Save as")
+                        '(:key "C-a" :description "Select all"))
+  (cheatsheet-add-group 'Movement
+                        '(:key "M-i" :description "previous-line")
+                        '(:key "M-j" :description "forward-char")
+                        '(:key "M-k" :description "next-line")
+                        '(:key "M-l" :description "backward-char")
+                        '(:key "M-u" :description "backward-word")
+                        '(:key "M-o" :description "forward-word")
+                        '(:key "C-M-j" :description "backward-sexp")
+                        '(:key "C-M-l" :description "forward-sexp")))
 
 ;; Command history of interpretor
 (use-package comint
@@ -110,7 +142,6 @@
   (define-key dired-mode-map (kbd "M-i") 'previous-line)
   (define-key dired-mode-map (kbd "M-l") 'forward-char)
   ))
-
 
 ;;
 ;; Statistics

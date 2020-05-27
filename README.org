@@ -3,6 +3,10 @@ This is my own setting of Emacs.
 * Usage
 Put the whole directory to =~/.emacs.d=
 
+* Customized Keybindings
+This configuration customized a lot of key bindings.
+Run ~cheatsheet-show~ to get a cheat sheet for those key bindings.
+
 * External packages
 Install those optional third-party packages to setup for certain languages.
 

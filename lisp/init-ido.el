@@ -8,6 +8,7 @@
   (customize-set-variable 'ido-auto-merge-work-directories-length -1)
   (ido-mode t)
   (ido-everywhere 1))
+  )
 
 (use-package ido-completing-read+
   :ensure t
