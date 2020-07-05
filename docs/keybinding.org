@@ -1,0 +1,51 @@
+* Key bindings
+I customized a lot of keybindings,
+and I also use [[https://github.com/mrkkrp/modalka][Modalka Mode]] to mimic modal editing.
+The key =Esc= toggle back and forth between Modalka state and Emacs (insert) state,
+and inside Modalka state, you can use the key =f= to enter Emacs state.
+
+** Basic movement
+
+| Command       | Emacs State Bindings | Modalka State Bindings |
+|---------------+----------------------+------------------------|
+| Previous Line | =M-i=                | =i=                    |
+| Backward Char | =M-j=                | =j=                    |
+| Next Line     | =M-k=                | =k=                    |
+| Forward Char  | =M-l=                | =l=                    |
+| Backward Word | =M-u=                | =u=                    |
+| Forward Word  | =M-o=                | =o=                    |
+| Backward Sexp | =C-M=j=              | =M-j=                  |
+| Forward Sexp  | =C-M-l=              | =M-l=                  |
+
+
+** Basic Editing
+
+| Command              | Emacs State Bindings | Modalka State Bindings |
+|----------------------+----------------------+------------------------|
+| Cut/Kill selection   | =C-x=                | =x=                    |
+| Copy                 | =C-c=                | =c=                    |
+| Paste/Yank           | =C-v=                | =v=                    |
+| Backward Delete Char | =M-d=                | =d=                    |
+
+** Standard shortcuts
+
+| Command      | Emacs State Bindings | Modalka State Bindings |
+|--------------+----------------------+------------------------|
+| Close buffer | =C-w=                | Same                   |
+| Find File    | =C-o=                | Same                   |
+| Save Buffer  | =C-s=                | Same                   |
+| Save As      | =C-S-s=              | Same                   |
+| Select All   | =C-a=                | Same                   |
+| Undo         | =C-z=                | =z=                    |
+| Redo         | =C-S-z= or =C-y=     |                        |
+
+** Search
+| Command       | Emacs State Bindings | Modalka State Bindings |
+|---------------+----------------------+------------------------|
+| Regex Isearch | =C-f=                |                        |
+|               |                      |                        |
+
+** Advanced Movement
+| Command   | Emacs State Bindings | Modalka State Bindings |
+|-----------+----------------------+------------------------|
+| Goto Line | =M-g M-g=            | =/=                    |

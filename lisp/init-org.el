@@ -6,7 +6,13 @@
   (add-hook 'org-shiftleft-final-hook 'windmove-left)
   (add-hook 'org-shiftdown-final-hook 'windmove-down)
   (add-hook 'org-shiftright-final-hook 'windmove-right)
-  :bind ("C-x a" . org-agenda)
+  :bind (("C-x a" . org-agenda)
+         :map org-mode-map
+         ("M-J" . org-shiftleft)
+         ("M-L" . org-shiftright)
+         ("M-K" . org-shiftdown)
+         ("M-I" . org-shiftup)
+         ("M-d" . org-delete-backward-char))
   :config
   (progn
     (defvar org-setting-file "~/Dropbox/org/org.el")

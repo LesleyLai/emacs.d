@@ -11,6 +11,7 @@
   '(progn
      (define-key paredit-mode-map (kbd "C-M-j") 'paredit-backward)
      (define-key paredit-mode-map (kbd "C-M-l") 'paredit-forward)
+     (define-key paredit-mode-map (kbd "M-d") 'paredit-backward-delete)
      (define-key paredit-mode-map (kbd "C-M-b") nil)
      (define-key paredit-mode-map (kbd "C-M-f") nil)))
 

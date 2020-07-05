@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t -*-
+
 ;; A lot of things come from ergoemacs
 
 (bind-keys*
@@ -22,10 +24,20 @@
   :config
   (global-undo-tree-mode 1)
   (defalias 'redo 'undo-tree-redo)
-  (global-set-key (kbd "C-z") 'undo) 
-  (global-set-key (kbd "C-S-z") 'redo) ;Apple style redo
-  (global-set-key (kbd "C-y") 'redo) ;MS style redo
-  )
+  :bind (
+         ("C-z" . undo-tree-undo)
+         ("C-S-z" . undo-tree-redo) ; Apple style redo
+         ("C-y" . undo-tree-redo) ; MS style redo
+         :map undo-tree-map
+         ("C-?" . nil)
+         ("C-/" . nil)
+         ("C-_" . nil)
+         ("M-_" . nil)))
+
+(global-unset-key (kbd "C-/"))
+(global-unset-key (kbd "C-_"))
+(global-unset-key (kbd "C-x u"))
+
 
 ;; ;; Buffer movement
 ;; ;; Use <Shift> + arrowkeys to move between buffers
@@ -92,31 +104,6 @@
 (global-set-key (kbd "C-S-s") 'write-file) ; Save As.
 (global-set-key (kbd "C-a") 'mark-whole-buffer) ; Select all
 
-(use-package cheatsheet
-  :ensure
-  :config
-  (cheatsheet-add-group 'Common
-                        '(:key "C-z" :description "Undo")
-                        '(:key "C-S-z" :description "Redo")
-                        '(:key "C-y" :description "Redo")
-                        '(:key "C-w" :description "Close buffer")
-                        '(:key "C-x" :description "Cut")
-                        '(:key "C-c" :description "Copy")
-                        '(:key "C-v" :description "Paste")
-                        '(:key "C-o" :description "Find file")
-                        '(:key "C-s" :description "Save")
-                        '(:key "C-S-s" :description "Save as")
-                        '(:key "C-a" :description "Select all"))
-  (cheatsheet-add-group 'Movement
-                        '(:key "M-i" :description "previous-line")
-                        '(:key "M-j" :description "forward-char")
-                        '(:key "M-k" :description "next-line")
-                        '(:key "M-l" :description "backward-char")
-                        '(:key "M-u" :description "backward-word")
-                        '(:key "M-o" :description "forward-word")
-                        '(:key "C-M-j" :description "backward-sexp")
-                        '(:key "C-M-l" :description "forward-sexp")))
-
 ;; Command history of interpretor
 (use-package comint
   :defer t
@@ -142,6 +129,80 @@
   (define-key dired-mode-map (kbd "M-i") 'previous-line)
   (define-key dired-mode-map (kbd "M-l") 'forward-char)
   ))
+
+(use-package modalka
+  :ensure t
+  :config
+  (global-set-key (kbd "<escape>") #'modalka-mode)
+  (add-hook 'text-mode-hook #'modalka-mode)
+  (add-hook 'prog-mode-hook #'modalka-mode)
+
+  (defun modalka-unbind-kbd (key)
+      (define-key modalka-mode-map (kbd key)
+        '(lambda () (interactive) (format "Key %s in is modalka unbinded" key))))
+
+  ;; CUA
+  (modalka-define-kbd "z" "C-z")
+  (define-key modalka-mode-map (kbd "x") #'cua-cut-region)
+  (define-key modalka-mode-map (kbd "c") #'cua-copy-region)
+  (define-key modalka-mode-map (kbd "v") #'cua-paste)
+
+  ;; Movements
+  (modalka-define-kbd "u" "M-u")
+  (modalka-define-kbd "i" "M-i")
+  (modalka-define-kbd "o" "M-o")
+  (modalka-define-kbd "j" "M-j")
+  (modalka-define-kbd "k" "M-k")
+  (modalka-define-kbd "l" "M-l")
+  (modalka-define-kbd "h" "M-m") ;; Back to indentation
+  (modalka-define-kbd ";" "C-e") ;; Move to endline
+
+  ;; Shift
+  (modalka-define-kbd "J" "M-J")
+  (modalka-define-kbd "K" "M-K")
+  (modalka-define-kbd "L" "M-L")
+  (modalka-define-kbd "I" "M-I")
+
+  (modalka-define-kbd "M-j" "C-M-j")
+  (modalka-define-kbd "M-l" "C-M-l")
+  ;; Jump
+  (modalka-define-kbd "/" "M-g M-g")
+
+  (modalka-unbind-kbd "1")
+  (modalka-unbind-kbd "2")
+  (modalka-unbind-kbd "3")
+  (modalka-unbind-kbd "4")
+  (modalka-unbind-kbd "5")
+  (modalka-unbind-kbd "6")
+  (modalka-unbind-kbd "7")
+  (modalka-unbind-kbd "8")
+  (modalka-unbind-kbd "9")
+  (modalka-unbind-kbd "0")
+  (modalka-unbind-kbd "-")
+  (modalka-unbind-kbd "=")
+
+  (modalka-unbind-kbd "q")
+  (modalka-unbind-kbd "w")
+  (modalka-unbind-kbd "e")
+  (modalka-unbind-kbd "r")
+  (modalka-unbind-kbd "t")
+  (modalka-unbind-kbd "y")
+  (modalka-unbind-kbd "p")
+  (modalka-unbind-kbd "a")
+  (modalka-unbind-kbd "s")
+  (modalka-define-kbd "d" "M-d")
+  (define-key modalka-mode-map (kbd "f") #'modalka-mode)
+  (modalka-unbind-kbd "g")
+  (modalka-unbind-kbd "'")
+  (modalka-unbind-kbd "b")
+  (modalka-unbind-kbd "n")
+  (modalka-unbind-kbd "m")
+  (modalka-unbind-kbd ",")
+  (modalka-unbind-kbd ".")
+
+  ;; Mark
+  (modalka-define-kbd "SPC" "C-SPC")
+)
 
 ;;
 ;; Statistics
@@ -170,6 +231,8 @@
           forward-word
           backward-word
           cua-cut-region
-          cua-paste)))
+          cua-paste
+          dap-tooltip-mouse-motion
+          )))
 
 (provide 'init-keybinding)

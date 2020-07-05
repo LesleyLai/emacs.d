@@ -79,3 +79,6 @@ racket-mode
 
 # dap mode
 .dap-breakpoints
+
+# eww
+url/

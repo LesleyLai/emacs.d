@@ -5,7 +5,7 @@ Put the whole directory to =~/.emacs.d=
 
 * Customized Keybindings
 This configuration customized a lot of key bindings.
-Run ~cheatsheet-show~ to get a cheat sheet for those key bindings.
+See [[file:docs/keybinding.org][keybinding.org]] for more information.
 
 * External packages
 Install those optional third-party packages to setup for certain languages.
