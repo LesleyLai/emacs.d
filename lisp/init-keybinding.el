@@ -1,20 +1,24 @@
 ;; -*- lexical-binding: t -*-
 
 ;; A lot of things come from ergoemacs
+(global-set-key (kbd "M-i") 'previous-line)
+(global-set-key (kbd "M-j") 'backward-char)
+(global-set-key (kbd "M-k") 'next-line)
+(global-set-key (kbd "M-l") 'forward-char)
 
-(bind-keys*
- ;; Single char movement
- ("M-i" . previous-line)
- ("M-j" . backward-char)
- ("M-k" . next-line)
- ("M-l" . forward-char)
  ;; Move by word
- ("M-u" . backward-word)
- ("M-o" . forward-word)
+(global-set-key (kbd "M-u") 'backward-word)
+(global-set-key (kbd "M-o") 'forward-word)
+
  ;; Move by sexp
- ("C-M-j" . backward-sexp)
- ("C-M-l" . forward-sexp)
- )
+(global-set-key (kbd "C-M-j") 'backward-sexp)
+(global-set-key (kbd "C-M-l") 'forward-sexp)
+
+;; Edit
+(global-set-key (kbd "M-e") 'backward-kill-word)
+(global-set-key (kbd "M-r") 'kill-word)
+(global-set-key (kbd "M-d") 'backward-delete-char)
+(global-set-key (kbd "M-f") 'delete-forward-char)
 
 ;; Copy, paste and cut
 (cua-mode)
@@ -183,8 +187,8 @@
 
   (modalka-unbind-kbd "q")
   (modalka-unbind-kbd "w")
-  (modalka-unbind-kbd "e")
-  (modalka-unbind-kbd "r")
+  (modalka-define-kbd "e" "M-e")
+  (modalka-define-kbd "r" "M-r")
   (modalka-unbind-kbd "t")
   (modalka-unbind-kbd "y")
   (modalka-unbind-kbd "p")
@@ -192,7 +196,7 @@
   (modalka-unbind-kbd "s")
   (modalka-define-kbd "d" "M-d")
   (define-key modalka-mode-map (kbd "f") #'modalka-mode)
-  (modalka-unbind-kbd "g")
+  (modalka-define-kbd "g" "M-f")
   (modalka-unbind-kbd "'")
   (modalka-unbind-kbd "b")
   (modalka-unbind-kbd "n")

@@ -12,6 +12,9 @@
      (define-key paredit-mode-map (kbd "C-M-j") 'paredit-backward)
      (define-key paredit-mode-map (kbd "C-M-l") 'paredit-forward)
      (define-key paredit-mode-map (kbd "M-d") 'paredit-backward-delete)
+     (define-key paredit-mode-map (kbd "M-f") 'paredit-forward-delete)
+     (define-key paredit-mode-map (kbd "M-e") 'paredit-backward-kill-word)
+     (define-key paredit-mode-map (kbd "M-r") 'paredit-forward-kill-word)
      (define-key paredit-mode-map (kbd "C-M-b") nil)
      (define-key paredit-mode-map (kbd "C-M-f") nil)))
 
