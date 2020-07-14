@@ -46,6 +46,7 @@
 (require 'init-dired)
 (require 'init-flycheck)
 (require 'init-python)
+(require 'init-haskell)
 (require 'init-ido)
 (require 'init-lisp)
 (require 'init-lsp-mode)
