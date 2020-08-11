@@ -8,7 +8,6 @@
          (c++-mode . lsp-deferred)
          (cmake-mode . lsp-deferred)
          (css-mode . lsp-deferred)
-         (elm-mode . lsp-deferred)
          (html-mode . lsp-deferred)
          (js2-mode . lsp-deferred)
          (json-mode . lsp-deferred)
