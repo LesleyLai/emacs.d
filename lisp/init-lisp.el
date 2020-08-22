@@ -47,6 +47,7 @@
                       emacs-lisp-mode-hook
                       scheme-mode-hook
                       racket-mode-hook
+                      racket-repl-mode-hook
                       )))
   (dolist (hook lispy-hooks)
     (add-hook hook 'lisp-modes-setup)))
