@@ -20,6 +20,8 @@ tramp
 # Org-mode
 .org-id-locations
 *_archive
+org-gcal/
+org-roam.db
 
 # anaconda-mode
 anaconda-mode/
