@@ -115,7 +115,6 @@
           ("infinity" . ?∞)
           ;; ("in" . ?∈)
           ;; ("not in" . ?∉)
-          ("return" . ?⟾)
 
           ;; Math
           ("pi" . ?π)
@@ -145,8 +144,7 @@
   (paradox-hide-wiki-packages t)
   :config
   (paradox-enable)
-  (remove-hook 'paradox-after-execute-functions #'paradox--report-buffer-print)
-)
+  (remove-hook 'paradox-after-execute-functions #'paradox--report-buffer-print))
 
 (use-package helpful
   :ensure t
@@ -158,5 +156,11 @@
   )
 
 (use-package posframe :defer t :ensure t)
+
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook)
+  (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*"))))
 
 (provide 'init-ui)
