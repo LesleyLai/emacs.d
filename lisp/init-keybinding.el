@@ -190,7 +190,7 @@
   (modalka-define-kbd "e" "M-e")
   (modalka-define-kbd "r" "M-r")
   (modalka-unbind-kbd "t")
-  (modalka-unbind-kbd "y")
+  (modalka-define-kbd "y" "M-y")
   (modalka-unbind-kbd "p")
   (modalka-unbind-kbd "a")
   (modalka-unbind-kbd "s")

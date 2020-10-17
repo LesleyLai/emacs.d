@@ -84,3 +84,7 @@ racket-mode
 
 # eww
 url/
+
+# google cal
+persist/
+request/

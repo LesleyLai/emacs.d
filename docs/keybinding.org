@@ -25,6 +25,7 @@ and inside Modalka state, you can use the key =f= to enter Emacs state.
 | Cut/Kill selection   | =C-x=                | =x=                    |
 | Copy                 | =C-c=                | =c=                    |
 | Paste/Yank           | =C-v=                | =v=                    |
+| Recycle Yank         | =M-y=                | =y=                    |
 | Backward Delete Char | =M-d=                | =d=                    |
 | Forward Delete Char  | =M-f=                | =g=                    |
 
