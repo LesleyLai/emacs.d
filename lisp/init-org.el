@@ -73,6 +73,12 @@
         org-roam-server-network-label-truncate-length 60
         org-roam-server-network-label-wrap-length 20))
 
+(use-package company-org-roam
+  :ensure t
+  :after org-roam
+  :config
+  (push 'company-org-roam company-backends))
+
 (use-package org-books
   :after org
   :ensure t)
