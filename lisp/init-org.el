@@ -17,21 +17,22 @@
   (progn
     (defvar org-setting-file "~/Dropbox/org/org.el")
     (if (file-exists-p org-setting-file) (load-file org-setting-file))
-
-    (customize-set-variable 'org-modules
-                            (quote
-                             (org-bbdb org-bibtex org-ctags
-                                       org-docview org-gnus org-habit
-                                       org-info org-irc org-mhe
-                                       org-rmail org-w3m)))
-    (customize-set-variable 'org-src-tab-acts-natively t)
-
     (org-babel-do-load-languages
      'org-babel-load-languages
      '((shell . t)
        (js . t)
        (C . t)))
     )
+
+  :custom
+  (org-modules
+   (quote
+    (org-bbdb org-bibtex org-ctags
+              org-docview org-gnus org-habit
+              org-info org-irc org-mhe
+              org-rmail org-w3m)))
+  (org-src-tab-acts-natively t)
+  (org-image-actual-width nil)
 
   :hook ((org-mode . flyspell-mode)
          (org-mode . visual-line-mode)))
@@ -46,6 +47,7 @@
 
 (use-package org-roam
   :ensure t
+  :after modalka
   :hook
   (after-init . org-roam-mode)
   :bind (:map org-roam-mode-map
@@ -56,17 +58,38 @@
               (("C-c n i" . org-roam-insert))
               (("C-c n I" . org-roam-insert-immediate)))
   :config
+  (define-key modalka-mode-map (kbd "SPC n l") #'org-roam)
+  (define-key modalka-mode-map (kbd "SPC n f") #'org-roam-find-file)
+  (define-key modalka-mode-map (kbd "SPC n g") #'org-roam-graph)
+  (define-key modalka-mode-map (kbd "SPC n i") #'org-roam-insert)
+  (define-key modalka-mode-map (kbd "SPC n I") #'org-roam-insert-immediate)
+  :config
   (require 'org-roam-protocol))
 
 (use-package deft
   :ensure t
-  :after org
+  :after org modalka
   :bind
   ("C-c n d" . deft)
+  :config
+  (define-key modalka-mode-map (kbd "SPC n d") #'deft)
   :custom
   (deft-recursive t)
   (deft-use-filter-string-for-filename t)
   (deft-default-extension "org"))
+
+(use-package org-journal
+  :ensure t
+  :after org modalka
+  :bind
+  ("C-c n j" . org-journal-new-entry)
+  :config
+  (define-key modalka-mode-map (kbd "SPC n j") #'org-journal-new-entry)
+  :custom
+  (org-journal-date-prefix "#+TITLE: ")
+  (org-journal-file-format "%Y-%m-%d.org")
+  (org-journal-date-format "%A, %d %B %Y")
+  (org-journal-enable-agenda-integration t))
 
 (use-package org-roam-server
   :ensure t
@@ -92,5 +115,11 @@
 (use-package org-books
   :after org
   :ensure t)
+
+(use-package org-download
+  :ensure t
+  :config
+  ;; add support to dired
+  (add-hook 'dired-mode-hook 'org-download-enable))
 
 (provide 'init-org)

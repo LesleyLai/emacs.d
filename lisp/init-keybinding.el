@@ -213,14 +213,7 @@
   ;;;; Org-agenda
   (define-key modalka-mode-map (kbd "SPC a") #'org-agenda)
   ;;;; Magit
-  (define-key modalka-mode-map (kbd "SPC g") #'magit-status)
-  ;;;; Org-roam related
-  (define-key modalka-mode-map (kbd "SPC n l") #'org-roam)
-  (define-key modalka-mode-map (kbd "SPC n f") #'org-roam-find-file)
-  (define-key modalka-mode-map (kbd "SPC n g") #'org-roam-graph)
-  (define-key modalka-mode-map (kbd "SPC n i") #'org-roam-insert)
-  (define-key modalka-mode-map (kbd "SPC n I") #'org-roam-insert-immediate)
-  (define-key modalka-mode-map (kbd "SPC n d") #'deft))
+  (define-key modalka-mode-map (kbd "SPC g") #'magit-status))
 
 ;;
 ;; Statistics
