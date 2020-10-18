@@ -7,6 +7,19 @@ Put the whole directory to =~/.emacs.d=
 This configuration customized a lot of key bindings.
 See [[file:docs/keybinding.org][keybinding.org]] for more information.
 
+* Additional Setups
+  Here are some additional setups that are required on each computer when using this =.emacs.d= configuration.
+
+** Org-mode
+*** Roam
+   The [[https://github.com/org-roam/org-roam][org-roam]] package requires =sqlite3= be located on =exec-path=. You also need to set up an additional variable ~org-roam-directory~ to your preferred org-roam directory.
+
+   For a visual representation of the notes and their connections, =Graphviz= is required. You also need to setup org-protocol a by following [[https://www.orgroam.com/manual/Installation-_00281_0029.html][this instruction]].
+
+*** Deft
+    Deft is the package that I used to quickly browse notes. You need to set up the variable ~deft-directory~ to the same directory of org-roam.
+
+
 * External packages
 Install those optional third-party packages to setup for certain languages.
 
@@ -115,9 +128,3 @@ Install [[https://github.com/adrienverge/yamllint][yamllint]]
 
 Install [[https://github.com/redhat-developer/yaml-language-server][yaml-language-server]]
 npm install -g yaml-language-server
-
-** Org-mode
-*** Roam
-   The [[https://github.com/org-roam/org-roam][org-roam]] package requires =sqlite3= be located on =exec-path=. You also need to set up an additional variable ~(org-roam-directory "~/your/path/to/roam")~.
-
-   For a visual representation of the notes and their connections, =Graphviz= is required. You also need to setup org-protocol a by following [[https://www.orgroam.com/manual/Installation-_00281_0029.html][this instruction]].

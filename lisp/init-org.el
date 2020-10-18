@@ -58,6 +58,16 @@
   :config
   (require 'org-roam-protocol))
 
+(use-package deft
+  :ensure t
+  :after org
+  :bind
+  ("C-c n d" . deft)
+  :custom
+  (deft-recursive t)
+  (deft-use-filter-string-for-filename t)
+  (deft-default-extension "org"))
+
 (use-package org-roam-server
   :ensure t
   :config
