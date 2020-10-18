@@ -251,6 +251,20 @@
           cua-cut-region
           cua-paste
           dap-tooltip-mouse-motion
+          lsp-ui-doc--handle-mouse-movement
+          org-self-insert-command
+          ignore
+          save-buffer
+          delete-backward-char
+          paredit-backward-delete
+          c-electric-backspace
+          eshell-previous-matching-input-from-input
+          modalka-translation
+          isearch-printing-char
+          eshell-send-input
+          backward-kill-word
+          cua-copy-region
+          company-complete-selection
           )))
 
 (provide 'init-keybinding)
