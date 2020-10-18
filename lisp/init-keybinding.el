@@ -38,7 +38,7 @@
          ("C-_" . nil)
          ("M-_" . nil)))
 
-(global-unset-key (kbd "C-/"))
+(global-set-key (kbd "C-/") 'comment-line)
 (global-unset-key (kbd "C-_"))
 (global-unset-key (kbd "C-x u"))
 
@@ -145,19 +145,13 @@
       (define-key modalka-mode-map (kbd key)
         '(lambda () (interactive) (format "Key %s in is modalka unbinded" key))))
 
-  ;; CUA
-  (modalka-define-kbd "z" "C-z")
-  (define-key modalka-mode-map (kbd "x") #'cua-cut-region)
-  (define-key modalka-mode-map (kbd "c") #'cua-copy-region)
-  (define-key modalka-mode-map (kbd "v") #'cua-paste)
-
   ;; Movements
-  (modalka-define-kbd "u" "M-u")
-  (modalka-define-kbd "i" "M-i")
-  (modalka-define-kbd "o" "M-o")
-  (modalka-define-kbd "j" "M-j")
-  (modalka-define-kbd "k" "M-k")
-  (modalka-define-kbd "l" "M-l")
+  (define-key modalka-mode-map (kbd "i") #'previous-line)
+  (define-key modalka-mode-map (kbd "j") #'backward-char)
+  (define-key modalka-mode-map (kbd "k") #'next-line)
+  (define-key modalka-mode-map (kbd "l") #'forward-char)
+  (define-key modalka-mode-map (kbd "u") #'backward-word)
+  (define-key modalka-mode-map (kbd "o") #'forward-word)
   (modalka-define-kbd "h" "M-m") ;; Back to indentation
   (modalka-define-kbd ";" "C-e") ;; Move to endline
 
@@ -167,10 +161,20 @@
   (modalka-define-kbd "L" "M-L")
   (modalka-define-kbd "I" "M-I")
 
-  (modalka-define-kbd "M-j" "C-M-j")
-  (modalka-define-kbd "M-l" "C-M-l")
+  ;; Move by sexp
+  (define-key modalka-mode-map (kbd "M-j") #'backward-sexp)
+  (define-key modalka-mode-map (kbd "M-l") #'forward-sexp)
   ;; Jump
-  (modalka-define-kbd "/" "M-g M-g")
+  (modalka-define-kbd "." "M-g M-g")
+
+  ;; CUA
+  (modalka-define-kbd "z" "C-z")
+  (define-key modalka-mode-map (kbd "x") #'cua-cut-region)
+  (define-key modalka-mode-map (kbd "c") #'cua-copy-region)
+  (define-key modalka-mode-map (kbd "v") #'cua-paste)
+
+  ;; Comment line
+  (modalka-define-kbd "/" "C-/")
 
   (modalka-unbind-kbd "1")
   (modalka-unbind-kbd "2")
@@ -201,10 +205,9 @@
   (modalka-unbind-kbd "n")
   (modalka-unbind-kbd "m")
   (modalka-unbind-kbd ",")
-  (modalka-unbind-kbd ".")
 
   ;; Mark
-  (modalka-define-kbd "t" "C-SPC")`
+  (modalka-define-kbd "t" "C-SPC")
 
   ;; Space leader key
   ;;;; Org-agenda

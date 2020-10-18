@@ -30,6 +30,11 @@ and inside Modalka state, you can use the key =f= to enter Emacs state.
 | Forward Delete Char  | =M-f=                | =g=                    |
 | Mark                 | =M-SPC=              | =t=                    |
 
+** Advanced Editing
+| Command        | Emacs State Bindings | Modalka State Bindings |
+|----------------+----------------------+------------------------|
+| Toggle Comment | =C-/=                | =/=                    |
+
 ** Standard shortcuts
 
 | Command      | Emacs State Bindings | Modalka State Bindings |
@@ -51,7 +56,7 @@ and inside Modalka state, you can use the key =f= to enter Emacs state.
 ** Advanced Movement
 | Command   | Emacs State Bindings | Modalka State Bindings |
 |-----------+----------------------+------------------------|
-| Goto Line | =M-g M-g=            | =/=                    |
+| Goto Line | =M-g M-g=            | =.=                    |
 
 ** Leader key
    In Modalka State, all the key sequences follows =SPC=.
