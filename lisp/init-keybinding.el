@@ -189,7 +189,6 @@
   (modalka-unbind-kbd "w")
   (modalka-define-kbd "e" "M-e")
   (modalka-define-kbd "r" "M-r")
-  (modalka-unbind-kbd "t")
   (modalka-define-kbd "y" "M-y")
   (modalka-unbind-kbd "p")
   (modalka-unbind-kbd "a")
@@ -205,8 +204,20 @@
   (modalka-unbind-kbd ".")
 
   ;; Mark
-  (modalka-define-kbd "SPC" "C-SPC")
-)
+  (modalka-define-kbd "t" "C-SPC")`
+
+  ;; Space leader key
+  ;;;; Org-agenda
+  (define-key modalka-mode-map (kbd "SPC a") #'org-agenda)
+  ;;;; Magit
+  (define-key modalka-mode-map (kbd "SPC g") #'magit-status)
+  ;;;; Org-roam related
+  (define-key modalka-mode-map (kbd "SPC n l") #'org-roam)
+  (define-key modalka-mode-map (kbd "SPC n f") #'org-roam-find-file)
+  (define-key modalka-mode-map (kbd "SPC n g") #'org-roam-graph)
+  (define-key modalka-mode-map (kbd "SPC n i") #'org-roam-insert)
+  (define-key modalka-mode-map (kbd "SPC n I") #'org-roam-insert-immediate)
+  (define-key modalka-mode-map (kbd "SPC n d") #'deft))
 
 ;;
 ;; Statistics

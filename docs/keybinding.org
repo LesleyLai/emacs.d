@@ -28,6 +28,7 @@ and inside Modalka state, you can use the key =f= to enter Emacs state.
 | Recycle Yank         | =M-y=                | =y=                    |
 | Backward Delete Char | =M-d=                | =d=                    |
 | Forward Delete Char  | =M-f=                | =g=                    |
+| Mark                 | =M-SPC=              | =t=                    |
 
 ** Standard shortcuts
 
@@ -51,3 +52,12 @@ and inside Modalka state, you can use the key =f= to enter Emacs state.
 | Command   | Emacs State Bindings | Modalka State Bindings |
 |-----------+----------------------+------------------------|
 | Goto Line | =M-g M-g=            | =/=                    |
+
+** Leader key
+   In Modalka State, all the key sequences follows =SPC=.
+
+| Command         | Emacs State Bindings | Modalka State Bindings |
+|-----------------+----------------------+------------------------|
+| Org-agenda      | =C-x a=              | =SPC a=                |
+| Magit-Status    | =C-x g=              | =SPC g=                |
+| Org-roam prefix | =C-c n=              | =SPC n=                |
