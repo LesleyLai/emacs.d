@@ -88,3 +88,6 @@ url/
 # google cal
 persist/
 request/
+
+# native-comp
+/eln-cache
