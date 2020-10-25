@@ -21,8 +21,7 @@
      'org-babel-load-languages
      '((shell . t)
        (js . t)
-       (C . t)))
-    )
+       (C . t))))
 
   :custom
   (org-modules
@@ -33,7 +32,6 @@
               org-rmail org-w3m)))
   (org-src-tab-acts-natively t)
   (org-image-actual-width nil)
-
   :hook ((org-mode . flyspell-mode)
          (org-mode . visual-line-mode)))
 
@@ -48,8 +46,6 @@
 (use-package org-roam
   :ensure t
   :after modalka
-  :hook
-  (after-init . org-roam-mode)
   :bind (:map org-roam-mode-map
               (("C-c n l" . org-roam)
                ("C-c n f" . org-roam-find-file)
