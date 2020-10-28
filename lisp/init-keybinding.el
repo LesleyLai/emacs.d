@@ -195,7 +195,7 @@
   (modalka-define-kbd "r" "M-r")
   (modalka-define-kbd "y" "M-y")
   (modalka-unbind-kbd "p")
-  (modalka-unbind-kbd "a")
+  (modalka-define-kbd "a" "M-x")
   (modalka-unbind-kbd "s")
   (modalka-define-kbd "d" "M-d")
   (define-key modalka-mode-map (kbd "f") #'modalka-mode)
