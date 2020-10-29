@@ -45,6 +45,7 @@
 (require 'init-cc-mode)
 (require 'init-dired)
 (require 'init-flycheck)
+(require 'init-pdf)
 (require 'init-python)
 (require 'init-haskell)
 (require 'init-ido)

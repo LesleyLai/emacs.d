@@ -50,8 +50,8 @@
 ;; ;; }}
 
 ;; Search & Replace {{
-(global-set-key (kbd "C-f") 'isearch-forward-regexp)
-(global-set-key (kbd "C-S-f") 'query-replace-regexp)
+(global-set-key (kbd "C-f") 'isearch-forward)
+(global-set-key (kbd "C-S-f") 'query-replace)
 
 
 ;; ;; set arrow keys in isearch. left/right is backward/forward,

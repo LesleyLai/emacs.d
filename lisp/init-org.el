@@ -118,4 +118,19 @@
   ;; add support to dired
   (add-hook 'dired-mode-hook 'org-download-enable))
 
+(use-package org-noter
+  :after org
+  :ensure t
+  :config
+  (setq org-noter-notes-search-path '("~/Dropbox/org/roam")))
+
+(use-package org-ref
+  :ensure t
+  :config
+  (setq reftex-default-bibliography '("~/Dropbox/bibliography/references.bib"))
+;; see org-ref for use of these variables
+  (setq org-ref-bibliography-notes "~/Dropbox/bibliography/notes.org"
+        org-ref-default-bibliography '("~/Dropbox/bibliography/references.bib")
+        org-ref-pdf-directory "~/Dropbox/bibliography/bibtex-pdfs/"))
+
 (provide 'init-org)
