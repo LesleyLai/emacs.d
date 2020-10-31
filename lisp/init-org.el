@@ -52,13 +52,15 @@
                ("C-c n g" . org-roam-graph))
               :map org-mode-map
               (("C-c n i" . org-roam-insert))
-              (("C-c n I" . org-roam-insert-immediate)))
+              (("C-c n I" . org-roam-insert-immediate))
+              (("C-c n t" . org-roam-tag-add)))
   :config
   (define-key modalka-mode-map (kbd "SPC n l") #'org-roam)
   (define-key modalka-mode-map (kbd "SPC n f") #'org-roam-find-file)
   (define-key modalka-mode-map (kbd "SPC n g") #'org-roam-graph)
   (define-key modalka-mode-map (kbd "SPC n i") #'org-roam-insert)
   (define-key modalka-mode-map (kbd "SPC n I") #'org-roam-insert-immediate)
+  (define-key modalka-mode-map (kbd "SPC n t") #'org-roam-tag-add)
   :config
   (require 'org-roam-protocol))
 
@@ -118,19 +120,13 @@
   ;; add support to dired
   (add-hook 'dired-mode-hook 'org-download-enable))
 
-(use-package org-noter
-  :after org
+(use-package org-roam-bibtex
   :ensure t
+  :after org-roam
+  :hook (org-roam-mode . org-roam-bibtex-mode)
+  :bind (:map org-mode-map
+              (("C-c n a" . orb-note-actions)))
   :config
-  (setq org-noter-notes-search-path '("~/Dropbox/org/roam")))
-
-(use-package org-ref
-  :ensure t
-  :config
-  (setq reftex-default-bibliography '("~/Dropbox/bibliography/references.bib"))
-;; see org-ref for use of these variables
-  (setq org-ref-bibliography-notes "~/Dropbox/bibliography/notes.org"
-        org-ref-default-bibliography '("~/Dropbox/bibliography/references.bib")
-        org-ref-pdf-directory "~/Dropbox/bibliography/bibtex-pdfs/"))
+  (define-key modalka-mode-map (kbd "SPC n a") #'orb-note-actions))
 
 (provide 'init-org)
