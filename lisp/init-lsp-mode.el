@@ -4,22 +4,20 @@
   :init
   (setq lsp-auto-guess-root nil)
   (setq lsp-prefer-flymake nil)
-  :hook ((c-mode . lsp-deferred)
-         (c++-mode . lsp-deferred)
-         (cmake-mode . lsp-deferred)
-         (css-mode . lsp-deferred)
-         (html-mode . lsp-deferred)
-         (js2-mode . lsp-deferred)
-         (json-mode . lsp-deferred)
-         (LaTeX-mode . lsp-deferred)
-         (python-mode . lsp-deferred)
-         (powershell-mode . lsp-deferred)
-         (racket-mode . lsp-deferred)
-         (rust-mode . lsp-deferred)
-         (sh-mode . lsp-deferred)
-         (yaml-mode . lsp-deferred)
-         )
-  )
+  :hook ((c-mode . lsp)
+         (c++-mode . lsp)
+         (cmake-mode . lsp)
+         (css-mode . lsp)
+         (html-mode . lsp)
+         (js2-mode . lsp)
+         (json-mode . lsp)
+         (LaTeX-mode . lsp)
+         (python-mode . lsp)
+         (powershell-mode . lsp)
+         (racket-mode . lsp)
+         (rust-mode . lsp)
+         (sh-mode . lsp)
+         (yaml-mode . lsp)))
 
 (use-package lsp-ui
   :ensure t
@@ -32,21 +30,6 @@
         ;; lsp-ui-doc-position 'at-point
         )
   )
-
-(use-package company-lsp
-  :ensure t
-  :defer t
-  :after company lsp-mode yasnippet
-  :init
-  (push 'company-lsp company-backends)
-  :config
-  (setq company-lsp-enable-recompletion 'auto
-        company-lsp-enable-snippet t
-        company-lsp-filter-candidates nil
-        company-lsp-cache-candidates t
-        company-lsp-async t)
-  )
-
 
 (use-package lsp-treemacs
   :ensure t
