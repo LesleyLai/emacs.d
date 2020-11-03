@@ -4,6 +4,13 @@ and I also use [[https://github.com/mrkkrp/modalka][Modalka Mode]] to mimic moda
 The key =Esc= toggle back and forth between Modalka state and Emacs (insert) state,
 and inside Modalka state, you can use the key =f= to enter Emacs state.
 
+** Emacs
+
+| Command | Emacs State Bindings | Modalka State Bindings |
+|---------+----------------------+------------------------|
+| =M-x=   | =M-x=                | =a=                    |
+
+
 ** Basic movement
 
 | Command       | Emacs State Bindings | Modalka State Bindings |
