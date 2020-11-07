@@ -26,8 +26,7 @@
 ;; Line number
 (use-package display-line-numbers
   :hook ((prog-mode . display-line-numbers-mode)
-         (text-mode . display-line-numbers-mode))
-  )
+         (text-mode . display-line-numbers-mode)))
 
 ;; Git gutter
 (use-package git-gutter
@@ -40,32 +39,13 @@
   (global-git-gutter-mode)
   (customize-set-variable 'git-gutter:handled-backends '(svn hg git)))
 
+(use-package all-the-icons
+  :ensure t)
 
-;; Smart Mode line
-;; {{
-(use-package smart-mode-line
+(use-package doom-modeline
+  :after all-the-icons
   :ensure t
-  :init
-  (use-package smart-mode-line-powerline-theme
-    :ensure t)
-  (setq sml/theme 'light-powerline)
-  (setq sml/no-confirm-load-theme t)
-  
-  :config  
-  (add-to-list 'sml/replacer-regexp-list '(".+/C\\+\\+/" ":C++:"))
-  (add-to-list 'sml/replacer-regexp-list '(".+/blog/" ":BLOG:"))
-  (add-to-list 'sml/replacer-regexp-list '(".+/wiki/" ":WIKI:"))
-  
-  ;; Block minor mode from show on mode line
-  (setq rm-blacklist (quote (" hl-p" " company"
-                             " Undo-Tree" " yas"
-                             " GitGutter" " ARev"      
-                             " Paredit" " Undo-Tree"
-                             "∑flykeys" " WK")))
-
-  (sml/setup)
-  )
-;; }}
+  :init (doom-modeline-mode 1))
 
 ;; Emacs which-key showes displays the key bindings following your
 ;; currently entered incomplete command (a prefix) in a popup.
@@ -152,8 +132,7 @@
   ("C-h f" . helpful-callable)
   ("C-h v" . helpful-variable)
   ("C-h k" . helpful-key)
-  ("C-h C" . helpful-command)
-  )
+  ("C-h C" . helpful-command))
 
 (use-package posframe :defer t :ensure t)
 
