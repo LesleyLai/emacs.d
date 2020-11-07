@@ -24,12 +24,6 @@
        (C . t))))
 
   :custom
-  (org-modules
-   (quote
-    (org-bbdb org-bibtex org-ctags
-              org-docview org-gnus org-habit
-              org-info org-irc org-mhe
-              org-rmail org-w3m)))
   (org-src-tab-acts-natively t)
   (org-image-actual-width nil)
   :hook ((org-mode . flyspell-mode)
@@ -45,7 +39,8 @@
 
 (use-package org-roam
   :ensure t
-  :after modalka
+  :hook
+  (after-init . org-roam-mode)
   :bind (:map org-roam-mode-map
               (("C-c n l" . org-roam)
                ("C-c n f" . org-roam-find-file)
@@ -54,23 +49,24 @@
               (("C-c n i" . org-roam-insert))
               (("C-c n I" . org-roam-insert-immediate))
               (("C-c n t" . org-roam-tag-add)))
-  :config
-  (define-key modalka-mode-map (kbd "SPC n l") #'org-roam)
-  (define-key modalka-mode-map (kbd "SPC n f") #'org-roam-find-file)
-  (define-key modalka-mode-map (kbd "SPC n g") #'org-roam-graph)
-  (define-key modalka-mode-map (kbd "SPC n i") #'org-roam-insert)
-  (define-key modalka-mode-map (kbd "SPC n I") #'org-roam-insert-immediate)
-  (define-key modalka-mode-map (kbd "SPC n t") #'org-roam-tag-add)
+  :ryo
+  ("SPC n" (("l" org-roam)
+            ("f" org-roam-find-file)
+            ("g" org-roam-graph)))
+  (:mode 'org-mode)
+    ("SPC n" (("i" org-roam-insert)
+              ("I" org-roam-insert-immediate)
+              ("t" org-roam-tag-add)))
   :config
   (require 'org-roam-protocol))
 
 (use-package deft
   :ensure t
-  :after org modalka
+  :after org ;;modalka
   :bind
   ("C-c n d" . deft)
-  :config
-  (define-key modalka-mode-map (kbd "SPC n d") #'deft)
+  :ryo
+  ("SPC n d" deft)
   :custom
   (deft-recursive t)
   (deft-use-filter-string-for-filename t)
@@ -78,11 +74,11 @@
 
 (use-package org-journal
   :ensure t
-  :after org modalka
+  :after org ;;modalka
   :bind
   ("C-c n j" . org-journal-new-entry)
-  :config
-  (define-key modalka-mode-map (kbd "SPC n j") #'org-journal-new-entry)
+  :ryo
+  ("SPC n j" org-journal-new-entry)
   :custom
   (org-journal-date-prefix "#+TITLE: ")
   (org-journal-file-format "%Y-%m-%d.org")
@@ -93,7 +89,7 @@
   :ensure t
   :config
   (setq org-roam-server-host "127.0.0.1"
-        org-roam-server-port 8080
+        org-roam-server-port 20213
         org-roam-server-authenticate nil
         org-roam-server-export-inline-images t
         org-roam-server-serve-files nil
@@ -126,8 +122,8 @@
   :hook (org-roam-mode . org-roam-bibtex-mode)
   :bind (:map org-mode-map
               (("C-c n a" . orb-note-actions)))
-  :config
-  (define-key modalka-mode-map (kbd "SPC n a") #'orb-note-actions)
+  :ryo
+  ("SPC n a" orb-note-actions)
   (setq orb-preformat-keywords
         '("citekey" "title" "url" "author-or-editor" "keywords" "file")
         orb-process-file-field t

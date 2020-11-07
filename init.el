@@ -39,6 +39,7 @@
 ;;-------------------------------------------------------------------
 ;; Components
 ;;-------------------------------------------------------------------
+(require 'init-keybinding)
 (require 'init-asm)
 (require 'init-company)
 (require 'init-csv)
@@ -72,7 +73,6 @@
 (require 'init-ocaml)
 (require 'init-latex)
 (require 'init-yasnippet)
-(require 'init-keybinding)
 
 ;;-------------------------------------------------------------------
 ;; Lazy loading components that do not need at start up

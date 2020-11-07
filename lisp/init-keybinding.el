@@ -123,7 +123,7 @@
   :ensure
   :config
   (which-key-setup-side-window-right-bottom)
-  )
+  (push '((nil . "ryo:.*:") . (nil . "")) which-key-replacement-alist))
 
 ;; Dired
 (add-hook 'dired-mode-hook
@@ -134,86 +134,82 @@
   (define-key dired-mode-map (kbd "M-l") 'forward-char)
   ))
 
-(use-package modalka
+(use-package ryo-modal
   :ensure t
+  :commands ryo-modal-mode
+  :bind (("C-c SPC" . ryo-modal-mode)
+         ("<escape>" . ryo-modal-mode))
   :config
-  (global-set-key (kbd "<escape>") #'modalka-mode)
-  (add-hook 'text-mode-hook #'modalka-mode)
-  (add-hook 'prog-mode-hook #'modalka-mode)
-
-  (defun modalka-unbind-kbd (key)
-      (define-key modalka-mode-map (kbd key)
-        '(lambda () (interactive) (format "Key %s in is modalka unbinded" key))))
+  (add-hook 'text-mode-hook #'ryo-modal-mode)
+  (add-hook 'prog-mode-hook #'ryo-modal-mode)
+  (defun suppress ()
+      (interactive) (message "This key is not binded"))
 
   ;; Movements
-  (define-key modalka-mode-map (kbd "i") #'previous-line)
-  (define-key modalka-mode-map (kbd "j") #'backward-char)
-  (define-key modalka-mode-map (kbd "k") #'next-line)
-  (define-key modalka-mode-map (kbd "l") #'forward-char)
-  (define-key modalka-mode-map (kbd "u") #'backward-word)
-  (define-key modalka-mode-map (kbd "o") #'forward-word)
-  (modalka-define-kbd "h" "M-m") ;; Back to indentation
-  (modalka-define-kbd ";" "C-e") ;; Move to endline
+  (ryo-modal-keys
+   ("," ryo-modal-repeat)
+   ("f" ryo-modal-mode)
+   ("a" "M-x")
+   ("i" previous-line)
+   ("j" backward-char)
+   ("k" next-line)
+   ("l" forward-char)
+   ("u" backward-word)
+   ("o" forward-word)
+   ("h" "M-m")
+   (";" "C-e")
+   ("." "M-g M-g"))
 
-  ;; Shift
-  (modalka-define-kbd "J" "M-J")
-  (modalka-define-kbd "K" "M-K")
-  (modalka-define-kbd "L" "M-L")
-  (modalka-define-kbd "I" "M-I")
+  ;; Number arguments
+  (ryo-modal-keys
+   ;; First argument to ryo-modal-keys may be a list of keywords.
+   ;; These keywords will be applied to all keybindings.
+   (:norepeat t)
+   ("0" "M-0")
+   ("1" "M-1")
+   ("2" "M-2")
+   ("3" "M-3")
+   ("4" "M-4")
+   ("5" "M-5")
+   ("6" "M-6")
+   ("7" "M-7")
+   ("8" "M-8")
+   ("9" "M-9"))
 
-  ;; Move by sexp
-  (define-key modalka-mode-map (kbd "M-j") #'backward-sexp)
-  (define-key modalka-mode-map (kbd "M-l") #'forward-sexp)
-  ;; Jump
-  (modalka-define-kbd "." "M-g M-g")
+  ;; Editing
+  (ryo-modal-keys
+   ("z" "C-z")
+   ("x" kill-region)
+   ("c" copy-region-as-kill)
+   ("v" yank)
 
-  ;; CUA
-  (modalka-define-kbd "z" "C-z")
-  (define-key modalka-mode-map (kbd "x") #'cua-cut-region)
-  (define-key modalka-mode-map (kbd "c") #'cua-copy-region)
-  (define-key modalka-mode-map (kbd "v") #'cua-paste)
+   ("e" "M-e")
+   ("r" "M-r")
+   ("y" "M-y")
+   ("d" "M-d")
+   ("g" "M-f")
 
-  ;; Comment line
-  (modalka-define-kbd "/" "C-/")
-
-  (modalka-unbind-kbd "1")
-  (modalka-unbind-kbd "2")
-  (modalka-unbind-kbd "3")
-  (modalka-unbind-kbd "4")
-  (modalka-unbind-kbd "5")
-  (modalka-unbind-kbd "6")
-  (modalka-unbind-kbd "7")
-  (modalka-unbind-kbd "8")
-  (modalka-unbind-kbd "9")
-  (modalka-unbind-kbd "0")
-  (modalka-unbind-kbd "-")
-  (modalka-unbind-kbd "=")
-
-  (modalka-unbind-kbd "q")
-  (modalka-unbind-kbd "w")
-  (modalka-define-kbd "e" "M-e")
-  (modalka-define-kbd "r" "M-r")
-  (modalka-define-kbd "y" "M-y")
-  (modalka-unbind-kbd "p")
-  (modalka-define-kbd "a" "M-x")
-  (modalka-unbind-kbd "s")
-  (modalka-define-kbd "d" "M-d")
-  (define-key modalka-mode-map (kbd "f") #'modalka-mode)
-  (modalka-define-kbd "g" "M-f")
-  (modalka-unbind-kbd "'")
-  (modalka-unbind-kbd "b")
-  (modalka-unbind-kbd "n")
-  (modalka-unbind-kbd "m")
-  (modalka-unbind-kbd ",")
-
-  ;; Mark
-  (modalka-define-kbd "t" "C-SPC")
+   ("t" cua-set-mark))
 
   ;; Space leader key
-  ;;;; Org-agenda
-  (define-key modalka-mode-map (kbd "SPC a") #'org-agenda)
-  ;;;; Magit
-  (define-key modalka-mode-map (kbd "SPC g") #'magit-status))
+  (ryo-modal-key
+   "SPC" '(("g" magit-status)
+           ("a" org-agenda)))
+
+  ;; Unbind unassigned keys
+  (ryo-modal-keys
+   ("-" suppress)
+   ("q" suppress)
+   ("w" suppress)
+   ("p" suppress)
+   ("s" suppress)
+   ("'" suppress)
+   ("b" suppress)
+   ("n" suppress)
+   ("m" suppress)
+   ("/" suppress)
+   ("-" suppress)
+   ("=" suppress)))
 
 ;;
 ;; Statistics
@@ -246,18 +242,19 @@
           dap-tooltip-mouse-motion
           lsp-ui-doc--handle-mouse-movement
           org-self-insert-command
+          org-delete-backward-char
           ignore
           save-buffer
           delete-backward-char
           paredit-backward-delete
           c-electric-backspace
           eshell-previous-matching-input-from-input
-          modalka-translation
           isearch-printing-char
           eshell-send-input
           backward-kill-word
           cua-copy-region
           company-complete-selection
+          pdf-util-image-map-mouse-event-proxy
           )))
 
 (provide 'init-keybinding)
