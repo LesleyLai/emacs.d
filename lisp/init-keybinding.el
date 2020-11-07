@@ -142,6 +142,7 @@
   :config
   (add-hook 'text-mode-hook #'ryo-modal-mode)
   (add-hook 'prog-mode-hook #'ryo-modal-mode)
+  (setq ryo-modal-cursor-color nil)
   (defun suppress ()
       (interactive) (message "This key is not binded"))
 
