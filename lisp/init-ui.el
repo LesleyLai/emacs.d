@@ -2,6 +2,11 @@
 ;; Initializes the UI of emacs that fit my habits
 ;; ==============================================
 
+;; Fonts
+(set-face-attribute 'variable-pitch nil :font "Cantarell" :height 110 :weight 'regular)
+(set-face-attribute 'line-number nil :inherit 'fixed-pitch)
+(set-face-attribute 'cursor nil :inherit 'fixed-pitch)
+
 ;; Window/frame titles
 (customize-set-variable 'frame-title-format (list "%b " "%[ - GNU %F " emacs-version))
 (customize-set-variable 'icon-title-format (list "%b " " - GNU %F " emacs-version))

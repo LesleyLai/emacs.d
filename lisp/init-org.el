@@ -23,11 +23,32 @@
        (js . t)
        (C . t))))
 
+  (dolist (face '((org-document-title . 1.5)
+                  (org-level-1 . 1.4)
+                  (org-level-2 . 1.3)
+                  (org-level-3 . 1.2)
+                  (org-level-4 . 1.1)
+                  (org-level-5 . 1.05)
+                  (org-level-6 . 1.05)
+                  (org-level-7 . 1.05)
+                  (org-level-8 . 1.05)))
+    (set-face-attribute (car face) nil :font "Cantarell" :weight 'regular :height (cdr face)))
+
+  ;; Ensure that anything that should be fixed-pitch in Org files appears that way
+  (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-code nil   :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-table nil   :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
+  (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
+  (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
+
   :custom
   (org-src-tab-acts-natively t)
   (org-image-actual-width nil)
   :hook ((org-mode . flyspell-mode)
-         (org-mode . visual-line-mode)))
+         (org-mode . visual-line-mode)
+         (org-mode . (lambda () (variable-pitch-mode 1)))))
 
 ;; An outline of pretty bullets instead of a list of asterisks.
 (use-package org-bullets

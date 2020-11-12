@@ -97,9 +97,7 @@
     (put 'forward-paragraph 'CUA nil)
     (put 'beginning-of-buffer 'CUA nil)
     (put 'end-of-buffer 'CUA nil)
-    (put 'move-end-of-line 'CUA nil)
-   )
- )
+    (put 'move-end-of-line 'CUA nil)))
 
 ;; Standard Shortcuts
 (global-set-key (kbd "C-w") 'kill-current-buffer) ; Close
