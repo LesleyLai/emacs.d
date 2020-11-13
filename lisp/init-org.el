@@ -13,6 +13,12 @@
          ("M-K" . org-shiftdown)
          ("M-I" . org-shiftup)
          ("M-d" . org-delete-backward-char))
+  :ryo
+  (:mode 'org-mode)
+  ("SPC c" (("l" org-latex-preview)
+            ("n" org-noter)
+            ("l" org-insert-link)
+            ("L" org-store-link)))
   :config
   (progn
     (defvar org-setting-file "~/Dropbox/org/org.el")
