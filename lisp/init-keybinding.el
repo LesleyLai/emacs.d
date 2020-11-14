@@ -191,6 +191,8 @@ Version 2018-04-02T14:38:04-07:00"
 ; Which key mode
 (use-package which-key
   :ensure
+  :custom
+  (which-key-enable-extended-define-key t)
   :config
   (which-key-setup-side-window-right-bottom)
   (push '((nil . "ryo:.*:") . (nil . "")) which-key-replacement-alist))
@@ -218,7 +220,6 @@ Version 2018-04-02T14:38:04-07:00"
 
   ;; Movements
   (ryo-modal-keys
-   ("w" xah-shrink-whitespaces)
    ("," ryo-modal-repeat)
    ("f" ryo-modal-mode)
    ("a" "M-x")
@@ -228,7 +229,7 @@ Version 2018-04-02T14:38:04-07:00"
    ("l" forward-char)
    ("u" backward-word)
    ("o" forward-word)
-   ("n" switch-window)
+   ("b" switch-window)
    ("h" "M-m")
    (";" "C-e")
    ("." "M-g M-g"))
@@ -251,6 +252,7 @@ Version 2018-04-02T14:38:04-07:00"
 
   ;; Editing
   (ryo-modal-keys
+   ("w" xah-shrink-whitespaces)
    ("z" "C-z")
    ("x" kill-region)
    ("c" copy-region-as-kill)
@@ -266,8 +268,27 @@ Version 2018-04-02T14:38:04-07:00"
 
   ;; Space leader key
   (ryo-modal-key
-   "SPC" '(("g" magit-status)
-           ("a" org-agenda)))
+   "SPC" '(("a" mark-whole-buffer)
+           ("b" switch-to-buffer)
+           ("g" magit-status)))
+
+  (ryo-modal-keys
+   ("SPC o"
+    (("SPC" whitespace-mode)
+     ("a" org-agenda)
+     ("d" dired)
+     ("p" list-packages)
+     ("t" term)
+     ("r" read-only-mode))
+    :name "options and open"))
+
+  (ryo-modal-keys
+   ("SPC f"
+    (("i" ibuffer :name "list buffers")
+     ("b" bookmark-bmenu-list :name "list bookmarks")
+     ("m" bookmark-set :name "set bookmark")
+     ("f" find-file))
+    :name "find and files"))
 
   ;; Unbind unassigned keys
   (ryo-modal-keys
@@ -276,7 +297,7 @@ Version 2018-04-02T14:38:04-07:00"
    ("p" suppress)
    ("s" suppress)
    ("'" suppress)
-   ("b" suppress)
+   ("n" suppress)
    ("m" suppress)
    ("/" suppress)
    ("-" suppress)

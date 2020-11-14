@@ -17,6 +17,7 @@
   (:mode 'org-mode)
   ("SPC c" (("l" org-latex-preview)
             ("n" org-noter)
+            ("o" org-open-at-point)
             ("l" org-insert-link)
             ("L" org-store-link)))
   :config
