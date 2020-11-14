@@ -134,10 +134,21 @@
 (use-package helpful
   :ensure t
   :bind
-  ("C-h f" . helpful-callable)
-  ("C-h v" . helpful-variable)
-  ("C-h k" . helpful-key)
-  ("C-h C" . helpful-command))
+  ([remap describe-function] . helpful-callable)
+  ([remap describe-command] . helpful-command)
+  ([remap describe-variable] . helpful-variable)
+  ([remap describe-key] . helpful-key)
+  :ryo
+  ("SPC h"
+     (("a" apropos-command)
+      ("b" describe-bindings)
+      ("c" describe-char)
+      ("f" describe-function)
+      ("k" describe-key)
+      ("m" describe-mode)
+      ("v" describe-variable)
+      ("s" describe-syntax))
+     :name "help"))
 
 (use-package posframe :defer t :ensure t)
 

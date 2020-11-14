@@ -80,7 +80,8 @@
   :ryo
   ("SPC n" (("l" org-roam)
             ("f" org-roam-find-file)
-            ("g" org-roam-graph)))
+            ("g" org-roam-graph))
+   :name "note taking")
   (:mode 'org-mode)
     ("SPC n" (("i" org-roam-insert)
               ("I" org-roam-insert-immediate)
