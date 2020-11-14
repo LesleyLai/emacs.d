@@ -229,7 +229,7 @@ Version 2018-04-02T14:38:04-07:00"
    ("l" forward-char)
    ("u" backward-word)
    ("o" forward-word)
-   ("b" switch-window)
+   ("q" switch-window)
    ("h" "M-m")
    (";" "C-e")
    ("." "M-g M-g"))
@@ -293,9 +293,9 @@ Version 2018-04-02T14:38:04-07:00"
   ;; Unbind unassigned keys
   (ryo-modal-keys
    ("-" suppress)
-   ("q" suppress)
    ("p" suppress)
    ("s" suppress)
+   ("b" suppress)
    ("'" suppress)
    ("n" suppress)
    ("m" suppress)
