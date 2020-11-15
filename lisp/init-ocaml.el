@@ -1,6 +1,7 @@
 ;; Major mode
 (use-package tuareg
   :ensure
+  :defer t
   :config
   (setq tuareg-interactive-program "utop"
         tuareg-opam "opam"))

@@ -12,10 +12,6 @@
               (if (file-exists-p (byte-compile-dest-file buffer-file-name))
                   (byte-compile-file buffer-file-name)))))
 
-(defun elisp-mode-hook-setup ()
-  "Enable features only useful in Emacs Lisp mode."
-  (checkdoc-minor-mode))
-
 (defun eval-region-or-buffer () (interactive)
        (let ((debug-on-error t))
          (cond
@@ -29,12 +25,10 @@
            ))))
 
 (use-package emacs-lisp-mode
-  :init
-  (progn
-    (customize-set-variable 'load-prefer-newer t)
-    (add-hook 'emacs-lisp-mode-hook 'recompile-elc-on-save)
-    (add-to-list 'completion-styles 'initials t)
-    (add-hook 'emacs-lisp-mode-hook 'elisp-mode-hook-setup))
+  :hook ((emacs-lisp-mode . recompile-elc-on-save)
+         (emacs-lisp-mode . checkdoc-minor-mode))
+  :custom
+  (load-prefer-newer t)
   :bind (:map emacs-lisp-mode-map
          ("C-c C-c" . eval-region-or-buffer)
          ("<f5>" . eval-region-or-buffer))

@@ -38,8 +38,7 @@
                   (org-level-5 . 1.05)
                   (org-level-6 . 1.05)
                   (org-level-7 . 1.05)
-                  (org-level-8 . 1.05)))
-    (set-face-attribute (car face) nil :font "Cantarell" :weight 'regular :height (cdr face)))
+                  (org-level-8 . 1.05))))
 
   ;; Ensure that anything that should be fixed-pitch in Org files appears that way
   (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
@@ -115,6 +114,7 @@
   (org-journal-enable-agenda-integration t))
 
 (use-package org-roam-server
+  :defer t
   :ensure t
   :config
   (setq org-roam-server-host "127.0.0.1"
@@ -136,10 +136,12 @@
   (push 'company-org-roam company-backends))
 
 (use-package org-books
+  :defer t
   :after org
   :ensure t)
 
 (use-package org-download
+  :defer t
   :ensure t
   :config
   ;; add support to dired
