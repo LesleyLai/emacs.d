@@ -216,10 +216,16 @@ Version 2018-04-02T14:38:04-07:00"
   (add-hook 'prog-mode-hook #'ryo-modal-mode)
   (setq ryo-modal-cursor-color nil)
   (defun suppress ()
-      (interactive) (message "This key is not binded"))
+    (interactive) (message "This key is not binded"))
+
+  ;; Convenience
+  (ryo-modal-keys
+   ("," ryo-modal-repeat)
+   ("f" ryo-modal-mode))
 
   ;; Movements
   (ryo-modal-keys
+   (:mc-all)
    ("," ryo-modal-repeat)
    ("f" ryo-modal-mode)
    ("a" "M-x")
@@ -230,9 +236,8 @@ Version 2018-04-02T14:38:04-07:00"
    ("u" backward-word)
    ("o" forward-word)
    ("q" switch-window)
-   ("h" "M-m")
-   (";" "C-e")
-   ("." "M-g M-g"))
+   ("h" back-to-indentation)
+   (";" move-end-of-line))
 
   ;; Number arguments
   (ryo-modal-keys
@@ -299,6 +304,7 @@ Version 2018-04-02T14:38:04-07:00"
    ("'" suppress)
    ("n" suppress)
    ("m" suppress)
+   ("." suppress)
    ("/" suppress)
    ("-" suppress)
    ("=" suppress)))

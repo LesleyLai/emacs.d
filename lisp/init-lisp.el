@@ -1,10 +1,11 @@
 ;; keeps parentheses under control.
 (use-package paredit
-             :ensure t
-             :config
-             (add-hook 'eval-expression-minibuffer-setup-hook
-                       #'enable-paredit-mode)
-             )
+  :ensure t
+  :config
+  (add-hook 'eval-expression-minibuffer-setup-hook
+            #'enable-paredit-mode)
+  :bind (:map paredit-mode-map
+         (";" . nil)))
 
 
 (eval-after-load 'paredit

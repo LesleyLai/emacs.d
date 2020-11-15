@@ -23,12 +23,14 @@
   :config
   (progn
     (defvar org-setting-file "~/Dropbox/org/org.el")
-    (if (file-exists-p org-setting-file) (load-file org-setting-file))
-    (org-babel-do-load-languages
-     'org-babel-load-languages
-     '((shell . t)
-       (js . t)
-       (C . t))))
+    (if (file-exists-p org-setting-file) (load-file org-setting-file)))
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (shell . t)
+     (js . t)
+     (C . t)))
+  (setq org-confirm-babel-evaluate nil)
 
   (dolist (face '((org-document-title . 1.5)
                   (org-level-1 . 1.4)
