@@ -188,15 +188,6 @@ Version 2018-04-02T14:38:04-07:00"
     (setf comint-prompt-read-only t
           comint-history-isearch t)))
 
-; Which key mode
-(use-package which-key
-  :ensure
-  :custom
-  (which-key-enable-extended-define-key t)
-  :config
-  (which-key-setup-side-window-right-bottom)
-  (push '((nil . "ryo:.*:") . (nil . "")) which-key-replacement-alist))
-
 ;; Dired
 (add-hook 'dired-mode-hook
  (lambda ()

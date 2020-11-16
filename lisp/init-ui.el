@@ -44,7 +44,8 @@
   (customize-set-variable 'git-gutter:handled-backends '(svn hg git)))
 
 (use-package all-the-icons
-  :ensure t)
+  :ensure t
+  :defer 0.5)
 
 (use-package doom-modeline
   :after all-the-icons
@@ -55,9 +56,12 @@
 ;; currently entered incomplete command (a prefix) in a popup.
 (use-package which-key
   :ensure t
-  :defer t
+  :custom
+  (which-key-enable-extended-define-key t)
   :config
-  (which-key-mode))
+  (which-key-mode)
+  (which-key-setup-side-window-right-bottom)
+  (push '((nil . "ryo:.*:") . (nil . "")) which-key-replacement-alist))
 
 ;; Cursor Type
 (setq-default cursor-type 'bar)
