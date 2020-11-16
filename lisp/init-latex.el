@@ -38,7 +38,6 @@
                                (TeX-fold-mode 1)
                                (add-hook 'find-file-hook
                                          'TeX-fold-buffer t t)))
-  (add-hook 'LaTeX-mode-hook #'outline-minor-mode)
-  )
+  (add-hook 'LaTeX-mode-hook #'outline-minor-mode))
 
 (provide 'init-latex)
