@@ -9,7 +9,8 @@
 ;; enable autopep8 formatting on save
 ;; need autopep8 installed
 (use-package pip-requirements
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (defun python-shell-completion-native-try ()
   "Return non-nil if can trigger native completion."

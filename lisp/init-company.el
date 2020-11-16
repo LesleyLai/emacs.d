@@ -6,6 +6,7 @@
 ;;; Code:
 (use-package company
   :ensure t
+  :defer 5
   :config
   (add-hook 'after-init-hook 'global-company-mode)
 
@@ -22,7 +23,6 @@
 (use-package company-quickhelp
   :ensure t
   :after company
-  :defer t
   :config
   (company-quickhelp-mode)
   (customize-set-variable 'company-quickhelp-delay .1)

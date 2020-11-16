@@ -30,7 +30,9 @@
 
 ;; Highlight brackets according to their depth
 (use-package rainbow-delimiters
-             :ensure t)
+  :ensure t
+  :defer 5
+  :diminish)
 
 ;; -------------------------------------------
 ;; Enable desired features for all lisp modes

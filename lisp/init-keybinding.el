@@ -72,6 +72,44 @@ Version 2018-04-02T14:38:04-07:00"
      (t (progn
           (message "nothing done. logic error 40873. shouldn't reach here" ))))))
 
+
+(defun xah-beginning-of-line-or-block ()
+  "Move cursor to beginning of line or previous paragraph.
+
+• When called first time, move cursor to beginning of char in current line. (if already, move to beginning of line.)
+• When called again, move cursor backward by jumping over any sequence of whitespaces containing 2 blank lines.
+
+URL `http://ergoemacs.org/emacs/emacs_keybinding_design_beginning-of-line-or-block.html'
+Version 2017-05-13"
+  (interactive)
+  (let (($p (point)))
+    (if (or (equal (point) (line-beginning-position))
+            (equal last-command this-command ))
+        (if (re-search-backward "\n[\t\n ]*\n+" nil "NOERROR")
+            (progn
+              (skip-chars-backward "\n\t ")
+              (forward-char ))
+          (goto-char (point-min)))
+      (progn
+        (back-to-indentation)
+        (when (eq $p (point))
+          (beginning-of-line))))))
+
+(defun xah-end-of-line-or-block ()
+  "Move cursor to end of line or next paragraph.
+
+• When called first time, move cursor to end of line.
+• When called again, move cursor forward by jumping over any sequence of whitespaces containing 2 blank lines.
+
+URL `http://ergoemacs.org/emacs/emacs_keybinding_design_beginning-of-line-or-block.html'
+Version 2017-05-30"
+  (interactive)
+  (if (or (equal (point) (line-end-position))
+          (equal last-command this-command ))
+      (progn
+        (re-search-forward "\n[\t\n ]*\n+" nil "NOERROR" ))
+    (end-of-line)))
+
 ;; A lot of things come from ergoemacs
 (global-set-key (kbd "M-i") 'previous-line)
 (global-set-key (kbd "M-j") 'backward-char)
@@ -227,8 +265,8 @@ Version 2018-04-02T14:38:04-07:00"
    ("u" backward-word)
    ("o" forward-word)
    ("q" switch-window)
-   ("h" back-to-indentation)
-   (";" move-end-of-line))
+   ("h" xah-beginning-of-line-or-block)
+   (";" xah-end-of-line-or-block))
 
   ;; Number arguments
   (ryo-modal-keys
@@ -330,6 +368,8 @@ Version 2018-04-02T14:38:04-07:00"
           cua-paste
           dap-tooltip-mouse-motion
           lsp-ui-doc--handle-mouse-movement
+          org-cycle
+          org-return
           org-self-insert-command
           org-delete-backward-char
           ignore

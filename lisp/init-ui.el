@@ -56,6 +56,7 @@
 ;; currently entered incomplete command (a prefix) in a popup.
 (use-package which-key
   :ensure t
+  :defer 5
   :custom
   (which-key-enable-extended-define-key t)
   :config
