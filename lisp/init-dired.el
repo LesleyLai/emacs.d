@@ -1,15 +1,25 @@
 ;; Menubar
 (define-key-after global-map
   [menu-bar file dired]
-  '("Directory manager" . dired)
+  '("Dired" . dired)
   'kill-buffer)
 
-;; auto refresh dired when file changes
-(add-hook 'dired-mode-hook 'auto-revert-mode)
+(use-package dired
+  :commands (dired dired-jump)
+  :custom ((dired-listing-switches "-gaGh"))
+  :bind (:map dired-mode-map
+              ("i" . dired-previous-line)
+              ("k" . dired-next-line)
+              ("j" . dired-single-up-directory)
+              ("l" . dired-single-buffer)))
 
-(use-package dired-sidebar
-  :bind (("C-x C-n" . dired-sidebar-toggle-sidebar))
-  :ensure nil
-  :commands (dired-sidebar-toggle-sidebar))
+;; This package makes possible to use the same buffer to navigate in dired without creating new buffer
+(use-package dired-single
+  :ensure t)
+
+(use-package all-the-icons-dired
+  :ensure t
+  :hook (dired-mode . all-the-icons-dired-mode))
+
 
 (provide 'init-dired)

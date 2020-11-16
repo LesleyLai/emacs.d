@@ -9,8 +9,7 @@
                              (set (make-local-variable 'company-backends)
                                   '(company-elm
                                     company-yasnippet
-                                    company-files))))
-  )
+                                    company-files)))))
 
 (use-package flycheck-elm
   :ensure t
