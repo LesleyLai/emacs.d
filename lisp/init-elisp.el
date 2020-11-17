@@ -31,6 +31,9 @@
   (load-prefer-newer t)
   :bind (:map emacs-lisp-mode-map
          ("C-c C-c" . eval-region-or-buffer)
+         ("<f5>" . eval-region-or-buffer)
+         :map lisp-interaction-mode-map
+         ("C-c C-c" . eval-region-or-buffer)
          ("<f5>" . eval-region-or-buffer))
   :interpreter (("emacs" . emacs-lisp-mode))
   )
