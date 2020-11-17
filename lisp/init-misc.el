@@ -115,6 +115,8 @@
 (use-package vterm
   :if (not *win64*)
   :ensure t
-  :defer 30)
+  :defer 30
+  :bind (:map vterm-mode-map
+              ("C-w" . nil)))
 
 (provide 'init-misc)
