@@ -9,6 +9,7 @@
 ;; Reason
 (use-package reason-mode
   :ensure t
+  :defer t
   :hook
   (reason-mode . (lambda () (add-hook 'before-save-hook 'refmt-before-save)))
   :config

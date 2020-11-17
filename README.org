@@ -1,4 +1,4 @@
-This is my own setting of Emacs.
+This repository contains my setting of Emacs.
 
 * Usage
 Put the whole directory to =~/.emacs.d=

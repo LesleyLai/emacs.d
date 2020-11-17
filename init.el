@@ -68,7 +68,6 @@
 (require 'init-yaml)
 (require 'init-frame-hooks)
 (require 'init-speedbar)
-(require 'init-writing)
 (require 'init-elm)
 (require 'init-ocaml)
 (require 'init-latex)
@@ -84,9 +83,7 @@
   (setq idle-require-symbols '(init-misc-lazy
                                init-git
                                init-multiple-cursors
-                               init-ibuffer
-                               init-spelling
-                               ))
+                               init-ibuffer))
   (idle-require-mode 1) ;; starts loading
   )
 

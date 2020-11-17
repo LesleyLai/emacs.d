@@ -55,8 +55,7 @@
   :custom
   (org-src-tab-acts-natively t)
   (org-image-actual-width nil)
-  :hook ((org-mode . flyspell-mode)
-         (org-mode . visual-line-mode)
+  :hook ((org-mode . visual-line-mode)
          (org-mode . (lambda () (variable-pitch-mode 1)))))
 
 ;; An outline of pretty bullets instead of a list of asterisks.
