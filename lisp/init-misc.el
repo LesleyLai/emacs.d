@@ -111,4 +111,10 @@
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
 
+;; Better terminal
+(use-package vterm
+  :if (not *win64*)
+  :ensure t
+  :defer 30)
+
 (provide 'init-misc)
