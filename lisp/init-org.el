@@ -143,7 +143,7 @@
   :ensure t)
 
 (use-package org-download
-  :defer t
+  :after org
   :ensure t
   :config
   ;; add support to dired

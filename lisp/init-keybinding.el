@@ -268,22 +268,6 @@ Version 2017-05-30"
    ("h" xah-beginning-of-line-or-block)
    (";" xah-end-of-line-or-block))
 
-  ;; Number arguments
-  (ryo-modal-keys
-   ;; First argument to ryo-modal-keys may be a list of keywords.
-   ;; These keywords will be applied to all keybindings.
-   (:norepeat t)
-   ("0" "M-0")
-   ("1" "M-1")
-   ("2" "M-2")
-   ("3" "M-3")
-   ("4" "M-4")
-   ("5" "M-5")
-   ("6" "M-6")
-   ("7" "M-7")
-   ("8" "M-8")
-   ("9" "M-9"))
-
   ;; Editing
   (ryo-modal-keys
    ("w" xah-shrink-whitespaces)
