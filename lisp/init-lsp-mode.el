@@ -8,6 +8,7 @@
          (c++-mode . lsp)
          (cmake-mode . lsp)
          (css-mode . lsp)
+         (elm-mode . lsp)
          (html-mode . lsp)
          (js2-mode . lsp)
          (json-mode . lsp)
