@@ -55,6 +55,7 @@
 
   :custom
   (org-src-tab-acts-natively t)
+  (org-agenda-span 'day)
   (org-image-actual-width nil)
   :hook ((org-mode . visual-line-mode)
          (org-mode . (lambda () (variable-pitch-mode 1)))))
@@ -180,5 +181,17 @@
 :NOTER_DOCUMENT: ${file}
 :NOTER_PAGE:
 :END:"))))
+
+(use-package org-edna
+  :ensure t
+  :after org
+  :config
+  (org-edna-mode))
+
+
+(use-package org-super-agenda
+  :ensure t
+  :config
+  (org-super-agenda-mode))
 
 (provide 'init-org)
