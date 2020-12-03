@@ -91,3 +91,6 @@ request/
 
 # native-comp
 /eln-cache
+
+# org.babel generated
+emacs.el
