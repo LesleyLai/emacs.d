@@ -30,7 +30,7 @@
 ;; Line number
 (use-package display-line-numbers
   :hook ((prog-mode . display-line-numbers-mode)
-         (text-mode . display-line-numbers-mode)))
+         (css-mode . display-line-numbers-mode)))
 
 ;; Git gutter
 (use-package git-gutter
