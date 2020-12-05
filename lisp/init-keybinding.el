@@ -235,7 +235,83 @@ Version 2017-05-30"
   (define-key dired-mode-map (kbd "M-l") 'forward-char)
   ))
 
+(use-package hydra
+  :ensure t
+  :config
+  ;; Support for nested hydra
+  (defvar hydra-stack nil)
+
+  (defun hydra-push (expr)
+    (push `(lambda () ,expr) hydra-stack))
+
+  (defun hydra-pop ()
+    (interactive)
+    (let ((x (pop hydra-stack)))
+      (when x
+        (funcall x))))
+
+  ;; Hydra for moving window splitter
+  (defun hydra-move-splitter-left (arg)
+    "Move window splitter left."
+    (interactive "p")
+    (if (let ((windmove-wrap-around))
+          (windmove-find-other-window 'right))
+        (shrink-window-horizontally arg)
+      (enlarge-window-horizontally arg)))
+
+  (defun hydra-move-splitter-right (arg)
+    "Move window splitter right."
+    (interactive "p")
+    (if (let ((windmove-wrap-around))
+          (windmove-find-other-window 'right))
+        (enlarge-window-horizontally arg)
+      (shrink-window-horizontally arg)))
+
+  (defun hydra-move-splitter-up (arg)
+    "Move window splitter up."
+    (interactive "p")
+    (if (let ((windmove-wrap-around))
+          (windmove-find-other-window 'up))
+        (enlarge-window arg)
+      (shrink-window arg)))
+
+  (defun hydra-move-splitter-down (arg)
+    "Move window splitter down."
+    (interactive "p")
+    (if (let ((windmove-wrap-around))
+          (windmove-find-other-window 'up))
+        (shrink-window arg)
+      (enlarge-window arg)))
+
+  (defhydra hydra-splitter()
+    "Window Resizing"
+    ("j" hydra-move-splitter-left "Move splitter left")
+    ("k" hydra-move-splitter-down "Move splitter down")
+    ("i" hydra-move-splitter-up "Move splitter up")
+    ("l" hydra-move-splitter-right "Move splitter right")
+    ("q" hydra-pop "Exit" :exit t))
+
+  ;; Hydra for window management
+  (defhydra hydra-window (global-map "C-c w")
+    "Window"
+    ("k" windmove-down "down" :column "Navigation")
+    ("i" windmove-up "up")
+    ("j" windmove-left "left")
+    ("l" windmove-right "right")
+    ("1" delete-other-windows "delete other windows" :column "Management")
+    ("2" split-window-below "split below")
+    ("3" split-window-right "split right")
+    ("0" delete-window "delete current window")
+    ("s" (progn
+         (hydra-splitter/body)
+         (hydra-push '(hydra-window/body)))
+       "Resize window" :exit t)
+    ("q" hydra-pop "Exit" :exit t))
+
+  )
+
 (use-package ryo-modal
+  :after hydra
   :ensure t
   :commands ryo-modal-mode
   :bind (("C-c SPC" . ryo-modal-mode)
@@ -286,7 +362,8 @@ Version 2017-05-30"
   (ryo-modal-key
    "SPC" '(("a" mark-whole-buffer)
            ("b" switch-to-buffer)
-           ("g" magit-status)))
+           ("g" magit-status)
+           ("w" hydra-window/body :name "Window navigation and management")))
 
   (ryo-modal-keys
    ("SPC o"
@@ -366,6 +443,7 @@ Version 2017-05-30"
           cua-copy-region
           company-complete-selection
           pdf-util-image-map-mouse-event-proxy
+          vterm--self-insert
           )))
 
 (provide 'init-keybinding)
