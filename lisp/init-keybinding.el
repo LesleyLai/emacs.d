@@ -249,14 +249,12 @@ Version 2017-05-30"
 
   ;; Convenience
   (ryo-modal-keys
-   ("," ryo-modal-repeat)
+   ("." ryo-modal-repeat)
    ("f" ryo-modal-mode))
 
   ;; Movements
   (ryo-modal-keys
    (:mc-all)
-   ("," ryo-modal-repeat)
-   ("f" ryo-modal-mode)
    ("a" "M-x")
    ("i" previous-line)
    ("j" backward-char)
@@ -282,7 +280,7 @@ Version 2017-05-30"
    ("d" "M-d")
    ("g" "M-f")
 
-   ("t" cua-set-mark))
+   ("m" cua-set-mark))
 
   ;; Space leader key
   (ryo-modal-key
@@ -312,12 +310,12 @@ Version 2017-05-30"
   (ryo-modal-keys
    ("-" suppress)
    ("p" suppress)
+   ("t" suppress)
    ("s" suppress)
    ("b" suppress)
    ("'" suppress)
    ("n" suppress)
-   ("m" suppress)
-   ("." suppress)
+   ("," suppress)
    ("/" suppress)
    ("-" suppress)
    ("=" suppress)))
