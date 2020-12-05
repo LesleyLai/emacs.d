@@ -131,7 +131,11 @@ Version 2017-05-30"
 (global-set-key (kbd "M-f") 'delete-forward-char)
 
 ;; Copy, paste and cut
-(cua-mode)
+(use-package cua-base
+  :config (cua-mode)
+  :bind (:map cua--cua-keys-keymap
+              ("C-v" . nil)
+              ("M-v" . nil)))
 
 (use-package undo-tree
   :ensure t
@@ -308,6 +312,17 @@ Version 2017-05-30"
        "Resize window" :exit t)
     ("q" hydra-pop "Exit" :exit t))
 
+  ;; Hydra for yank
+  (defhydra hydra-yank-pop ()
+    "yank"
+    ("C-v" yank nil)
+    ("M-v" yank-pop nil)
+    ("v" (yank-pop 1) "next")
+    ("V" (yank-pop -1) "prev")
+    ("l" helm-show-kill-ring "list" :color blue)
+    ("q" nil "Exit" :exit t))
+  (global-set-key (kbd "M-v") #'hydra-yank-pop/yank-pop)
+  (global-set-key (kbd "C-v") #'hydra-yank-pop/yank)
   )
 
 (use-package ryo-modal
@@ -348,7 +363,7 @@ Version 2017-05-30"
    ("z" "C-z")
    ("x" kill-region)
    ("c" copy-region-as-kill)
-   ("v" yank)
+   ("v" hydra-yank-pop/yank)
 
    ("e" "M-e")
    ("r" "M-r")
