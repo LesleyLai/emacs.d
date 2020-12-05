@@ -313,7 +313,7 @@ Version 2017-05-30"
          (hydra-push '(hydra-window/body)))
        "Resize window" :exit t)
     ("q" hydra-pop "Exit" :exit t))
-  (global-set-key (kbd "C-c w") #'hydra-window/body)
+  (global-set-key (kbd "C-c w") #'hydra-window)
 
   ;; Hydra for yank
   (defhydra hydra-yank-pop ()
@@ -326,7 +326,30 @@ Version 2017-05-30"
     ("q" nil "Exit" :exit t))
   (global-set-key (kbd "M-v") #'hydra-yank-pop/yank-pop)
   (global-set-key (kbd "C-v") #'hydra-yank-pop/yank)
-  )
+
+  ;; Hydra for keyboard macro
+  (defhydra hydra-keyboard-macros ()
+    "Keyboard Macro"
+    ("e" kmacro-end-or-call-macro-repeat "execute")
+    ("u" (lambda()
+           (interactive)
+           (let ((current-prefix-arg 0))
+             (call-interactively #'kmacro-end-or-call-macro)))
+     "loop")
+    ("s" (lambda ()
+           (interactive)
+           (isearch-forward-regexp)
+           (hydra-keyboard-macros/body))  "search" :color blue)
+    ("r" (lambda ()
+           (interactive)
+           (isearch-backward-regexp)
+           (hydra-keyboard-macros/body))  "reverse search" :color blue)
+    ("'" edit-last-kbd-macro "edit")
+    ("q" nil "Exit"))
+  (global-set-key
+   (kbd "C-x e")
+   #'hydra-keyboard-macros/kmacro-end-or-call-macro-repeat)
+)
 
 (use-package ryo-modal
   :after hydra
