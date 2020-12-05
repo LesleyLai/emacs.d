@@ -130,10 +130,11 @@ Version 2017-05-30"
 (global-set-key (kbd "M-d") 'backward-delete-char)
 (global-set-key (kbd "M-f") 'delete-forward-char)
 
-;; Copy, paste and cut
+;; CUA mode enables copy, paste and cut
 (use-package cua-base
   :config (cua-mode)
   :bind (:map cua--cua-keys-keymap
+              ;; The keys for yank are implemented by a hydra later
               ("C-v" . nil)
               ("M-v" . nil)))
 
@@ -296,7 +297,8 @@ Version 2017-05-30"
     ("q" hydra-pop "Exit" :exit t))
 
   ;; Hydra for window management
-  (defhydra hydra-window (global-map "C-c w")
+  (defhydra hydra-window (:pre (setq which-key-inhibit t)
+                               :post (setq which-key-inhibit nil))
     "Window"
     ("k" windmove-down "down" :column "Navigation")
     ("i" windmove-up "up")
@@ -311,6 +313,7 @@ Version 2017-05-30"
          (hydra-push '(hydra-window/body)))
        "Resize window" :exit t)
     ("q" hydra-pop "Exit" :exit t))
+  (global-set-key (kbd "C-c w") #'hydra-window/body)
 
   ;; Hydra for yank
   (defhydra hydra-yank-pop ()
