@@ -5,7 +5,11 @@
   (add-hook 'eval-expression-minibuffer-setup-hook
             #'enable-paredit-mode)
   :bind (:map paredit-mode-map
-         (";" . nil)))
+              (";" . nil)
+              ("<M-up>" . nil)
+              ("<M-down>" . nil)
+              ("<M-left>" . nil)
+              ("<M-right>" . nil)))
 
 
 (eval-after-load 'paredit

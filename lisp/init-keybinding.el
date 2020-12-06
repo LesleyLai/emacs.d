@@ -404,7 +404,8 @@ Version 2017-05-30"
    "SPC" '(("a" mark-whole-buffer)
            ("b" switch-to-buffer)
            ("g" magit-status)
-           ("w" hydra-window/body :name "Window navigation and management")))
+           ("w" hydra-window/body :name "Window navigation and management")
+           ("r" hydra-rectangle/body :name "Rectangle Editing")))
 
   (ryo-modal-keys
    ("SPC o"
@@ -437,6 +438,64 @@ Version 2017-05-30"
    ("/" suppress)
    ("-" suppress)
    ("=" suppress)))
+
+;; Rectangle editing
+
+;;;; Rectangle-mark-mode for mouse
+(defun mouse-start-rectangle (start-event)
+  (interactive "e")
+  (deactivate-mark)
+  (mouse-set-point start-event)
+  (rectangle-mark-mode +1)
+  (let ((drag-event))
+    (track-mouse
+      (while (progn
+               (setq drag-event (read-event))
+               (mouse-movement-p drag-event))
+        (mouse-set-point drag-event)))))
+
+;;;; hydra for rectangle-mark-mode
+(defhydra hydra-rectangle (:pre (rectangle-mark-mode 1)
+                                :color pink
+                                :hint nil
+                                :post (deactivate-mark))
+  "
+  Rectangle editing
+  ^_i_^       _c_opy        _o_pen       _N_umber-lines
+_j_   _l_     _v_ paste     _t_ype       _e_xchange-point
+  ^_k_^       _x_ cut       _T_ insert   _r_eset-region-mark
+^^^^          _z_ undo      _SPC_ clear  _q_uit
+  "
+  ("i" rectangle-previous-line)
+  ("k" rectangle-next-line)
+  ("j" rectangle-backward-char)
+  ("l" rectangle-forward-char)
+  ("x" kill-rectangle)                    ;; C-x r k
+  ("v" yank-rectangle)                    ;; C-x r y
+  ("c" copy-rectangle-as-kill)            ;; C-x r M-w
+  ("o" open-rectangle)                    ;; C-x r o
+  ("t" string-rectangle)                  ;; C-x r t
+  ("T" string-insert-rectangle)           ;; C-x r t
+  ("SPC" clear-rectangle)                 ;; C-x r c
+  ("e" rectangle-exchange-point-and-mark) ;; C-x C-x
+  ("N" rectangle-number-lines)            ;; C-x r N
+  ("r" (if (region-active-p)
+           (deactivate-mark)
+         (rectangle-mark-mode 1)))
+  ("z" undo-tree-undo nil)
+  ("<down-mouse-1>" mouse-start-rectangle nil)
+  ("q" nil))
+
+(global-set-key (kbd "S-<down-mouse-1>") #'hydra-rectangle/mouse-start-rectangle)
+(global-set-key (kbd "C-x SPC") #'hydra-rectangle/body)
+;;;; Qt Creator style keybindings
+(global-set-key (kbd "<M-up>") #'hydra-rectangle/rectangle-previous-line)
+(global-set-key (kbd "<M-down>") #'hydra-rectangle/rectangle-next-line)
+(global-set-key (kbd "<M-left>") #'hydra-rectangle/rectangle-backward-char)
+(global-set-key (kbd "<M-right>") #'hydra-rectangle/rectangle-forward-char)
+;;;; space leader keybindings
+(ryo-modal-keys
+ ("SPC r" hydra-rectangle/body :name "rectangle-mark-mode"))
 
 ;;
 ;; Statistics
