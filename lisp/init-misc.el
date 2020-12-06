@@ -1,5 +1,3 @@
-(use-package idle-highlight-mode :ensure t)
-
 (use-package fill-column-indicator
   :ensure t
   :config
@@ -40,7 +38,6 @@
 (defun generic-programming-mode-hook-setup ()
   (make-local-variable 'column-number-mode)
   (column-number-mode t)
-  (idle-highlight-mode t)
   (electric-pair-mode t)
   (setq tab-always-indent 'complete)
   (unless (string= major-mode "web-mode")
@@ -112,11 +109,13 @@
     (exec-path-from-shell-initialize)))
 
 ;; Better terminal
-(use-package vterm
-  :if (not *win64*)
-  :ensure t
-  :defer 30
-  :bind (:map vterm-mode-map
-              ("C-w" . nil)))
+(if (not *win64*)
+    (use-package vterm
+      :ensure t
+      :defer 30
+      :bind (:map vterm-mode-map
+                  ("C-w" . nil))))
+
+
 
 (provide 'init-misc)
