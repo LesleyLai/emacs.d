@@ -450,7 +450,8 @@ _j_   _l_     _v_ paste     _t_ype       _e_xchange-point
            ("b" switch-to-buffer)
            ("g" magit-status)
            ("w" hydra-window/body :name "Window navigation and management")
-           ("r" hydra-rectangle/body :name "Rectangle Editing")))
+           ("r" hydra-rectangle/body :name "Rectangle Editing")
+           ("SPC" major-mode-hydra)))
 
   (ryo-modal-keys
    ("SPC o"

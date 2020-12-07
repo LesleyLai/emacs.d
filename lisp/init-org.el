@@ -67,10 +67,15 @@
       ("c" org-copy-subtree "copy subtree")
       ("v" org-paste-subtree "paste subtree")
       ("^" org-sort "sort")
-      ("t" org-ctrl-c-ctrl-c "ctrl-c ctrl-c"))
+      ("f" org-ctrl-c-ctrl-c "ctrl-c ctrl-c")
+      ("*" org-toggle-heading "toggle heading")
+      ("-" org-ctrl-c-minus "toggle item"))
      "Refile"
      (("a" org-archive-subtree "archive subtree")
-      ("w" org-refile "refile"))))
+      ("w" org-refile "refile"))
+     "Toggle"
+     (("ti" org-toggle-inline-image "Toggle Image")
+      ("tl" org-toggle-link-display "Toggle Link Display"))))
 
   :custom
   (org-src-tab-acts-natively t)
