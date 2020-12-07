@@ -54,12 +54,31 @@
   (set-face-attribute 'org-headline-done nil :inherit 'variable-pitch)
   (set-face-attribute 'line-number nil :inherit 'fixed-pitch)
 
+  (major-mode-hydra-define org-mode (:quit-key "q" :color pink)
+    ("Navigation"
+     (("k" outline-next-visible-heading "next heading")
+      ("i" outline-previous-visible-heading "prev heading")
+      ("K" org-forward-heading-same-level "next heading at same level")
+      ("I" org-backward-heading-same-level "prev heading at same level")
+      ("j" outline-up-heading "up heading")
+      ("g" org-goto "goto" :exit t))
+     "Editing"
+     (("x" org-cut-subtree "cut subtree")
+      ("c" org-copy-subtree "copy subtree")
+      ("v" org-paste-subtree "paste subtree")
+      ("^" org-sort "sort")
+      ("t" org-ctrl-c-ctrl-c "ctrl-c ctrl-c"))
+     "Refile"
+     (("a" org-archive-subtree "archive subtree")
+      ("w" org-refile "refile"))))
+
   :custom
   (org-src-tab-acts-natively t)
   (org-agenda-span 'day)
   (org-image-actual-width nil)
   :hook ((org-mode . visual-line-mode)
-         (org-mode . (lambda () (variable-pitch-mode 1)))))
+         (org-mode . (lambda () (variable-pitch-mode 1))))
+  )
 
 ;; An outline of pretty bullets instead of a list of asterisks.
 (use-package org-bullets

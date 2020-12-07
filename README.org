@@ -19,7 +19,6 @@ See [[file:docs/keybinding.org][keybinding.org]] for more information.
 *** Deft
     Deft is the package that I used to quickly browse notes. You need to set up the variable ~deft-directory~ to the same directory of org-roam.
 
-
 * External packages
 Install those optional third-party packages to setup for certain languages.
 
