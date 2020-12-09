@@ -219,4 +219,10 @@
   :config
   (org-super-agenda-mode))
 
+;; Exporters
+(use-package ox-gfm
+  :ensure t
+  :defer 3
+  :after org)
+
 (provide 'init-org)
