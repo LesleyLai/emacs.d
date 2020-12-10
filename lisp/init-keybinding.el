@@ -294,7 +294,7 @@ Version 2017-05-30"
         (shrink-window arg)
       (enlarge-window arg)))
 
-  (defhydra hydra-splitter()
+  (defhydra hydra-splitter(:color amaranth)
     "Window Resizing"
     ("j" hydra-move-splitter-left "Move splitter left")
     ("k" hydra-move-splitter-down "Move splitter down")
@@ -304,30 +304,41 @@ Version 2017-05-30"
 
   ;; Hydra for window management
   (defhydra hydra-window (:pre (setq which-key-inhibit t)
-                               :post (setq which-key-inhibit nil))
+                               :post (setq which-key-inhibit nil)
+                               :color amaranth)
     "Window"
     ("k" windmove-down "down" :column "Navigation")
     ("i" windmove-up "up")
     ("j" windmove-left "left")
     ("l" windmove-right "right")
-    ("1" delete-other-windows "delete other windows" :column "Management")
+    ("1" (progn
+           (delete-other-windows)
+           (hydra-pop)) "delete other windows" :exit t :column "Management")
     ("2" split-window-below "split below")
     ("3" split-window-right "split right")
     ("0" delete-window "delete current window")
     ("s" (progn
          (hydra-splitter/body)
          (hydra-push '(hydra-window/body)))
-       "Resize window" :exit t)
-    ("q" hydra-pop "Exit" :exit t))
-  (global-set-key (kbd "C-c w") #'hydra-window)
+     "Resize window" :exit t)
+    ("bb" switch-to-buffer "Switch buffer" :column "Buffer" :exit t)
+    ("bf" find-file "Find file" :exit t)
+    ("bi" ibuffer "IBuffer" :exit t)
+    ("bw" kill-current-buffer "Kill current buffer")
+    ("a" execute-extended-command "M-x" :column "Other")
+    ("q" nil "Exit" :exit t))
+  (global-set-key (kbd "C-c w") #'hydra-window/body)
+  (global-set-key (kbd "C-x 2") #'hydra-window/split-window-below)
+  (global-set-key (kbd "C-x 3") #'hydra-window/split-window-right)
+  (global-set-key (kbd "C-x 0") #'hydra-window/delete-window)
 
   ;; Hydra for yank
   (defhydra hydra-yank-pop ()
     "yank"
     ("C-v" yank nil)
     ("M-v" yank-pop nil)
-    ("v" (yank-pop 1) "next")
-    ("V" (yank-pop -1) "prev")
+    ("j" (yank-pop 1) "next")
+    ("l" (yank-pop -1) "prev")
     ("l" helm-show-kill-ring "list" :color blue)
     ("q" nil "Exit" :exit t))
   (global-set-key (kbd "M-v") #'hydra-yank-pop/yank-pop)
