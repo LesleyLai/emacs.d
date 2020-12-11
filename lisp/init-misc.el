@@ -122,4 +122,10 @@
 ;; Checkdoc
 (use-package checkdoc :diminish checkdoc-minor-mode)
 
+;; Auto Revert Mode
+(use-package autorevert
+  :diminish auto-revert-mode
+  :config
+  (global-auto-revert-mode 1))
+
 (provide 'init-misc)

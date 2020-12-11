@@ -11,7 +11,8 @@
               ("i" . dired-previous-line)
               ("k" . dired-next-line)
               ("j" . dired-single-up-directory)
-              ("l" . dired-single-buffer)))
+              ("l" . dired-single-buffer))
+  :hook (dired-mode . auto-revert-mode))
 
 ;; This package makes possible to use the same buffer to navigate in dired without creating new buffer
 (use-package dired-single
@@ -19,6 +20,7 @@
 
 (use-package all-the-icons-dired
   :ensure t
+  :diminish
   :hook (dired-mode . all-the-icons-dired-mode))
 
 
