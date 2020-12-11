@@ -4,6 +4,7 @@
   :init
   (setq lsp-auto-guess-root nil)
   (setq lsp-prefer-flymake nil)
+  :diminish
   :hook ((c-mode . lsp)
          (c++-mode . lsp)
          (cmake-mode . lsp)

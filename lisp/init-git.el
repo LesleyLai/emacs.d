@@ -18,4 +18,16 @@
 (use-package gitconfig-mode :ensure t)
 (use-package gitignore-mode :ensure t)
 
+;; Git gutter
+(use-package git-gutter
+  :ensure t
+  :diminish
+  :defer 2
+  :init
+  (if *use-GUI*
+      (use-package git-gutter-fringe :ensure t :defer 2))
+  :config
+  (global-git-gutter-mode)
+  (customize-set-variable 'git-gutter:handled-backends '(svn hg git)))
+
 (provide 'init-git)

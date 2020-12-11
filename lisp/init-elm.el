@@ -2,6 +2,8 @@
   :ensure t
   :mode ("\\.elm\\'" . elm-mode)
   :after company
+  :diminish elm-format-on-save-mode
+  :diminish elm-indent-mode
   :config
   (when (executable-find "elm-format")
     (setq-default elm-format-on-save t))

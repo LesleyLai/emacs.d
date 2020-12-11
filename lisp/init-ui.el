@@ -32,17 +32,6 @@
   :hook ((prog-mode . display-line-numbers-mode)
          (css-mode . display-line-numbers-mode)))
 
-;; Git gutter
-(use-package git-gutter
-  :ensure t
-  :defer 2
-  :init
-  (if *use-GUI*
-      (use-package git-gutter-fringe :ensure t :defer 2))
-  :config
-  (global-git-gutter-mode)
-  (customize-set-variable 'git-gutter:handled-backends '(svn hg git)))
-
 (use-package all-the-icons
   :ensure t
   :defer 0.5)
@@ -50,12 +39,17 @@
 (use-package doom-modeline
   :after all-the-icons
   :ensure t
-  :init (doom-modeline-mode 1))
+  :init (doom-modeline-mode 1)
+  :custom
+  (doom-modeline-minor-modes t)
+  (doom-modeline-buffer-encoding nil)
+  (doom-modeline-lsp nil))
 
 ;; Emacs which-key showes displays the key bindings following your
 ;; currently entered incomplete command (a prefix) in a popup.
 (use-package which-key
   :ensure t
+  :diminish
   :defer 5
   :custom
   (which-key-enable-extended-define-key t)
@@ -164,5 +158,11 @@
   :config
   (dashboard-setup-startup-hook)
   (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*"))))
+
+(use-package simple
+  :diminish visual-line-mode)
+
+(use-package face-remap
+  :diminish buffer-face-mode)
 
 (provide 'init-ui)

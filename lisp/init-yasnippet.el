@@ -3,6 +3,7 @@
   :commands (yas-reload-all)
   :config
   (yas-reload-all)
+  :diminish yas-minor-mode
 
   :hook ((prog-mode
           text-mode

@@ -23,6 +23,9 @@
   (require 'bind-key))
 ;; }}
 
+(use-package diminish
+  :ensure t)
+
 (use-package auto-package-update
   :ensure t
   :defer 5

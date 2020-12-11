@@ -95,6 +95,7 @@
 
 (use-package org-roam
   :ensure t
+  :diminish
   :hook
   (after-init . org-roam-mode)
   :bind (:map org-roam-mode-map
@@ -178,6 +179,7 @@
 
 (use-package org-roam-bibtex
   :ensure t
+  :diminish
   :after org-roam
   :hook (org-roam-mode . org-roam-bibtex-mode)
   :bind (:map org-mode-map
@@ -210,6 +212,7 @@
 (use-package org-edna
   :ensure t
   :after org
+  :diminish
   :config
   (org-edna-mode))
 

@@ -6,7 +6,7 @@
 ;;; Code:
 (use-package company
   :ensure t
-  :defer 5
+  :diminish company-mode
   :config
   (add-hook 'after-init-hook 'global-company-mode)
 

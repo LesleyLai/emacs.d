@@ -39,12 +39,14 @@
               :config
               (customize-set-variable 'display-time-24hr-format t)
               (customize-set-variable 'display-time-default-load-average t)
+              (setq doom-modeline-icon nil)
               (display-time-mode))
             ))
 
 (add-hook 'after-make-window-system-frame-hooks
           (lambda ()
             (menu-bar-mode 1)
+            (setq doom-modeline-icon t)
 ))
 
 (provide 'init-frame-hooks)

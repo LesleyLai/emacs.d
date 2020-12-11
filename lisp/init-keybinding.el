@@ -140,6 +140,7 @@ Version 2017-05-30"
 
 (use-package undo-tree
   :ensure t
+  :diminish
   :config
   (global-undo-tree-mode 1)
   (defalias 'redo 'undo-tree-redo)
@@ -411,6 +412,7 @@ _j_   _l_     _v_ paste     _t_ype       _e_xchange-point
   :after hydra
   :ensure t
   :commands ryo-modal-mode
+  :diminish ryo-modal-mode
   :bind (("C-c SPC" . ryo-modal-mode)
          ("<escape>" . ryo-modal-mode))
   :config

@@ -116,6 +116,10 @@
       :bind (:map vterm-mode-map
                   ("C-w" . nil))))
 
+;; Eldoc
+(use-package eldoc :diminish)
 
+;; Checkdoc
+(use-package checkdoc :diminish checkdoc-minor-mode)
 
 (provide 'init-misc)
