@@ -27,7 +27,9 @@
   )
 
 ;; Modern c++ syntax highlighter
-(use-package modern-cpp-font-lock :ensure t)
+(use-package modern-cpp-font-lock
+  :ensure t
+  :diminish modern-c++-font-lock-mode)
 
 (use-package cc-mode
   :after modern-cpp-font-lock
