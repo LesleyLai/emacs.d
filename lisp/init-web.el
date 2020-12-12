@@ -66,11 +66,7 @@
   :config
   (progn
     (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
-    (add-hook 'js2-mode-hook (lambda () (setq js2-basic-offset 2)))
-    (add-hook 'js2-mode-hook (lambda ()
-                               (bind-key "M-j"
-                                         'join-line-or-lines-in-region
-                                         js2-mode-map)))))
+    (add-hook 'js2-mode-hook (lambda () (setq js2-basic-offset 2)))))
 
 ;; Typescript
 (use-package typescript-mode
