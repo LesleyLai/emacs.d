@@ -4,7 +4,32 @@
   :defer t
   :config
   (setq tuareg-interactive-program "utop"
-        tuareg-opam "opam"))
+        tuareg-opam "opam")
+
+    (major-mode-hydra-define tuareg-mode (:quit-key "q" :color teal)
+    ("Navigation"
+     (("a" tuareg-find-alternate-file "switch .ml/.mli"))
+     "Merlin"
+     (("e" merlin-error-check "check for errors" :exit nil))
+     "Repl"
+     (("c" tuareg-run-ocaml "Run Repl")
+      ("b" tuareg-eval-buffer "Evaluate buffer"))))
+
+    (defun eval-region-or-buffer-ocaml () (interactive)
+       (let ((debug-on-error t))
+         (cond
+          (mark-active
+           (call-interactively 'tuareg-eval-region)
+           (message "Region evaluated!")
+           (setq deactivate-mark t))
+          (t
+           (tuareg-eval-buffer)
+           (message "Evaluate buffer %s" (buffer-name))
+           ))))
+    :bind
+    (:map tuareg-mode-map
+          ("<f5>" . eval-region-or-buffer-ocaml))
+  )
 
 ;; Reason
 (use-package reason-mode
