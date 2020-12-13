@@ -75,6 +75,7 @@
       ("w" org-refile "refile"))
      "Toggle"
      (("ti" org-toggle-inline-image "Toggle Image")
+      ("tt" org-latex-preview "Toggle Latex")
       ("tl" org-toggle-link-display "Toggle Link Display"))))
 
   :custom

@@ -116,11 +116,11 @@
       :bind (:map vterm-mode-map
                   ("C-w" . nil))))
 
-;; Eldoc
+;; diminish a bunch of standard minor-modes
+(use-package simple :diminish visual-line-mode auto-fill-mode)
 (use-package eldoc :diminish)
-
-;; Checkdoc
 (use-package checkdoc :diminish checkdoc-minor-mode)
+(use-package with-editor :diminish with-editor-mode)
 
 ;; Auto Revert Mode
 (use-package autorevert

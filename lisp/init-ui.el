@@ -159,9 +159,6 @@
   (dashboard-setup-startup-hook)
   (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*"))))
 
-(use-package simple
-  :diminish visual-line-mode)
-
 (use-package face-remap
   :diminish buffer-face-mode)
 
