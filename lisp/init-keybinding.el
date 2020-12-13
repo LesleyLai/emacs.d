@@ -455,7 +455,7 @@ _j_   _l_     _v_ paste     _t_ype       _e_xchange-point
    ("d" "M-d")
    ("g" "M-f")
 
-   ("m" cua-set-mark))
+   ("t" cua-set-mark))
 
   ;; Space leader key
   (ryo-modal-key
@@ -488,10 +488,10 @@ _j_   _l_     _v_ paste     _t_ype       _e_xchange-point
   (ryo-modal-keys
    ("-" suppress)
    ("p" suppress)
-   ("t" suppress)
    ("s" suppress)
    ("b" suppress)
    ("'" suppress)
+   ("m" suppress)
    ("n" suppress)
    ("," suppress)
    ("/" suppress)
