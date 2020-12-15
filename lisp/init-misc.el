@@ -128,4 +128,9 @@
   :config
   (global-auto-revert-mode 1))
 
+;; Winner mode can be used to undo/redo changes on window
+(use-package winner-mode
+  :ensure nil
+  :hook (after-init . winner-mode))
+
 (provide 'init-misc)
