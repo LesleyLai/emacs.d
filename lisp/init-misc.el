@@ -131,7 +131,15 @@
 
 ;; Winner mode can be used to undo/redo changes on window
 (use-package winner-mode
-  :ensure nil
   :hook (after-init . winner-mode))
+
+;; Minor mode to save the curse place for a file after last visit
+(use-package saveplace
+  :hook (after-init . save-place-mode))
+
+;; Workaround for inefficiency that may caused by long lines
+;; For example, when opening an minified JS file
+(use-package so-long
+  :config (global-so-long-mode 1))
 
 (provide 'init-misc)
