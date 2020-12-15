@@ -27,11 +27,6 @@
       backup-directory-alist `(("." . ,(concat user-emacs-directory
                                                "backups"))))
 
-;; Line number
-(use-package display-line-numbers
-  :hook ((prog-mode . display-line-numbers-mode)
-         (css-mode . display-line-numbers-mode)))
-
 (use-package all-the-icons
   :ensure t
   :defer 0.5)
