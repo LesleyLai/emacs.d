@@ -1,24 +1,3 @@
-(use-package fill-column-indicator
-  :ensure t
-  :config
-  ;; See https://github.com/alpaker/Fill-Column-Indicator/issues/67
-  (defvar-local eos/fci-disabled nil)
-  ;; Add a hook that disables fci if enabled when the window changes
-  ;; and it isn't wide enough to display it.
-  (defun eos/maybe-disable-fci ()
-    (interactive)
-    ;; Disable FCI if necessary
-    (when (and fci-mode
-               (< (window-width) (or fci-rule-column fill-column)))
-      (fci-mode -1)
-      (setq-local eos/fci-disabled t))
-    ;; Enable FCI if necessary
-    (when (and eos/fci-disabled
-               (eq fci-mode nil)
-               (> (window-width) (or fci-rule-column fill-column)))
-      (fci-mode 1)
-      (setq-local eos/fci-disabled nil))))
-
 ;; Remove trailing whitespaces
 (setq show-trailing-whitespace t)
 (use-package ws-butler
@@ -41,10 +20,7 @@
   (electric-pair-mode t)
   (setq tab-always-indent 'complete)
   (unless (string= major-mode "web-mode")
-    (progn (fci-mode t)  ; 80 column
-           (add-hook 'window-configuration-change-hook
-                     #'eos/maybe-disable-fci)
-           )))
+    (display-fill-column-indicator-mode)))
 
 (add-hook 'prog-mode-hook 'generic-programming-mode-hook-setup)
 (add-hook 'css-mode-hook 'generic-programming-mode-hook-setup)
