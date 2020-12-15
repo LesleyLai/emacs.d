@@ -344,8 +344,8 @@ Version 2017-05-30"
     "yank"
     ("C-v" yank nil)
     ("M-v" yank-pop nil)
-    ("j" (yank-pop 1) "next")
-    ("l" (yank-pop -1) "prev")
+    ("m" (yank-pop 1) "next")
+    ("n" (yank-pop -1) "prev")
     ("l" helm-show-kill-ring "list" :color blue)
     ("q" nil "Exit" :exit t))
   (global-set-key (kbd "M-v") #'hydra-yank-pop/yank-pop)
@@ -414,6 +414,20 @@ _j_   _l_     _v_ paste     _t_ype       _e_xchange-point
 (global-set-key (kbd "<M-left>") #'hydra-rectangle/rectangle-backward-char)
 (global-set-key (kbd "<M-right>") #'hydra-rectangle/rectangle-forward-char)
 
+;;;; Rectangle-mark-mode for mouse
+(defun mouse-start-rectangle (start-event)
+  (interactive "e")
+  (deactivate-mark)
+  (mouse-set-point start-event)
+  (rectangle-mark-mode +1)
+  (let ((drag-event))
+    (track-mouse
+      (while (progn
+               (setq drag-event (read-event))
+               (mouse-movement-p drag-event))
+        (mouse-set-point drag-event)))))
+
+;; Ryo modal mode
 (use-package ryo-modal
   :after hydra
   :ensure t
@@ -504,20 +518,21 @@ _j_   _l_     _v_ paste     _t_ype       _e_xchange-point
    ("-" suppress)
    ("=" suppress)))
 
-;; Rectangle editing
-
-;;;; Rectangle-mark-mode for mouse
-(defun mouse-start-rectangle (start-event)
-  (interactive "e")
-  (deactivate-mark)
-  (mouse-set-point start-event)
-  (rectangle-mark-mode +1)
-  (let ((drag-event))
-    (track-mouse
-      (while (progn
-               (setq drag-event (read-event))
-               (mouse-movement-p drag-event))
-        (mouse-set-point drag-event)))))
+;; Moving lines or selected region up and down
+(use-package move-lines
+  :load-path "site-lisp/move-lines"
+  :config
+    (defhydra hydra-move-lines ()
+      "Move Lines"
+      ("i" move-lines-up "Move lines up")
+      ("k" move-lines-down "Move lines down")
+      ("<up>" move-lines-up nil)
+      ("<down>" move-lines-down nil)
+      ("q" nil "Exit" :exit t))
+  :bind (("C-S-i" . hydra-move-lines/move-lines-up)
+         ("C-S-k" . hydra-move-lines/move-lines-down)
+         ("C-S-<up>" . hydra-move-lines/move-lines-up)
+         ("C-S-<down>" . hydra-move-lines/move-lines-down)))
 
 ;;
 ;; Statistics
