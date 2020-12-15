@@ -118,7 +118,11 @@
                   ("C-w" . nil))))
 
 ;; diminish a bunch of standard minor-modes
-(use-package simple :diminish visual-line-mode auto-fill-mode)
+(use-package simple
+  :diminish visual-line-mode auto-fill-mode
+  :hook (after-init . size-indication-mode) ;; Show size of a file in modeline
+  )
+
 (use-package eldoc :diminish)
 (use-package checkdoc :diminish checkdoc-minor-mode)
 (use-package with-editor :diminish with-editor-mode)
