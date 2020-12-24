@@ -76,12 +76,15 @@
      "Toggle"
      (("ti" org-toggle-inline-image "Toggle Image")
       ("tt" org-latex-preview "Toggle Latex")
-      ("tl" org-toggle-link-display "Toggle Link Display"))))
+      ("tl" org-toggle-link-display "Toggle Link Display"))
+     "Babel"
+     (("'" org-edit-src-code "Edit source"))))
 
   :custom
   (org-src-tab-acts-natively t)
   (org-agenda-span 'day)
   (org-image-actual-width nil)
+  (org-edit-src-content-indentation 0)
   :hook ((org-mode . visual-line-mode)
          (org-mode . (lambda () (variable-pitch-mode 1))))
   )

@@ -122,4 +122,7 @@
 (use-package so-long
   :config (global-so-long-mode 1))
 
+(use-package abbrev
+  :diminish abbrev-mode)
+
 (provide 'init-misc)
