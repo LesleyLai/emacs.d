@@ -439,7 +439,9 @@ _j_   _l_     _v_ paste     _t_ype       _e_xchange-point
     ("w" whitespace-mode "whitespace" :toggle t)
     ("r" rainbow-mode "rainbow" :toggle t))
    "Coding"
-   (("f" flycheck-mode "flycheck" :toggle t)
+   (("S" superword-mode "superword mode" :toggle t)
+    ("s" subword-mode "subword mode" :toggle t)
+    ("f" flycheck-mode "flycheck" :toggle t)
     ("c" company-mode "company mode" :toggle t))
    "Debug"
    (("e" toggle-debug-on-error "debug on error" :toggle (default-value 'debug-on-error))
