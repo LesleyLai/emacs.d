@@ -108,14 +108,21 @@
   :diminish
   :hook
   (after-init . org-roam-mode)
-  :bind (:map org-roam-mode-map
+  :config
+  (require 'org-roam-protocol)
+  (defhydra hydra-org-roam-meta()
+    "Window Resizing"
+    ("t" org-roam-tag-add "Add roam tag")
+    ("k" org-roam-alias-add "Add alias")
+    ("q" nil "Exit" :exit t))
+    :bind (:map org-roam-mode-map
               (("C-c n l" . org-roam)
                ("C-c n f" . org-roam-find-file)
                ("C-c n g" . org-roam-graph))
               :map org-mode-map
               (("C-c n i" . org-roam-insert))
               (("C-c n I" . org-roam-insert-immediate))
-              (("C-c n t" . org-roam-tag-add)))
+              (("C-c n t" . hydra-org-roam-meta/body)))
   :ryo
   ("SPC n" (("l" org-roam)
             ("f" org-roam-find-file)
@@ -124,9 +131,7 @@
   (:mode 'org-mode)
     ("SPC n" (("i" org-roam-insert)
               ("I" org-roam-insert-immediate)
-              ("t" org-roam-tag-add)))
-  :config
-  (require 'org-roam-protocol))
+              ("t" hydra-org-roam-meta/body))))
 
 (use-package deft
   :ensure t
