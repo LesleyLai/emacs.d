@@ -145,8 +145,8 @@ Version 2017-05-30"
   (global-undo-tree-mode 1)
   (defalias 'redo 'undo-tree-redo)
   :bind (
-         ("C-z" . undo-tree-undo)
-         ("C-S-z" . undo-tree-redo) ; Apple style redo
+         ("C-z" . undo)
+         ("C-S-z" . redo) ; Apple style redo
          ("C-y" . undo-tree-redo) ; MS style redo
          :map undo-tree-map
          ("C-?" . nil)
@@ -247,8 +247,12 @@ Version 2017-05-30"
 
   (use-package major-mode-hydra
     :ensure t
+    :after all-the-icons
     :bind
-    ("<f9>" . major-mode-hydra))
+    ("<f9>" . major-mode-hydra)
+    :config
+    (defun with-faicon (icon str &optional height v-adjust)
+      (s-concat (all-the-icons-faicon icon :v-adjust (or v-adjust 0) :height (or height 1)) " " str)))
 
   ;; Support for nested hydra
   (defvar hydra-stack nil)
@@ -402,7 +406,7 @@ _j_   _l_     _v_ paste     _t_ype       _e_xchange-point
   ("r" (if (region-active-p)
            (deactivate-mark)
          (rectangle-mark-mode 1)))
-  ("z" undo-tree-undo nil)
+  ("z" undo nil)
   ("<down-mouse-1>" mouse-start-rectangle nil)
   ("q" nil))
 
@@ -426,6 +430,21 @@ _j_   _l_     _v_ paste     _t_ype       _e_xchange-point
                (setq drag-event (read-event))
                (mouse-movement-p drag-event))
         (mouse-set-point drag-event)))))
+
+;; mode toggling
+(pretty-hydra-define hydra-toggles
+  (:color amaranth :quit-key "q" :title (with-faicon "toggle-on" "Toggles" 1 -0.05))
+  ("Basic"
+   (("n" display-line-numbers-mode "line number" :toggle t)
+    ("w" whitespace-mode "whitespace" :toggle t)
+    ("r" rainbow-mode "rainbow" :toggle t))
+   "Coding"
+   (("f" flycheck-mode "flycheck" :toggle t)
+    ("c" company-mode "company mode" :toggle t))
+   "Debug"
+   (("e" toggle-debug-on-error "debug on error" :toggle (default-value 'debug-on-error))
+    ("g" toggle-debug-on-quit "debug on quit" :toggle (default-value 'debug-on-quit)))))
+(global-set-key (kbd "C-c t") 'hydra-toggles/body)
 
 ;; Ryo modal mode
 (use-package ryo-modal
@@ -484,6 +503,7 @@ _j_   _l_     _v_ paste     _t_ype       _e_xchange-point
            ("g" magit-status)
            ("w" hydra-window/body :name "Window navigation and management")
            ("r" hydra-rectangle/body :name "Rectangle Editing")
+           ("t" hydra-toggles/body :name "Toggle")
            ("SPC" major-mode-hydra)))
 
   (ryo-modal-keys
