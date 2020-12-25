@@ -85,6 +85,12 @@
   (org-agenda-span 'day)
   (org-image-actual-width nil)
   (org-edit-src-content-indentation 0)
+  (org-startup-with-inline-images t)
+  (org-startup-with-latex-preview t)
+  (org-format-latex-header
+   (concat org-format-latex-header
+           "\n\\newcommand{\\inner}[2]{\\langle #1, #2 \\rangle}")
+   )
   :hook ((org-mode . visual-line-mode)
          (org-mode . (lambda () (variable-pitch-mode 1))))
   )
