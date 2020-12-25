@@ -74,7 +74,7 @@
      (("a" org-archive-subtree "archive subtree")
       ("w" org-refile "refile"))
      "Toggle"
-     (("ti" org-toggle-inline-image "Toggle Image")
+     (("ti" org-toggle-inline-images "Toggle Image")
       ("tt" org-latex-preview "Toggle Latex")
       ("tl" org-toggle-link-display "Toggle Link Display"))
      "Babel"
