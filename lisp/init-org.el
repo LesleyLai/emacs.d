@@ -76,7 +76,8 @@
      "Toggle"
      (("ti" org-toggle-inline-images "Toggle Image")
       ("tt" org-latex-preview "Toggle Latex")
-      ("tl" org-toggle-link-display "Toggle Link Display"))
+      ("tl" org-toggle-link-display "Toggle Link Display")
+      ("tg" grip-mode "Github Readme Preview" :toggle t))
      "Babel"
      (("'" org-edit-src-code "Edit source"))))
 
@@ -122,7 +123,7 @@
               :map org-mode-map
               (("C-c n i" . org-roam-insert))
               (("C-c n I" . org-roam-insert-immediate))
-              (("C-c n t" . hydra-org-roam-meta/body)))
+              (("C-c n t" . hydra-org-roam-meta/org-roam-tag-add)))
   :ryo
   ("SPC n" (("l" org-roam)
             ("f" org-roam-find-file)
@@ -131,7 +132,7 @@
   (:mode 'org-mode)
     ("SPC n" (("i" org-roam-insert)
               ("I" org-roam-insert-immediate)
-              ("t" hydra-org-roam-meta/body))))
+              ("t" hydra-org-roam-meta/org-roam-tag-add))))
 
 (use-package deft
   :ensure t
