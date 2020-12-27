@@ -6,11 +6,11 @@
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
   :init (customize-set-variable 'markdown-command "multimarkdown")
-  :mode-hydra
-  ((:title "Markdown Commands")
-   ("Toggle"
-    (("g" grip-mode "Github Readme Preview" :toggle t))
-    )))
+  :config
+  (major-mode-hydra-define markdown-mode (:quit-key "q" :color pink)
+    (:title "Markdown Commands")
+    ("Toggle"
+     (("g" grip-mode "Github Readme Preview" :toggle t)))))
 
 ;; pip install grip
 ;; Need to set grip-github-user and grip-github-password
