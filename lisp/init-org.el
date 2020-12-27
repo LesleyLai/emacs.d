@@ -90,7 +90,8 @@
   (org-startup-with-latex-preview t)
   (org-format-latex-header
    (concat org-format-latex-header
-           "\n\\newcommand{\\inner}[2]{\\langle #1, #2 \\rangle}")
+           "\n\\newcommand{\\inner}[2]{\\langle #1, #2 \\rangle}"
+           "\n\\newcommand{\\innerf}[2]{\\langle\\langle #1, #2 \\rangle\\rangle}")
    )
   :hook ((org-mode . visual-line-mode)
          (org-mode . (lambda () (variable-pitch-mode 1))))
