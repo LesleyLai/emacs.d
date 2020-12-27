@@ -13,11 +13,22 @@
   :config
   (setq ws-butler-convert-leading-tabs-or-spaces t))
 
+(if (not *win64*)
+    (use-package flyspell-mode
+      :defer t
+      :config
+      (progn
+        (add-hook 'text-mode-hook (lambda () (flyspell-mode 1)))
+        (customize-set-variable 'ispell-program-name "aspell")
+        (customize-set-variable 'ispell-list-command "--list") ;; run flyspell with aspell, not ispell
+        )
+      ))
 
 (defun generic-programming-mode-hook-setup ()
   (make-local-variable 'column-number-mode)
   (column-number-mode t)
   (electric-pair-mode t)
+  (flyspell-prog-mode)
   (setq tab-always-indent 'complete)
   (unless (string= major-mode "web-mode")
     (display-fill-column-indicator-mode)))
