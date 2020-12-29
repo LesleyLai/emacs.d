@@ -8,7 +8,6 @@
   :init (customize-set-variable 'markdown-command "multimarkdown")
   :config
   (major-mode-hydra-define markdown-mode (:quit-key "q" :color pink)
-    (:title "Markdown Commands")
     ("Toggle"
      (("g" grip-mode "Github Readme Preview" :toggle t)))))
 

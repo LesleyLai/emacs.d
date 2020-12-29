@@ -29,7 +29,8 @@
    '((emacs-lisp . t)
      (shell . t)
      (js . t)
-     (C . t)))
+     (C . t)
+     (gnuplot . t)))
   (setq org-confirm-babel-evaluate nil)
 
   (dolist (face '((org-document-title . 1.5)
@@ -69,7 +70,8 @@
       ("^" org-sort "sort")
       ("f" org-ctrl-c-ctrl-c "ctrl-c ctrl-c")
       ("*" org-toggle-heading "toggle heading")
-      ("-" org-ctrl-c-minus "toggle item"))
+      ("-" org-ctrl-c-minus "toggle item")
+      ("~" org-table-create "create table"))
      "Refile"
      (("a" org-archive-subtree "archive subtree")
       ("w" org-refile "refile"))
@@ -139,10 +141,10 @@
   (after-init . org-roam-mode)
   :config
   (require 'org-roam-protocol)
-  (defhydra hydra-org-roam-meta()
-    "Window Resizing"
+  (defhydra hydra-org-roam-meta(:color amaranth)
+    "Org Roam Meta"
     ("t" org-roam-tag-add "Add roam tag")
-    ("k" org-roam-alias-add "Add alias")
+    ("a" org-roam-alias-add "Add alias")
     ("q" nil "Exit" :exit t))
     :bind (:map org-roam-mode-map
               (("C-c n l" . org-roam)
