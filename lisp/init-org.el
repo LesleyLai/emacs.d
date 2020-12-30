@@ -12,7 +12,8 @@
          ("M-L" . org-shiftright)
          ("M-K" . org-shiftdown)
          ("M-I" . org-shiftup)
-         ("M-d" . org-delete-backward-char))
+         ("M-d" . org-delete-backward-char)
+         ("C-c e" . my/org-toggle-emphasis))
   :ryo
   (:mode 'org-mode)
   ("SPC c" (("l" org-latex-preview)
@@ -31,7 +32,6 @@
      (js . t)
      (C . t)
      (gnuplot . t)))
-  (setq org-confirm-babel-evaluate nil)
 
   (dolist (face '((org-document-title . 1.5)
                   (org-level-1 . 1.4)
@@ -54,6 +54,15 @@
   (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
   (set-face-attribute 'org-headline-done nil :inherit 'variable-pitch)
   (set-face-attribute 'line-number nil :inherit 'fixed-pitch)
+
+  ;; Toggle for emphasis
+  (defun my/org-toggle-emphasis ()
+  "Toggle hiding/showing of org emphasize markers."
+  (interactive)
+  (if org-hide-emphasis-markers
+      (set-variable 'org-hide-emphasis-markers nil)
+    (set-variable 'org-hide-emphasis-markers t))
+  (org-mode-restart))
 
   (major-mode-hydra-define org-mode (:quit-key "q" :color pink)
     ("Navigation"
@@ -79,7 +88,8 @@
      (("ti" org-toggle-inline-images "Toggle Image")
       ("tt" org-latex-preview "Toggle Latex")
       ("tl" org-toggle-link-display "Toggle Link Display")
-      ("tg" grip-mode "Github Readme Preview" :toggle t))
+      ("tg" grip-mode "Github Readme Preview" :toggle t)
+      ("te" my/org-toggle-emphasis))
      "Babel"
      (("'" org-edit-src-code "Edit source"))))
 
@@ -117,6 +127,7 @@
   (org-edit-src-content-indentation 0)
   (org-startup-with-inline-images t)
   (org-startup-with-latex-preview t)
+  (org-confirm-babel-evaluate nil)
   (org-format-latex-header
    (concat org-format-latex-header
            "\n\\newcommand{\\inner}[2]{\\langle #1, #2 \\rangle}"
