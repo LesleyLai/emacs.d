@@ -18,13 +18,6 @@
          ("C-S-k" . hydra-move-lines/move-lines-down)
          ("C-S-<up>" . hydra-move-lines/move-lines-up)
          ("C-S-<down>" . hydra-move-lines/move-lines-down))
-  :ryo
-  (:mode 'org-mode)
-  ("SPC c" (("l" org-latex-preview)
-            ("n" org-noter)
-            ("o" org-open-at-point)
-            ("l" org-insert-link)
-            ("L" org-store-link)))
   :config
   (progn
     (defvar org-setting-file "~/Dropbox/org/org.el")
@@ -89,11 +82,12 @@
      (("a" org-archive-subtree "archive subtree")
       ("w" org-refile "refile"))
      "Toggle"
-     (("ti" org-toggle-inline-images "Toggle Image")
-      ("tt" org-latex-preview "Toggle Latex")
-      ("tl" org-toggle-link-display "Toggle Link Display")
+     (("ti" org-toggle-inline-images "Image" :toggle org-inline-image-overlays)
+      ("tt" org-latex-preview "Latex")
+      ("tl" org-toggle-link-display "Link Descriptive" :toggle org-link-descriptive)
       ("tg" grip-mode "Github Readme Preview" :toggle t)
-      ("te" my/org-toggle-emphasis))
+      ("te" my/org-toggle-emphasis "Hide Emphasis" :toggle org-hide-emphasis-markers)
+      ("tu" org-transclusion-mode "org-transclusion" :toggle t))
      "Babel"
      (("'" org-edit-src-code "Edit source"))))
 
@@ -152,6 +146,7 @@
 (use-package org-roam
   :ensure t
   :diminish
+  :after org
   :hook
   (after-init . org-roam-mode)
   :config
@@ -181,7 +176,7 @@
 
 (use-package deft
   :ensure t
-  :after org ;;modalka
+  :after org
   :bind
   ("C-c n d" . deft)
   :ryo
@@ -193,7 +188,7 @@
 
 (use-package org-journal
   :ensure t
-  :after org ;;modalka
+  :after org
   :bind
   ("C-c n j" . org-journal-new-entry)
   :ryo
@@ -288,5 +283,17 @@
   :ensure t
   :defer 3
   :after org)
+
+;; org-transclusion
+(use-package org-transclusion
+  :after org-roam
+  :load-path "site-lisp/org-transclusion"
+  :hook ((org-roam-mode . org-transclusion-mode))
+  :custom
+  (org-transclusion-activate-persistent-message nil)
+  :ryo
+  (:mode 'org-transclusion-mode)
+  ("SPC n" (("e" org-transclusion-open-edit-src-buffer-at-point)
+            ("o" org-transclusion-open-src-buffer-at-point))))
 
 (provide 'init-org)
