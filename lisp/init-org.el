@@ -13,7 +13,11 @@
          ("M-K" . org-shiftdown)
          ("M-I" . org-shiftup)
          ("M-d" . org-delete-backward-char)
-         ("C-c e" . my/org-toggle-emphasis))
+         ("C-c e" . my/org-toggle-emphasis)
+         ("C-S-i" . hydra-move-lines/move-lines-up)
+         ("C-S-k" . hydra-move-lines/move-lines-down)
+         ("C-S-<up>" . hydra-move-lines/move-lines-up)
+         ("C-S-<down>" . hydra-move-lines/move-lines-down))
   :ryo
   (:mode 'org-mode)
   ("SPC c" (("l" org-latex-preview)
