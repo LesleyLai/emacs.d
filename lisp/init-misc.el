@@ -102,7 +102,14 @@
       :ensure t
       :defer 30
       :bind (:map vterm-mode-map
-                  ("C-w" . nil))))
+                  ("C-w" . nil)
+                  ("C-v" . vterm-yank)
+                  ("M-i" . vterm-send-up)
+                  ("M-k" . vterm-send-down)
+                  ("M-j" . vterm-send-left)
+                  ("M-l" . vterm-send-right))
+      :custom
+      (vterm-max-scrollback 100000)))
 
 ;; diminish a bunch of standard minor-modes
 (use-package simple
