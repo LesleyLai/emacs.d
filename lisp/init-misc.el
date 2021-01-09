@@ -29,6 +29,7 @@
   (column-number-mode t)
   (electric-pair-mode t)
   (flyspell-prog-mode)
+  (display-line-numbers-mode)
   (setq tab-always-indent 'complete)
   (unless (string= major-mode "web-mode")
     (display-fill-column-indicator-mode)))
