@@ -330,13 +330,17 @@ Version 2017-05-30"
          (hydra-splitter/body)
          (hydra-push '(hydra-window/body)))
      "Resize window" :exit t)
+    ("t" (progn
+         (hydra-tab-bar/body)
+         (hydra-push '(hydra-window/body)))
+     "Manage Tabs" :exit t)
     ("b" switch-to-buffer "Switch buffer" :column "Buffer")
     ("o" find-file "Find file")
     ("w" kill-current-buffer "Kill current buffer")
     ("a" execute-extended-command "M-x" :column "Other")
     ("z" winner-undo "undo")
     ("y" winner-redo "redo")
-    ("q" nil "Exit" :exit t))
+    ("q" hydra-pop "Exit" :exit t))
   (global-set-key (kbd "C-c w") #'hydra-window/body)
   (global-set-key (kbd "C-x 1") #'hydra-window/lambda-1)
   (global-set-key (kbd "C-x 2") #'hydra-window/split-window-below)
@@ -505,6 +509,7 @@ _j_   _l_     _v_ paste     _t_ype       _e_xchange-point
            ("g" magit-status)
            ("w" hydra-window/body :name "Window navigation and management")
            ("r" hydra-rectangle/body :name "Rectangle Editing")
+           ("<tab>" hydra-tab-bar/body :name "Tab Bar")
            ("t" hydra-toggles/body :name "Toggle")
            ("SPC" major-mode-hydra)))
 
@@ -555,6 +560,35 @@ _j_   _l_     _v_ paste     _t_ype       _e_xchange-point
          ("C-S-k" . hydra-move-lines/move-lines-down)
          ("C-S-<up>" . hydra-move-lines/move-lines-up)
          ("C-S-<down>" . hydra-move-lines/move-lines-down)))
+
+(use-package tab-bar
+  :config
+  (defhydra hydra-tab-bar (:pre (setq which-key-inhibit t)
+                                :post (setq which-key-inhibit nil)
+                                :color amaranth)
+    "Tab Bar Operations"
+    ("t" tab-new "Create a new tab" :column "Creation")
+    ("d" dired-other-tab "Open Dired in another tab")
+    ("f" find-file-other-tab "Find file in another tab")
+    ("0" tab-close "Close current tab")
+    ("m" tab-move "Move current tab" :column "Management")
+    ("r" tab-rename "Rename Tab")
+    ("<return>" tab-bar-select-tab-by-name "Select tab by name" :column "Navigation")
+    ("C-<tab>" tab-next nil)
+    ("C-S-<tab>" tab-previous nil)
+    ("<tab>" tab-next nil)
+    ("S-<tab>" tab-previous nil)
+    ("l" tab-next "Next Tab")
+    ("j" tab-previous "Previous Tab")
+    ("w" (progn
+           (hydra-window/body)
+           (hydra-push '(hydra-tab-bar/body)))
+     "Manage Windows" :exit t :column "Others")
+    ("q" hydra-pop "Exit" :exit t))
+  :bind (("C-x t" . hydra-tab-bar/body)
+         ("C-t" . hydra-tab-bar/tab-new)
+         ("C-<tab>" . hydra-tab-bar/tab-next)
+         ("C-S-<tab>" . hydra-tab-bar/tab-previous)))
 
 ;;
 ;; Statistics
