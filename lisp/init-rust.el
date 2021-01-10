@@ -1,30 +1,51 @@
 (use-package rust-mode
   :ensure t
   :defer t
-  :hook ((rust-mode . (lambda ()
-                        (lsp-mode)
-                        (lsp-ui-mode)
-                        (lsp-ui-sideline-mode)
-                        (lsp-ui-doc-mode)
-                        (eldoc-mode -1)
-                        (flycheck-mode)
-                        (smart-dash-mode))))
+  :after major-mode-hydra
+  :custom
+  (rust-format-on-save t)
   :config
-  (customize-set-variable 'rust-format-on-save t)
-  )
+  (major-mode-hydra-define rust-mode (:title "Rust Mode" :color teal :quit-key "q")
+    ("Project"
+     (("b" cargo-process-build "build")
+      ("c" cargo-process-clean "clean")
+      ("db" cargo-process-doc "Build docs")
+      ("do" cargo-process-doc-open "Open docs"))
+
+     "Test"
+     (("tt" cargo-process-test "all tests")
+      ("to" cargo-process-current-file-tests "file tests")
+      ("tf" cargo-process-current-test "current test")
+      ("te" cargo-process-bench "benchmarks"))
+
+     "Crates"
+     (("pa" cargo-process-add "Add")
+      ("pu" cargo-process-update "update")
+      ("pr" cargo-process-rm "Remove")
+      ("pa" cargo-process-audit "Audit"))
+
+     "Misc"
+     (("y" cargo-process-repeat "repeat last cargo command")
+      ("s" cargo-process-search "search")
+      ("e" cargo-process-run "run"))
+
+     "navigation"
+     (("i" previous-line nil :color amaranth)
+      ("j" backward-char nil :color amaranth)
+      ("k" next-line nil :color amaranth)
+      ("l" forward-char nil :color amaranth)
+      ("u" backward-word nil :color amaranth)
+      ("o" forward-word nil :color amaranth)
+      ("." lsp-find-definition "Find Definition" :color amaranth)
+      ("fr" lsp-find-references "Find References" :color blue))
+      "Actions"
+      (("r" lsp-rename "Rename Symbol" :color amaranth)))))
 
 (use-package cargo
   :ensure t
   :after (rust-mode)
   :defer 3
-  :config
-  (add-hook 'rust-mode-hook 'cargo-minor-mode)
-  (add-hook 'rust-mode-hook
-            (lambda ()
-              (local-set-key (kbd "C-c C-b") #'cargo-process-build)
-              (local-set-key (kbd "C-c C-r") #'cargo-process-run)
-              (local-set-key (kbd "C-c C-t") #'cargo-process-test)
-              )))
+  :hook ((rust-mode . cargo-minor-mode)))
 
 (use-package flycheck-rust
   :ensure t

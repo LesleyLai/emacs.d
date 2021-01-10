@@ -1,5 +1,4 @@
 ;; -*- lexical-binding: t -*-
-
 ;; Customized functions
 (defun xah-delete-blank-lines ()
   "Delete all newline around cursor.
@@ -452,6 +451,37 @@ _j_   _l_     _v_ paste     _t_ype       _e_xchange-point
     ("g" toggle-debug-on-quit "debug on quit" :toggle (default-value 'debug-on-quit)))))
 (global-set-key (kbd "C-c t") 'hydra-toggles/body)
 
+
+
+(use-package tab-bar
+  :config
+  (defhydra hydra-tab-bar (:pre (setq which-key-inhibit t)
+                                :post (setq which-key-inhibit nil)
+                                :color amaranth)
+    "Tab Bar Operations"
+    ("t" tab-new "Create a new tab" :column "Creation")
+    ("d" dired-other-tab "Open Dired in another tab")
+    ("f" find-file-other-tab "Find file in another tab")
+    ("0" tab-close "Close current tab")
+    ("m" tab-move "Move current tab" :column "Management")
+    ("r" tab-rename "Rename Tab")
+    ("<return>" tab-bar-select-tab-by-name "Select tab by name" :column "Navigation")
+    ("C-<tab>" tab-next nil)
+    ("C-S-<tab>" tab-previous nil)
+    ("<tab>" tab-next nil)
+    ("S-<tab>" tab-previous nil)
+    ("l" tab-next "Next Tab")
+    ("j" tab-previous "Previous Tab")
+    ("w" (progn
+           (hydra-window/body)
+           (hydra-push '(hydra-tab-bar/body)))
+     "Manage Windows" :exit t :column "Others")
+    ("q" hydra-pop "Exit" :exit t))
+  :bind (("C-x t" . hydra-tab-bar/body)
+         ("C-t" . hydra-tab-bar/tab-new)
+         ("C-<tab>" . hydra-tab-bar/tab-next)
+         ("C-S-<tab>" . hydra-tab-bar/tab-)))
+
 ;; Ryo modal mode
 (use-package ryo-modal
   :after hydra
@@ -560,35 +590,6 @@ _j_   _l_     _v_ paste     _t_ype       _e_xchange-point
          ("C-S-k" . hydra-move-lines/move-lines-down)
          ("C-S-<up>" . hydra-move-lines/move-lines-up)
          ("C-S-<down>" . hydra-move-lines/move-lines-down)))
-
-(use-package tab-bar
-  :config
-  (defhydra hydra-tab-bar (:pre (setq which-key-inhibit t)
-                                :post (setq which-key-inhibit nil)
-                                :color amaranth)
-    "Tab Bar Operations"
-    ("t" tab-new "Create a new tab" :column "Creation")
-    ("d" dired-other-tab "Open Dired in another tab")
-    ("f" find-file-other-tab "Find file in another tab")
-    ("0" tab-close "Close current tab")
-    ("m" tab-move "Move current tab" :column "Management")
-    ("r" tab-rename "Rename Tab")
-    ("<return>" tab-bar-select-tab-by-name "Select tab by name" :column "Navigation")
-    ("C-<tab>" tab-next nil)
-    ("C-S-<tab>" tab-previous nil)
-    ("<tab>" tab-next nil)
-    ("S-<tab>" tab-previous nil)
-    ("l" tab-next "Next Tab")
-    ("j" tab-previous "Previous Tab")
-    ("w" (progn
-           (hydra-window/body)
-           (hydra-push '(hydra-tab-bar/body)))
-     "Manage Windows" :exit t :column "Others")
-    ("q" hydra-pop "Exit" :exit t))
-  :bind (("C-x t" . hydra-tab-bar/body)
-         ("C-t" . hydra-tab-bar/tab-new)
-         ("C-<tab>" . hydra-tab-bar/tab-next)
-         ("C-S-<tab>" . hydra-tab-bar/tab-previous)))
 
 ;;
 ;; Statistics

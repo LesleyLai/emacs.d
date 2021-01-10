@@ -1,12 +1,13 @@
 ;; Major mode
 (use-package tuareg
   :ensure
+  :after major-mode-hydra
   :defer t
   :config
   (setq tuareg-interactive-program "utop"
         tuareg-opam "opam")
 
-    (major-mode-hydra-define tuareg-mode (:quit-key "q" :color teal)
+  (major-mode-hydra-define tuareg-mode (:quit-key "q" :color teal)
     ("Navigation"
      (("a" tuareg-find-alternate-file "switch .ml/.mli"))
      "Merlin"

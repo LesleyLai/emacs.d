@@ -1,6 +1,7 @@
 (use-package lsp-mode
   :ensure t
-    :commands (lsp lsp-deferred)
+  :commands (lsp lsp-deferred)
+  :after (rust-mode)
   :init
   (setq lsp-auto-guess-root nil)
   (setq lsp-prefer-flymake nil)
@@ -17,9 +18,10 @@
          (python-mode . lsp)
          (powershell-mode . lsp)
          (racket-mode . lsp)
-         (rust-mode . lsp)
+         (rust-mode . lsp-deferred)
          (sh-mode . lsp)
-         (yaml-mode . lsp)))
+         (yaml-mode . lsp)
+         (lsp-mode . lsp-enable-which-key-integration)))
 
 (use-package lsp-ui
   :ensure t
