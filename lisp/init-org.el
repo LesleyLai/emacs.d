@@ -28,6 +28,8 @@
      (shell . t)
      (js . t)
      (C . t)
+     (rust . t)
+     (python . t)
      (gnuplot . t)))
 
   (dolist (face '((org-document-title . 1.5)
@@ -38,8 +40,9 @@
                   (org-level-5 . 1.05)
                   (org-level-6 . 1.05)
                   (org-level-7 . 1.05)
-                  (org-level-8 . 1.05)))
-    (set-face-attribute (car face) nil :weight 'regular :height (cdr face)))
+                  (org-level-8 . 1.05)
+                  (org-headline-done . 1.05)))
+    (set-face-attribute (car face) nil :weight 'bold :height (cdr face) :foreground "black"))
 
   ;; Ensure that anything that should be fixed-pitch in Org files appears that way
   (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
@@ -286,14 +289,16 @@
 
 ;; org-transclusion
 (use-package org-transclusion
-  :after org-roam
+  :after org
   :load-path "site-lisp/org-transclusion"
-  :hook ((org-roam-mode . org-transclusion-mode))
   :custom
   (org-transclusion-activate-persistent-message nil)
   :ryo
   (:mode 'org-transclusion-mode)
   ("SPC n" (("e" org-transclusion-open-edit-src-buffer-at-point)
             ("o" org-transclusion-open-src-buffer-at-point))))
+
+(use-package ob-rust
+  :ensure t)
 
 (provide 'init-org)

@@ -85,6 +85,7 @@
 (require 'init-speedbar)
 (require 'init-elm)
 (require 'init-ocaml)
+(require 'init-java)
 (require 'init-latex)
 (require 'init-yasnippet)
 #+end_src

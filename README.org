@@ -121,6 +121,12 @@ cargo install cargo-check
 rustup component add clippy-preview
 #+end_src
 
+*** org-babel
+    To make ~org-babel~ successfully executing rust, you need to install [[https://github.com/DanielKeep/cargo-script][cargo-script]]:
+    #+begin_src text
+cargo install cargo-script
+    #+end_src
+
 ** Yaml
 Install [[https://github.com/adrienverge/yamllint][yamllint]]
 ~pip install yamllint~
