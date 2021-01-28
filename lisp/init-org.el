@@ -30,7 +30,8 @@
      (C . t)
      (rust . t)
      (python . t)
-     (gnuplot . t)))
+     (gnuplot . t)
+     (clojure . t)))
 
   (dolist (face '((org-document-title . 1.5)
                   (org-level-1 . 1.4)
@@ -134,6 +135,8 @@
            "\n\\newcommand{\\inner}[2]{\\langle #1, #2 \\rangle}"
            "\n\\newcommand{\\innerf}[2]{\\langle\\langle #1, #2 \\rangle\\rangle}")
    )
+  (org-babel-clojure-backend 'cider)
+
   :hook ((org-mode . visual-line-mode)
          (org-mode . (lambda () (variable-pitch-mode 1))))
   )

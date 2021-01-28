@@ -55,6 +55,7 @@
                       scheme-mode-hook
                       racket-mode-hook
                       racket-repl-mode-hook
+                      clojure-mode-hook
                       )))
   (dolist (hook lispy-hooks)
     (add-hook hook 'lisp-modes-setup)))
