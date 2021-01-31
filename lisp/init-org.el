@@ -138,8 +138,14 @@
   (org-babel-clojure-backend 'cider)
 
   :hook ((org-mode . visual-line-mode)
-         (org-mode . (lambda () (variable-pitch-mode 1))))
-  )
+         (org-mode . (lambda () (variable-pitch-mode 1)))
+         ;; Inhibit < for electric-pair mode
+         (org-mode . (lambda ()
+                       (setq-local electric-pair-inhibit-predicate
+                                   `(lambda (c)
+                                      (if (char-equal c ?<)
+                                          t
+                                        (,electric-pair-inhibit-predicate c))))))))
 
 ;; An outline of pretty bullets instead of a list of asterisks.
 (use-package org-bullets
