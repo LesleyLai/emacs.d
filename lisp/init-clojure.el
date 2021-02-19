@@ -14,6 +14,9 @@
   (cider-prompt-save-file-on-load 'always-save)
   (cider-font-lock-dynamically '(macro core function var))
   (cider-overlays-use-font-lock t)
-  (cider-repl-toggle-pretty-printing))
+  (cider-repl-toggle-pretty-printing)
+  :bind (:map cider-repl-mode-map
+              ("M-i" . cider-repl-backward-input)
+              ("M-k" . cider-repl-forward-input)))
 
 (provide 'init-clojure)

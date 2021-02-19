@@ -1,14 +1,3 @@
-(defconst my-org-electric-pairs
-  '((?/ . ?/)
-    (?= . ?=)
-    (?~ . ?~)
-    (?$ . ?$))
-  "Electric pairs for org-mode.")
-
-(defun my-org-add-electric-pairs ()
-  (setq-local electric-pair-pairs (append electric-pair-pairs my-org-electric-pairs))
-  (setq-local electric-pair-text-pairs electric-pair-pairs))
-
 (use-package org
   :defer t
   :ensure org-plus-contrib
@@ -150,14 +139,15 @@
 
   :hook ((org-mode . visual-line-mode)
          (org-mode . (lambda () (variable-pitch-mode 1)))
+
+         (org-mode . electric-pair-mode)
          ;; Inhibit < for electric-pair mode
          (org-mode . (lambda ()
                        (setq-local electric-pair-inhibit-predicate
                                    `(lambda (c)
                                       (if (char-equal c ?<)
                                           t
-                                        (,electric-pair-inhibit-predicate c))))))
-         (org-mode . my-org-add-electric-pairs)))
+                                        (,electric-pair-inhibit-predicate c))))))))
 
 ;; An outline of pretty bullets instead of a list of asterisks.
 (use-package org-bullets
