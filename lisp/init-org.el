@@ -31,6 +31,7 @@
      (rust . t)
      (python . t)
      (gnuplot . t)
+     (ocaml . t)
      (clojure . t)))
 
   (dolist (face '((org-document-title . 1.5)
@@ -124,6 +125,7 @@
 
   :custom
   (org-src-tab-acts-natively t)
+  (org-src-preserve-indentation t)
   (org-agenda-span 'day)
   (org-image-actual-width nil)
   (org-edit-src-content-indentation 0)
@@ -140,14 +142,7 @@
   :hook ((org-mode . visual-line-mode)
          (org-mode . (lambda () (variable-pitch-mode 1)))
 
-         (org-mode . electric-pair-mode)
-         ;; Inhibit < for electric-pair mode
-         (org-mode . (lambda ()
-                       (setq-local electric-pair-inhibit-predicate
-                                   `(lambda (c)
-                                      (if (char-equal c ?<)
-                                          t
-                                        (,electric-pair-inhibit-predicate c))))))))
+         (org-mode . (lambda () (electric-pair-mode 1)))))
 
 ;; An outline of pretty bullets instead of a list of asterisks.
 (use-package org-bullets
@@ -157,20 +152,20 @@
   :init
   (add-hook 'org-mode-hook #'org-bullets-mode))
 
+(setq org-roam-v2-ack t)
 (use-package org-roam
   :ensure t
   :diminish
   :after org
-  :hook
-  (after-init . org-roam-mode)
   :config
+  (org-roam-db-autosync-mode)
   (require 'org-roam-protocol)
   (defhydra hydra-org-roam-meta(:color amaranth)
     "Org Roam Meta"
     ("t" org-roam-tag-add "Add roam tag")
     ("a" org-roam-alias-add "Add alias")
     ("q" nil "Exit" :exit t))
-    :bind (:map org-roam-mode-map
+  :bind (:map org-roam-mode-map
               (("C-c n l" . org-roam)
                ("C-c n f" . org-roam-find-file)
                ("C-c n g" . org-roam-graph))
@@ -184,9 +179,9 @@
             ("g" org-roam-graph))
    :name "note taking")
   (:mode 'org-mode)
-    ("SPC n" (("i" org-roam-insert)
-              ("I" org-roam-insert-immediate)
-              ("t" hydra-org-roam-meta/org-roam-tag-add))))
+  ("SPC n" (("i" org-roam-insert)
+            ("I" org-roam-insert-immediate)
+            ("t" hydra-org-roam-meta/org-roam-tag-add))))
 
 (use-package deft
   :ensure t
@@ -228,12 +223,6 @@
         org-roam-server-network-label-truncate t
         org-roam-server-network-label-truncate-length 60
         org-roam-server-network-label-wrap-length 20))
-
-(use-package company-org-roam
-  :ensure t
-  :after org-roam
-  :config
-  (push 'company-org-roam company-backends))
 
 (use-package org-books
   :defer t
