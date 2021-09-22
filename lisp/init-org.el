@@ -152,37 +152,6 @@
   :init
   (add-hook 'org-mode-hook #'org-bullets-mode))
 
-(setq org-roam-v2-ack t)
-(use-package org-roam
-  :ensure t
-  :diminish
-  :after org
-  :config
-  (org-roam-db-autosync-mode)
-  (require 'org-roam-protocol)
-  (defhydra hydra-org-roam-meta(:color amaranth)
-    "Org Roam Meta"
-    ("t" org-roam-tag-add "Add roam tag")
-    ("a" org-roam-alias-add "Add alias")
-    ("q" nil "Exit" :exit t))
-  :bind (:map org-roam-mode-map
-              (("C-c n l" . org-roam)
-               ("C-c n f" . org-roam-find-file)
-               ("C-c n g" . org-roam-graph))
-              :map org-mode-map
-              (("C-c n i" . org-roam-insert))
-              (("C-c n I" . org-roam-insert-immediate))
-              (("C-c n t" . hydra-org-roam-meta/org-roam-tag-add)))
-  :ryo
-  ("SPC n" (("l" org-roam)
-            ("f" org-roam-find-file)
-            ("g" org-roam-graph))
-   :name "note taking")
-  (:mode 'org-mode)
-  ("SPC n" (("i" org-roam-insert)
-            ("I" org-roam-insert-immediate)
-            ("t" hydra-org-roam-meta/org-roam-tag-add))))
-
 (use-package deft
   :ensure t
   :after org
