@@ -33,7 +33,6 @@
      (gnuplot . t)
      (ocaml . t)
      (clojure . t)))
-
   (dolist (face '((org-document-title . 1.5)
                   (org-level-1 . 1.4)
                   (org-level-2 . 1.3)
@@ -140,9 +139,7 @@
   (org-babel-clojure-backend 'cider)
 
   :hook ((org-mode . visual-line-mode)
-         (org-mode . (lambda () (variable-pitch-mode 1)))
-
-         (org-mode . (lambda () (electric-pair-mode 1)))))
+         (org-mode . (lambda () (variable-pitch-mode 1)))))
 
 ;; An outline of pretty bullets instead of a list of asterisks.
 (use-package org-bullets
