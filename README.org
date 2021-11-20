@@ -133,3 +133,11 @@ Install [[https://github.com/adrienverge/yamllint][yamllint]]
 
 Install [[https://github.com/redhat-developer/yaml-language-server][yaml-language-server]]
 npm install -g yaml-language-server
+
+** org-mode
+*** org-noter
+To view pdf files with org-noter, ~pdf-tools~ must be installed.
+It can be installed by
+#+begin_src text
+M-x pdf-tools-install
+#+end_src
