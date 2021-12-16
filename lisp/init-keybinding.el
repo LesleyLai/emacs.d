@@ -161,10 +161,10 @@ Version 2017-05-30"
 ;; ;; Buffer movement
 ;; ;; Use <Shift> + arrowkeys to move between buffers
 ;; ;; {{
-(use-package windmove-mode
-  :config
-  (windmove-default-keybindings)
-  )
+;; (use-package windmove-mode
+;;   :config
+;;   (windmove-default-keybindings)
+;;   )
 ;; ;; }}
 
 ;; Search & Replace {{
