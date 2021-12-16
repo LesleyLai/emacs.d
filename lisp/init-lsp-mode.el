@@ -27,7 +27,6 @@
   :ensure t
   :after lsp-mode
   :init
-  (add-hook 'lsp-after-open-hook #'lsp-ui-mode)
   (setq lsp-ui-doc-enable t
         lsp-ui-doc-header t
         lsp-ui-doc-include-signature t
