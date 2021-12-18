@@ -3,7 +3,6 @@
       '(("gnu"   . "http://elpa.gnu.org/packages/")
         ("melpa" . "https://melpa.org/packages/")
         ("melpa stable" . "http://stable.melpa.org/packages/")
-        ("org" . "http://orgmode.org/elpa/")
         ("cselpa" . "https://elpa.thecybershadow.net/packages/")))
 
 (unless (bound-and-true-p package--initialized) ; To avoid warnings in 27
