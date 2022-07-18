@@ -45,6 +45,9 @@
                   (org-headline-done . 1.05)))
     (set-face-attribute (car face) nil :weight 'bold :height (cdr face) :foreground "black"))
 
+  ;; Prevent org-mode to create new window when clicking links
+  (setf (cdr (rassoc 'find-file-other-window org-link-frame-setup)) 'find-file)
+
   ;; Ensure that anything that should be fixed-pitch in Org files appears that way
   (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
   (set-face-attribute 'org-code nil   :inherit '(shadow fixed-pitch))
