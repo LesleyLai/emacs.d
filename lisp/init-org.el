@@ -1,6 +1,6 @@
 (use-package org
   :defer t
-  :ensure org-plus-contrib
+  :ensure
   :init
   (add-hook 'org-shiftup-final-hook 'windmove-up)
   (add-hook 'org-shiftleft-final-hook 'windmove-left)
