@@ -141,3 +141,7 @@ It can be installed by
 #+begin_src text
 M-x pdf-tools-install
 #+end_src
+
+** Emacs-rime
+For Chinese input method support, ~librime~ need to be installed.
+Follow the instruction [[https://github.com/DogLooksGood/emacs-rime/blob/master/INSTALLATION.org][from emacs-rime's installation guide]].

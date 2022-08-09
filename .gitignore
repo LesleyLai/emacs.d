@@ -95,3 +95,6 @@ request/
 
 # org.babel generated
 emacs.el
+
+# emacs-rime
+rime/

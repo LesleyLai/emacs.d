@@ -162,4 +162,10 @@
      browse-url-generic-args     cmdExeArgs
      browse-url-browser-function 'browse-url-generic))))
 
+;; Chinese input method
+(use-package rime
+  :ensure
+  :custom
+  (default-input-method "rime"))
+
 (provide 'init-misc)

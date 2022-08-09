@@ -172,9 +172,9 @@
   :ryo
   ("SPC n j" org-journal-new-entry)
   :custom
-  (org-journal-date-prefix "#+TITLE: ")
   (org-journal-file-format "%Y-%m-%d.org")
   (org-journal-date-format "%A, %d %B %Y")
+  (org-journal-file-type 'weekly)
   (org-journal-enable-agenda-integration t))
 
 (use-package org-books
