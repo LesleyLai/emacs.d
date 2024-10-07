@@ -158,14 +158,20 @@ Version 2017-05-30"
 (global-unset-key (kbd "C-x u"))
 
 
-;; ;; Buffer movement
-;; ;; Use <Shift> + arrowkeys to move between buffers
-;; ;; {{
-;; (use-package windmove-mode
-;;   :config
-;;   (windmove-default-keybindings)
-;;   )
-;; ;; }}
+;; Buffer movement
+;; Use <Shift> + arrowkeys to move between buffers
+;; {{
+(use-package windmove
+  :config
+  (windmove-default-keybindings)
+  ;; Make windmove work in Org mode
+  (add-hook 'org-shiftup-final-hook 'windmove-up)
+  (add-hook 'org-shiftleft-final-hook 'windmove-left)
+  (add-hook 'org-shiftdown-final-hook 'windmove-down)
+  (add-hook 'org-shiftright-final-hook 'windmove-right)
+
+  )
+;; }}
 
 ;; Search & Replace {{
 (global-set-key (kbd "C-f") 'isearch-forward)
