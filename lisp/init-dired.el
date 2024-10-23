@@ -14,10 +14,6 @@
               ("l" . dired-single-buffer))
   :hook (dired-mode . auto-revert-mode))
 
-;; This package makes possible to use the same buffer to navigate in dired without creating new buffer
-(use-package dired-single
-  :ensure t)
-
 (use-package all-the-icons-dired
   :ensure t
   :diminish
