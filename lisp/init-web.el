@@ -6,26 +6,10 @@
 (add-to-list 'auto-mode-alist '("\\.[jt]sx?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.vue?\\'" . web-mode))
 
-(use-package tide
-  :ensure t
-  :after (typescript-mode company flycheck web-mode)
-  :hook ((typescript-mode . tide-setup)
-         (typescript-mode . tide-hl-identifier-mode)
-         (before-save . tide-format-before-save)))
-
-(defun setup-tide-mode ()
-  (interactive)
-  (tide-setup)
-  (flycheck-mode +1)
-  (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (eldoc-mode +1)
-  (tide-hl-identifier-mode +1)
-  (company-mode +1))
-
 ;; Web mode
 (use-package web-mode
   :ensure t
-  :after company company-web-html tide
+  :after company company-web-html
   :config
   (remove-hook 'web-mode-hook 'er/add-web-mode-expansions)
   (customize-set-variable 'web-mode-markup-indent-offset 2)
@@ -44,8 +28,6 @@
 
 (add-hook 'web-mode-hook (lambda ()
                            (add-to-list 'company-dabbrev-code-modes 'web-mode)
-                           (when (string-equal "tsx" (file-name-extension buffer-file-name))
-                             (setup-tide-mode))
                            (company-mode t)))
 
 (use-package json-mode
