@@ -13,7 +13,7 @@
          (html-mode . lsp)
          (js2-mode . lsp)
          (json-mode . lsp)
-         (typescirpt-mode . lsp)
+         (typescript-mode . lsp)
          (LaTeX-mode . lsp)
          (python-mode . lsp)
          (powershell-mode . lsp)

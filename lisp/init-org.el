@@ -93,8 +93,7 @@
       ("tt" org-latex-preview "Latex")
       ("tl" org-toggle-link-display "Link Descriptive" :toggle org-link-descriptive)
       ("tg" grip-mode "Github Readme Preview" :toggle t)
-      ("te" my/org-toggle-emphasis "Hide Emphasis" :toggle org-hide-emphasis-markers)
-      ("tu" org-transclusion-mode "org-transclusion" :toggle t))
+      ("te" my/org-toggle-emphasis "Hide Emphasis" :toggle org-hide-emphasis-markers))
      "Babel"
      (("'" org-edit-src-code "Edit source"))))
 
@@ -152,18 +151,6 @@
   :init
   (add-hook 'org-mode-hook #'org-bullets-mode))
 
-(use-package deft
-  :ensure t
-  :after org
-  :bind
-  ("C-c n d" . deft)
-  :ryo
-  ("SPC n d" deft)
-  :custom
-  (deft-recursive t)
-  (deft-use-filter-string-for-filename t)
-  (deft-default-extension "org"))
-
 (use-package org-books
   :defer t
   :after org
@@ -175,38 +162,6 @@
   :config
   ;; add support to dired
   (add-hook 'dired-mode-hook 'org-download-enable))
-
-(use-package org-roam-bibtex
-  :ensure t
-  :diminish
-  :after org-roam
-  :hook (org-roam-mode . org-roam-bibtex-mode)
-  :bind (:map org-mode-map
-              (("C-c n a" . orb-note-actions)))
-  :ryo
-  ("SPC n a" orb-note-actions)
-  (setq orb-preformat-keywords
-        '("citekey" "title" "url" "author-or-editor" "keywords" "file")
-        orb-process-file-field t
-        orb-file-field-extensions "pdf")
-
-  (setq orb-templates
-        '(("r" "ref" plain (function org-roam-capture--get-point)
-           ""
-           :file-name "${citekey}"
-           :head "#+TITLE: ${citekey}: ${title}\n#+ROAM_KEY: ${ref}
-
-- tags ::
-- keywords :: ${keywords}
-
-* ${title}
-:PROPERTIES:
-:Custom_ID: ${citekey}
-:URL: ${url}
-:AUTHOR: ${author-or-editor}
-:NOTER_DOCUMENT: ${file}
-:NOTER_PAGE:
-:END:"))))
 
 (use-package org-edna
   :ensure t
@@ -226,17 +181,6 @@
   :ensure t
   :defer 3
   :after org)
-
-;; org-transclusion
-(use-package org-transclusion
-  :after org
-  :load-path "site-lisp/org-transclusion"
-  :custom
-  (org-transclusion-activate-persistent-message nil)
-  :ryo
-  (:mode 'org-transclusion-mode)
-  ("SPC n" (("e" org-transclusion-open-edit-src-buffer-at-point)
-            ("o" org-transclusion-open-src-buffer-at-point))))
 
 (use-package ob-rust
   :ensure t)
