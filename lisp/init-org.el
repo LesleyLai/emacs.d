@@ -164,19 +164,6 @@
   (deft-use-filter-string-for-filename t)
   (deft-default-extension "org"))
 
-(use-package org-journal
-  :ensure t
-  :after org
-  :bind
-  ("C-c n j" . org-journal-new-entry)
-  :ryo
-  ("SPC n j" org-journal-new-entry)
-  :custom
-  (org-journal-file-format "%Y-%m-%d.org")
-  (org-journal-date-format "%A, %d %B %Y")
-  (org-journal-file-type 'weekly)
-  (org-journal-enable-agenda-integration t))
-
 (use-package org-books
   :defer t
   :after org
