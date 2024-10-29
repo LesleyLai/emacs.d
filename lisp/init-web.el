@@ -18,6 +18,7 @@
   (customize-set-variable 'web-mode-enable-auto-closing t) ; enable auto close tag in text-mode
   (customize-set-variable 'web-mode-enable-auto-pairing t)
   (customize-set-variable 'web-mode-enable-css-colorization t)
+  (customize-set-variable 'web-mode-enable-auto-indentation nil) ; disable auto indentation
   (customize-set-variable 'web-mode-imenu-regexp-list
                           '(("<\\(h[1-9]\\)\\([^>]*\\)>\\([^<]*\\)" 1 3 ">" nil)
                             ("^[ \t]*<\\([@a-z]+\\)[^>]*>? *$" 1 " id=\"\\([a-zA-Z0-9_]+\\)\"" "#" ">")
