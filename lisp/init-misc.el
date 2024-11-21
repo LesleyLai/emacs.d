@@ -44,12 +44,13 @@
 (use-package recentf
   :init
   (run-at-time "10 min" (* 10 60) 'recentf-save-list)
-  :hook (after-init . recentf-mode)
+  (recentf-mode 1)
   :custom
   (recentf-max-saved-items 50)
   (recentf-exclude `("/ssh:"
                      "/TAGS\\'"
-                     "COMMIT_EDITMSG\\'")))
+                     "COMMIT_EDITMSG\\'"
+                     "~/.emacs.d/session.*")))
 
 ;; Back up
 ;; {{
@@ -64,21 +65,6 @@
 
 ;; Do not create lock file
 (customize-set-variable 'create-lockfiles nil)
-
-;; Save minibuffer history
-;;  From http://www.wisdomandwonder.com/wp-content/uploads/2014/03/C3F.html
-(use-package savehist
-  :hook (after-init . savehist-mode)
-  :custom
-  (savehist-file "~/.emacs.d/history")
-  (history-length t)
-  (history-delete-duplicates t)
-  (savehist-save-minibuffer-history 1)
-  (savehist-additional-variables
-   '(search
-     kill-ring
-     search-ring
-     regexp-search-ring)))
 
  ;; Less prompts
  (defalias 'yes-or-no-p 'y-or-n-p)
