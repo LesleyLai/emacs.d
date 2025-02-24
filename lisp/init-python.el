@@ -1,6 +1,8 @@
 (defun python-mode-hook-setup ()
   (subword-mode +1)
   (eldoc-mode 1)
+  ;; flycheck gives duplicated warnings with lsp
+  (flycheck-mode 0)
   )
 
 (add-hook 'python-mode-hook 'python-mode-hook-setup)

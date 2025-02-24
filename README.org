@@ -22,6 +22,11 @@ See [[file:docs/keybinding.org][keybinding.org]] for more information.
 * External packages
 Install those optional third-party packages to setup for certain languages.
 
+** Assembly
+#+begin_src shell
+cargo install --git https://github.com/bergercookie/asm-lsp asm-lsp
+#+end_src
+
 ** C/C++
 *Clangd* is used for C and C++ support.
 
