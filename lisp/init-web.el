@@ -31,6 +31,12 @@
                            (add-to-list 'company-dabbrev-code-modes 'web-mode)
                            (company-mode t)))
 
+;; ASTRO
+(define-derived-mode astro-mode web-mode "astro")
+(setq auto-mode-alist
+      (append '((".*\\.astro\\'" . astro-mode))
+              auto-mode-alist))
+
 (use-package json-mode
   :ensure
   :mode "\\.json\\'"
