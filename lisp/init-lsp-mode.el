@@ -1,45 +1,29 @@
-(use-package lsp-mode
+(use-package eglot
   :ensure t
-  :commands (lsp lsp-deferred)
-  :init
-  (setq lsp-auto-guess-root nil)
-  (setq lsp-prefer-flymake nil)
-  :diminish
-  :hook ((c-mode . lsp)
-         (c++-mode . lsp)
-         (cmake-mode . lsp)
-         (css-mode . lsp)
-         (scss-mode . lsp)
-         (elm-mode . lsp)
-         (html-mode . lsp)
-         (js2-mode . lsp)
-         (json-mode . lsp)
-         (typescript-mode . lsp)
-         (web-mode . lsp)
-         (LaTeX-mode . lsp)
-         (python-mode . lsp)
-         (powershell-mode . lsp)
-         (racket-mode . lsp)
-         (rust-mode . lsp)
-         (sh-mode . lsp)
-         (yaml-mode . lsp)
-         (lsp-mode . lsp-enable-which-key-integration)))
-
-(use-package lsp-ui
-  :ensure t
-  :after lsp-mode
-  :init
-  (setq lsp-ui-doc-enable t
-        lsp-ui-doc-header t
-        lsp-ui-doc-include-signature t
-        ;; lsp-ui-doc-position 'at-point
-        )
-  )
-
-(use-package lsp-treemacs
-  :ensure t
-  :commands lsp-treemacs-errors-list
-  )
+  :config
+  (add-to-list 'eglot-server-programs
+               '(astro-mode . ("astro-ls" "--stdio"
+                               :initializationOptions
+                               (:typescript (:tsdk "./node_modules/typescript/lib")))))
+  :hook (((astro-mode
+           c-mode
+           c++-mode
+           cmake-mode
+           css-mode
+           scss-mode
+           elm-mode
+           html-mode
+           js2-mode
+           json-mode
+           typescript-mode
+           web-mode
+           LaTeX-mode
+           powershell-mode
+           racket-mode
+           rust-mode
+           sh-mode
+           yaml-mode)
+          . eglot-ensure)))
 
 (use-package dap-mode
   :ensure t
