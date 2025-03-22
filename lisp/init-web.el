@@ -31,7 +31,7 @@
                            (add-to-list 'company-dabbrev-code-modes 'web-mode)
                            (company-mode t)))
 
-;; ASTRO
+;; Astro static-site generator
 (define-derived-mode astro-mode web-mode "astro")
 (setq auto-mode-alist
       (append '((".*\\.astro\\'" . astro-mode))
@@ -48,7 +48,8 @@
 ;; Js2-mode
 (use-package js2-mode
   :ensure
-  :mode ("\\.js$" . js2-mode)
+  :mode (("\\.js$" . js2-mode)
+         ("\\.mjs$" . js2-mode))
   :interpreter ("node" . js2-mode)
   :bind (:map js2-mode-map
          ("C-a" . back-to-indentation-or-beginning-of-line)
@@ -86,7 +87,8 @@
   :init
   (when (executable-find "gdiff")
     (setq prettier-js-diff-command "gdiff"))
-  :hook ((css-mode . prettier-js-mode)
+  :hook ((astro-mode . prettier-js-mode)
+         (css-mode . prettier-js-mode)
          (web-mode . prettier-js-mode)
          (markdown-mode . prettier-js-mode)
          (js2-mode . prettier-js-mode)
