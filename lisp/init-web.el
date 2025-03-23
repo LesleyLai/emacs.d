@@ -31,11 +31,19 @@
                            (add-to-list 'company-dabbrev-code-modes 'web-mode)
                            (company-mode t)))
 
-;; Astro static-site generator
-(define-derived-mode astro-mode web-mode "astro")
-(setq auto-mode-alist
-      (append '((".*\\.astro\\'" . astro-mode))
-              auto-mode-alist))
+(use-package astro-ts-mode
+  :after treesit-auto
+  :ensure
+  :mode "\\.astro\\'"  
+  )
+
+(setq treesit-language-source-alist
+      '((astro "https://github.com/virchau13/tree-sitter-astro")
+        (css "https://github.com/tree-sitter/tree-sitter-css")
+        (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")))
+; TODO: make the following automatic
+; (mapc #'treesit-install-language-grammar '(astro css tsx))
+
 
 (use-package json-mode
   :ensure
@@ -45,6 +53,7 @@
   (customize-set-variable 'js-indent-level 2)
   )
 
+
 ;; Js2-mode
 (use-package js2-mode
   :ensure
@@ -52,11 +61,9 @@
          ("\\.mjs$" . js2-mode))
   :interpreter ("node" . js2-mode)
   :bind (:map js2-mode-map
-         ("C-a" . back-to-indentation-or-beginning-of-line)
-         ("C-M-h" . backward-kill-word))
+              ("C-M-h" . backward-kill-word))
   :config
   (progn
-    (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
     (add-hook 'js2-mode-hook (lambda () (setq js2-basic-offset 2)))))
 
 ;; Typescript
@@ -81,13 +88,13 @@
 
 ;; Prettier
 (use-package prettier-js
-  :after (markdown-mode web-mode js2-mode web-mode typescript-mode)
+  :after (astro-mode markdown-mode web-mode js2-mode web-mode typescript-mode)
   :ensure
   :commands prettier-js-mode
   :init
   (when (executable-find "gdiff")
     (setq prettier-js-diff-command "gdiff"))
-  :hook ((astro-mode . prettier-js-mode)
+  :hook ((astro-ts-mode . prettier-js-mode)
          (css-mode . prettier-js-mode)
          (web-mode . prettier-js-mode)
          (markdown-mode . prettier-js-mode)

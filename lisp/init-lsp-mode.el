@@ -2,10 +2,10 @@
   :ensure t
   :config
   (add-to-list 'eglot-server-programs
-               '(astro-mode . ("astro-ls" "--stdio"
+               '(astro-ts-mode . ("astro-ls" "--stdio"
                                :initializationOptions
                                (:typescript (:tsdk "./node_modules/typescript/lib")))))
-  :hook (((astro-mode
+  :hook (((astro-ts-mode
            c-mode
            c++-mode
            cmake-mode
@@ -24,6 +24,7 @@
            sh-mode
            yaml-mode)
           . eglot-ensure)))
+
 
 (use-package dap-mode
   :ensure t
